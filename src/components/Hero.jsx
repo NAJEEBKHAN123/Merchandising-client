@@ -10,7 +10,7 @@ const Hero = () => {
   const slides = [
     {
       image: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Customized Merchandising",
+      title: "Merchandise Hub & Solution",
       subtitle: "MSCO provides exceptional custom merchandise and professional printing services designed specifically for your business growth and success today.",
       stats: "15+ Years of Excellence"
     },
@@ -21,7 +21,7 @@ const Hero = () => {
       stats: "500+ Successful Projects"
     },
     {
-      image: "https://cdn.pixabay.com/photo-2014-09-04-11-03-supermarket-435452_1280.jpg",
+      image: "https://cdn.pixabay.com/photo/2014/11/08/19/45/shopping-mall-522619_1280.jpg",
       title: "Quality Apparel & Products",
       subtitle: "From custom t-shirts to promotional items and corporate gifts, we deliver quality products with complete assurance and timely delivery always.",
       stats: "10,000+ Products Delivered"
@@ -109,7 +109,7 @@ const Hero = () => {
       </button>
       
       {/* Content with enhanced animations */}
-      <div className="relative z-10 h-full flex items-center justify-center">
+      <div className="relative z-10 h-full flex lg:mt-10 items-center justify-center">
         <div className="w-full max-w-6xl px-4">
           
           {/* Animated Text with directional and staggered animations */}
