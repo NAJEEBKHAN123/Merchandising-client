@@ -87,10 +87,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full bg-white z-100 transition-all duration-300 ${
+      className={`fixed top-0 w-full  z-100 transition-all duration-300 ${
         isScrolled
-          ? "bg-white shadow-lg py-1"
-          : "bg-gradient-to-r from-white to-white py-4"
+          ? "bg-gray-100 shadow-lg py-1"
+          : "bg-gradient-to-r from-gray-50 to-gray-100 py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
