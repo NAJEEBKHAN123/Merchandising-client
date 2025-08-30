@@ -9,7 +9,7 @@ const Hero = () => {
   
   const slides = [
     {
-      image: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: "https://plus.unsplash.com/premium_photo-1661901543371-0d1279a79645?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Merchandise Hub & Solution",
       subtitle: "MSCO provides exceptional custom merchandise and professional printing services designed specifically for your business growth and success today.",
       stats: "15+ Years of Excellence"
@@ -21,7 +21,7 @@ const Hero = () => {
       stats: "500+ Successful Projects"
     },
     {
-      image: "https://cdn.pixabay.com/photo/2014/11/08/19/45/shopping-mall-522619_1280.jpg",
+      image: "https://images.unsplash.com/photo-1637666573804-746f69e79463?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Quality Apparel & Products",
       subtitle: "From custom t-shirts to promotional items and corporate gifts, we deliver quality products with complete assurance and timely delivery always.",
       stats: "10,000+ Products Delivered"

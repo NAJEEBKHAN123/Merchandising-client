@@ -1,10 +1,77 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import services from "../constants/servicesData";
 
-function Services() {
+const Services = () => {
+
+  useEffect(() =>{
+        window.scrollTo(0,0)
+  })
+
   return (
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore deserunt dicta ea perferendis. Eius aut neque consequatur provident sit. Quod a cum natus inventore, aliquid praesentium fugit optio atque unde dolorum ea animi eveniet assumenda possimus quasi quia vitae, dolor quisquam sed? Ipsum perspiciatis alias ad autem at ratione, tempora, distinctio, accusantium sapiente et saepe repudiandae! Eligendi amet nisi, veritatis repudiandae excepturi est nostrum reprehenderit sequi, cumque ea vitae impedit aperiam qui ex natus ab laboriosam. Sunt quod laudantium maxime officiis eveniet dolore sint voluptatum tempora, unde, laboriosam, modi placeat culpa eos! Sit impedit minus iure, autem suscipit aut repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed cum consequatur mollitia obcaecati non, animi esse ut nisi voluptate? Ad quo distinctio ex nobis quasi iusto odio itaque asperiores eveniet. Voluptatum, cumque dolorum laudantium asperiores provident distinctio optio facere hic obcaecati, sit odit deserunt, harum error laboriosam. Veritatis quo, quibusdam iure nesciunt nisi officia ratione perferendis esse suscipit nulla laudantium ipsa ut necessitatibus reiciendis voluptatum, iste sunt nam, obcaecati dolore cumque facere. Et repudiandae necessitatibus, natus qui adipisci nemo nisi distinctio architecto eligendi quis, deleniti pariatur hic porro, possimus quam at similique praesentium est alias iste esse maiores illum voluptatum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita non modi ea quidem. Saepe excepturi in quia aut, nisi velit ipsum corrupti sunt quas quidem ab modi necessitatibus iste nostrum optio odit suscipit, magni dolorem, blanditiis reiciendis. Sit laborum nulla, placeat possimus, distinctio quos, suscipit deleniti quae harum obcaecati ipsum dicta. Eos corporis labore quam ex quibusdam harum. Velit voluptate optio magni, doloremque iure porro quis facilis cum, voluptatem illo beatae blanditiis earum incidunt dolores molestias pariatur similique non itaque veritatis ratione necessitatibus temporibus dolor. Eius sed quae dolorem corrupti magni inventore culpa pariatur aliquid adipisci, ex error ea libero! Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem omnis incidunt dolorum ipsum? Voluptatibus ducimus praesentium vero soluta blanditiis reiciendis, cupiditate ipsam architecto illum nulla eius aliquam excepturi quisquam adipisci fuga ut repudiandae? Minus asperiores dolorum blanditiis possimus voluptatum, labore sed, libero minima aliquid reprehenderit quasi harum amet! Quaerat totam atque voluptatum quae commodi? Sunt soluta mollitia facere error impedit optio nesciunt totam quia sequi sint eligendi doloribus quis perferendis saepe expedita ab nisi, delectus minima nulla iusto? Ratione numquam quia at possimus blanditiis praesentium laborum, soluta tempore nobis, placeat fugit quisquam alias ipsum quasi ipsam error perferendis saepe.
-    </div>
-  )
-}
+    <div className="min-h-screen bg-gray-50">
+      {/* Page Header */}
+      <div className="bg-gray-300 lg:pt-32 py-20">
+        <div className="mx-auto px-2 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold ">OUR SERVICES</h1>
+          <p className="mt-4 text-xl  max-w-3xl mx-auto">
+            Comprehensive retail merchandising solutions tailored to your
+            business needs
+          </p>
+        </div>
+      </div>
 
-export default Services
+      {/* Services Section */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 ">
+            {services.map((service, index) => (
+             <Link to={`/services/${service.id}`}>
+              <div
+                key={index}
+                className="relative group overflow-hidden  shadow-lg"
+              >
+                <div className="h-64 lg:h-96 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-auto h-auto cursor-pointer object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <div className=" bg-gradient-to-t from-black/80 to-transparent p-6">
+                  <h3 className="text-xl text-center font-bold text-white">
+                    {service.title}
+                  </h3>
+                </div>
+              </div>
+             </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="bg-gray-100 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            Ready to transform your retail space?
+          </h2>
+          <p className="mt-4 text-lg text-gray-600">
+            Contact us today to discuss how our services can benefit your
+            business.
+          </p>
+          <div className="mt-8">
+            <a
+              href="#"
+              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+            >
+              Get in touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Services;

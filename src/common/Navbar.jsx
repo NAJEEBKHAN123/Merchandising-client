@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/logoo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("home");
+  const [activeLink, setActiveLink] = useState("/");
   const [isScrolled, setIsScrolled] = useState(false);
   const mobileMenuRef = useRef(null);
+  const location = useLocation();
+
+  // Update active link based on current route
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location]);
 
   // Handle scroll effect with better cleanup
   useEffect(() => {
@@ -21,9 +28,7 @@ const Navbar = () => {
       }
     };
 
-    // Add passive event listener for better performance
     window.addEventListener("scroll", handleScroll, { passive: true });
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -47,18 +52,6 @@ const Navbar = () => {
     };
   }, []);
 
-  // Close mobile menu when a link is clicked
-  const handleLinkClick = (link) => {
-    setActiveLink(link);
-    setIsOpen(false);
-
-    // Smooth scroll to section
-    const element = document.getElementById(link);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   // Close mobile menu when pressing Escape key
   useEffect(() => {
     const handleEscape = (event) => {
@@ -77,17 +70,17 @@ const Navbar = () => {
   }, [isOpen]);
 
   const navLinks = [
-    { id: "home", label: "Home" },
-    { id: "services", label: "Services" },
-    { id: "portfolio", label: "Portfolio" },
-    { id: "about", label: "About Us" },
-    { id: "testimonials", label: "Testimonials"},
-    { id: "faq", label: "FAQ" },
+    { path: "/", label: "Home" },
+    { path: "/services", label: "Services" },
+    { path: "/portfolio", label: "Portfolio" },
+    { path: "/about", label: "About Us" },
+    { path: "/testimonials", label: "Testimonials" },
+    { path: "/faq", label: "FAQ" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 w-full  z-100 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-gray-100 shadow-lg py-2"
           : "bg-gradient-to-r from-gray-50 to-gray-100 py-4"
@@ -96,65 +89,52 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          {/* Logo */}
           <div className="flex-shrink-0">
-            <a
-              href="#home"
+            <Link
+              to="/"
               className="flex items-center space-x-2"
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick("home");
-              }}
+              onClick={() => setIsOpen(false)}
             >
               <img
                 src={Logo}
-                className="h-10 w-10 md:h-12 md:w-12 " // Responsive sizing
+                className="h-10 w-10 md:h-12 md:w-12"
                 alt="Company Logo"
               />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex sm:space-x-1 md:space-x-0 lg:space-x-6 items-center font-medium">
+          <div className="hidden md:flex space-x-1 lg:space-x-6 items-center font-medium">
             {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
+              <Link
+                key={link.path}
+                to={link.path}
                 className={`relative px-3 py-2 transition-all duration-300 ${
-                  activeLink === link.id
+                  activeLink === link.path
                     ? "text-pink-600 font-medium"
                     : "text-gray-700 hover:text-pink-600"
                 }`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(link.id);
-                }}
               >
                 {link.label}
-                {/* {activeLink === link.id && (
+                {activeLink === link.path && (
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-600"></span>
-                )} */}
-              </a>
+                )}
+              </Link>
             ))}
           </div>
 
           {/* CTA Button */}
-       <div>
-  <a
-    href="#quote"
-    className="relative inline-block px-4 md:px-2 py-2 lg:px-4 lg:py-2.5 font-semibold text-white bg-gradient-to-r from-pink-500 via-red-500 to-pink-600 
-               rounded-full shadow-lg transform transition-all duration-300 
-               hover:scale-105 hover:shadow-2xl hover:from-pink-600 hover:via-red-600 hover:to-pink-700"
-    onClick={(e) => {
-      e.preventDefault();
-      handleLinkClick("contact");
-    }}
-  >
-    <span className="relative z-10">✨ Get a Quote ✨</span>
-    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-white/20 to-transparent opacity-30 blur-md"></span>
-  </a>
-</div>
-
+          <div>
+            <Link
+              to="/contact"
+              className="relative inline-block px-4 md:px-2 py-2 lg:px-4 lg:py-2.5 font-semibold text-white bg-gradient-to-r from-pink-500 via-red-500 to-pink-600 
+                        rounded-full shadow-lg transform transition-all duration-300 
+                        hover:scale-105 hover:shadow-2xl hover:from-pink-600 hover:via-red-600 hover:to-pink-700"
+            >
+              <span className="relative z-10">✨ Get a Quote ✨</span>
+              <span className="absolute inset-0 rounded-full bg-gradient-to-r from-white/20 to-transparent opacity-30 blur-md"></span>
+            </Link>
+          </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -208,33 +188,26 @@ const Navbar = () => {
         >
           <div className="px-2 pt-2 pb-3 space-y-2 bg-white rounded-lg mt-4 shadow-lg">
             {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
+              <Link
+                key={link.path}
+                to={link.path}
                 className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                  activeLink === link.id
+                  activeLink === link.path
                     ? "bg-blue-50 text-pink-600"
                     : "text-gray-700 hover:bg-gray-100 hover:text-pink-600"
                 }`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(link.id);
-                }}
+                onClick={() => setIsOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#quote"
+            <Link
+              to="/contact"
               className="block text-center mt-4 bg-gradient-to-r from-pink-600 to-pink-600 text-white px-5 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick("contact");
-                setIsOpen(false);
-              }}
+              onClick={() => setIsOpen(false)}
             >
               Get a Quote
-            </a>
+            </Link>
           </div>
         </div>
       </div>
