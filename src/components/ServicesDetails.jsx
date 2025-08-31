@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, CheckCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowLeftCircle, CheckCircle } from "lucide-react";
 import services from "../constants/servicesData";
 
 const ServiceDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const service = services.find((s) => s.id === parseInt(id));
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() =>{
-    window.scrollTo(0,0)
-  })
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setCurrentIndex(0); // reset when switching services
+  }, [id]);
 
   if (!service) {
     return (
@@ -19,6 +21,18 @@ const ServiceDetails = () => {
       </div>
     );
   }
+
+  const nextImage = () => {
+    setCurrentIndex((prev) =>
+      prev === service.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? service.images.length - 1 : prev - 1
+    );
+  };
 
   return (
     <main className="min-h-screen bg-gray-50 pt-20 pb-16 px-6 md:px-8">
@@ -34,7 +48,7 @@ const ServiceDetails = () => {
       </div>
 
       {/* Heading */}
-      <div className="max-w-6xl  mx-auto text-center mb-12">
+      <div className="max-w-6xl mx-auto text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
           {service.title}
         </h1>
@@ -52,7 +66,7 @@ const ServiceDetails = () => {
           </h2>
           <p className="text-gray-600 leading-relaxed">{service.description}</p>
 
-          {/* Key Points Section */}
+          {/* Key Features */}
           {service.features && service.features.length > 0 && (
             <div className="pt-4">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
@@ -61,30 +75,39 @@ const ServiceDetails = () => {
               <div className="space-y-3">
                 {service.features.map((feature, index) => (
                   <div key={index} className="flex items-start">
-                    <CheckCircle size={20} className="text-green-500 mt-1 mr-3 flex-shrink-0" />
+                    <CheckCircle
+                      size={20}
+                      className="text-green-500 mt-1 mr-3 flex-shrink-0"
+                    />
                     <span className="text-gray-700">{feature}</span>
                   </div>
                 ))}
               </div>
             </div>
           )}
-
-          {/* Extra description field */}
-          {service.extraDescription && (
-            <div className="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-500 mt-6">
-              <h3 className="font-semibold text-gray-800 mb-2">More Details</h3>
-              <p className="text-gray-700">{service.extraDescription}</p>
-            </div>
-          )}
         </div>
 
-        {/* Right Image */}
-        <div className="md:w-1/2">
+        {/* Right Image Slider */}
+        <div className="md:w-1/2 relative">
           <img
-            src={service.image}
+            src={service.images[currentIndex]}
             alt={service.title}
-            className="rounded-xl shadow-md w-full h-full object-cover"
+            className="rounded-xl shadow-md w-full h-80 object-cover"
           />
+
+          {/* Slider Buttons */}
+          <button
+            onClick={prevImage}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100"
+          >
+            <ArrowLeftCircle size={28} />
+          </button>
+          <button
+            onClick={nextImage}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100"
+          >
+            <ArrowRight size={28} />
+          </button>
         </div>
       </div>
     </main>
