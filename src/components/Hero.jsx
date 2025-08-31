@@ -1,262 +1,208 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
-import * as random from 'maath/random/dist/maath-random.esm';
 import slide1 from "../assets/hero/banner.jpg";
 import slide2 from "../assets/hero/slide2.jpg";
 import slide3 from "../assets/hero/slide3.jpg";
 
-// 3D Particle Background Component
-function ParticleBackground(props) {
-  const ref = useRef();
-  const [sphere] = useState(() => 
-    random.inSphere(new Float32Array(5000), { radius: 1.5 })
-  );
-  
-  useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
-  });
-
-  return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
-        <PointMaterial
-          transparent
-          color="#ffa500"
-          size={0.005}
-          sizeAttenuation={true}
-          depthWrite={false}
-        />
-      </Points>
-    </group>
-  );
-}
-
-// Interactive Floating Elements
-const FloatingElement = ({ delay, children }) => {
-  return (
-    <div 
-      className="absolute opacity-0 animate-float-in"
-      style={{ 
-        animationDelay: `${delay}s`,
-        filter: 'drop-shadow(0 10px 8px rgb(0 0 0 / 0.4))'
-      }}
-    >
-      {children}
-    </div>
-  );
-};
-
 const Hero = () => {
-  const [activeContent, setActiveContent] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const heroRef = useRef(null);
-
-  const content = [
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [hoverEffect, setHoverEffect] = useState(false);
+  const intervalRef = useRef(null);
+  
+  const slides = [
     {
-      title: "Building Brand Loyalty",
-      highlight: "Just Got Easier!",
-      description: "We create exceptional value for our partners through detailed planning and superior execution",
       image: slide1,
-      color: "from-amber-500/20 to-orange-600/20"
+      title: "Building Brand Loyalty",
+      subtitle: "Just Got Easier!",
+      description: "We create exceptional value for our partners through detailed planning and superior execution"
     },
     {
-      title: "Premium Branding Solutions",
-      highlight: "Elevate Your Identity",
-      description: "Transform your brand with our innovative merchandise and marketing solutions",
       image: slide2,
-      color: "from-blue-500/20 to-indigo-600/20"
+      title: "Premium Branding Solutions",
+      subtitle: "Elevate Your Identity",
+      description: "Transform your brand with our innovative merchandise and marketing solutions"
     },
     {
-      title: "Quality Apparel & Products",
-      highlight: "Crafted With Care",
-      description: "Discover our collection of high-quality branded products that represent your values",
       image: slide3,
-      color: "from-emerald-500/20 to-teal-600/20"
+      title: "Quality Apparel & Products",
+      subtitle: "Crafted With Care",
+      description: "Discover our collection of high-quality branded products that represent your values"
     }
   ];
 
+  // Enhanced slide transition
+  const goToSlide = (index) => {
+    if (index === currentSlide || isTransitioning) return;
+    
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setIsTransitioning(false);
+    }, 800);
+  };
+
+  // Auto-advance slides with pause on hover
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: (e.clientX - rect.left) / rect.width,
-          y: (e.clientY - rect.top) / rect.height
-        });
+    intervalRef.current = setInterval(() => {
+      if (!isTransitioning && !hoverEffect) {
+        goToSlide((currentSlide + 1) % slides.length);
       }
-    };
+    }, 5000);
+    
+    return () => clearInterval(intervalRef.current);
+  }, [currentSlide, isTransitioning, slides.length, hoverEffect]);
 
-    const hero = heroRef.current;
-    if (hero) {
-      hero.addEventListener('mousemove', handleMouseMove);
-    }
-
-    return () => {
-      if (hero) {
-        hero.removeEventListener('mousemove', handleMouseMove);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveContent((prev) => (prev + 1) % content.length);
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, [content.length]);
-
-  const current = content[activeContent];
+  const nextSlide = () => goToSlide((currentSlide + 1) % slides.length);
+  const prevSlide = () => goToSlide((currentSlide - 1 + slides.length) % slides.length);
 
   return (
     <div 
-      ref={heroRef}
-      className="relative h-screen overflow-hidden w-full bg-black"
+      className="relative h-screen overflow-hidden w-full group"
+      onMouseEnter={() => setHoverEffect(true)}
+      onMouseLeave={() => setHoverEffect(false)}
     >
-      {/* 3D Particle Background */}
-      <div className="absolute inset-0 z-0 opacity-30">
-        <Canvas camera={{ position: [0, 0, 1] }}>
-          <ParticleBackground />
-        </Canvas>
-      </div>
-
-      {/* Dynamic Gradient Overlay */}
-      <div 
-        className={`absolute inset-0 bg-gradient-to-br ${current.color} z-1 transition-all duration-1000`}
-        style={{
-          transform: `translate(${(mousePosition.x - 0.5) * 20}px, ${(mousePosition.y - 0.5) * 20}px)`
-        }}
-      ></div>
-
-      {/* Animated Background Image */}
-      <div 
-        className="absolute inset-0 z-0 opacity-40 bg-cover bg-center scale-110"
-        style={{ 
-          backgroundImage: `url(${current.image})`,
-          transform: `scale(1.1) translate(${(mousePosition.x - 0.5) * 30}px, ${(mousePosition.y - 0.5) * 30}px)`,
-          transition: 'transform 0.1s ease-out'
-        }}
-      ></div>
-
-      {/* Floating Elements */}
-      <FloatingElement delay={0.2}>
-        <div className="absolute top-20 left-20 w-32 h-32 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 blur-xl opacity-40"></div>
-      </FloatingElement>
+      {/* Background Slides with Parallax Effect */}
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute top-0 left-0 w-full h-full bg-cover bg-center transition-all duration-1000 ease-out ${
+            index === currentSlide 
+              ? 'opacity-100 z-0 scale-110' 
+              : 'opacity-0 z-0 scale-100'
+          }`}
+          style={{ 
+            backgroundImage: `url(${slide.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transition: 'transform 10s ease-out, opacity 1s ease-out'
+          }}
+        ></div>
+      ))}
       
-      <FloatingElement delay={0.5}>
-        <div className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-lg blur-xl opacity-40"></div>
-      </FloatingElement>
+      {/* Sophisticated Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20 z-1"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent z-1"></div>
       
-      <FloatingElement delay={0.8}>
-        <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full blur-xl opacity-40"></div>
-      </FloatingElement>
-
-      {/* Content */}
-      <div className="relative z-10 h-full flex items-center justify-center px-4">
-        <div className="text-center max-w-4xl">
-          <div className="mb-8 overflow-hidden">
-            <h1 
-              className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tighter"
-              style={{
-                transform: `translate(${(mousePosition.x - 0.5) * 10}px, ${(mousePosition.y - 0.5) * 10}px)`,
-                transition: 'transform 0.1s ease-out',
-                textShadow: '0 5px 15px rgba(0,0,0,0.5)'
-              }}
-            >
-              {current.title}
-            </h1>
-          </div>
+      {/* Subtle Animated Elements */}
+      <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-amber-400/5 mix-blend-overlay animate-pulse-slow z-1"></div>
+      <div className="absolute bottom-20 right-20 w-24 h-24 bg-blue-500/5 mix-blend-lighten animate-rotate-slow z-1"></div>
+      
+      {/* Elegant Navigation Arrows */}
+      <button 
+        onClick={prevSlide}
+        className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 p-4 rounded-full transition-all duration-500 opacity-80 group-hover:opacity-100 backdrop-blur-sm hover:scale-110 border border-white/10"
+        aria-label="Previous slide"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button 
+        onClick={nextSlide}
+        className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 p-4 rounded-full transition-all duration-500 opacity-80 group-hover:opacity-100 backdrop-blur-sm hover:scale-110 border border-white/10"
+        aria-label="Next slide"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+      
+      {/* Premium Content Styling */}
+      <div className="relative z-10 h-full flex items-center justify-center">
+        <div className="w-full max-w-5xl px-6 md:px-10 text-center">
           
-          <div className="mb-8 overflow-hidden">
-            <div 
-              className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-500"
-              style={{
-                transform: `translate(${(mousePosition.x - 0.5) * 8}px, ${(mousePosition.y - 0.5) * 8}px)`,
-                transition: 'transform 0.1s ease-out',
-                filter: 'drop-shadow(0 2px 5px rgba(0,0,0,0.7))'
-              }}
+          {/* Animated Text Content */}
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-700 ease-out px-4 ${
+                index === currentSlide
+                  ? 'opacity-100 z-10 translate-y-0'
+                  : 'opacity-0 z-0 translate-y-8'
+              }`}
             >
-              {current.highlight}
+              {/* Main Title */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white tracking-wide uppercase">
+                {slide.title.split(' ').map((word, i) => (
+                  <span key={i} className="inline-block mr-3 opacity-0 animate-fade-in-up" style={{animationDelay: `${i * 0.1}s`}}>
+                    {word}
+                  </span>
+                ))}
+              </h1>
+              
+              {/* Subtitle with Accent */}
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-amber-400 tracking-wide">
+                {slide.subtitle.split(' ').map((word, i) => (
+                  <span key={i} className="inline-block mr-2 opacity-0 animate-fade-in-up" style={{animationDelay: `${0.4 + i * 0.1}s`}}>
+                    {word}
+                  </span>
+                ))}
+              </h2>
+              
+              {/* Description */}
+              <p className="text-lg sm:text-xl text-gray-200 mb-8 max-w-3xl mx-auto font-light leading-relaxed opacity-0 animate-fade-in-up" style={{animationDelay: '0.8s'}}>
+                {slide.description}
+              </p>
+              
+              {/* CTA Buttons */}
+              <div className="flex gap-4 justify-center opacity-0 animate-fade-in-up" style={{animationDelay: '1s'}}>
+                <button className="px-8 py-3 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                  Explore Solutions
+                </button>
+                <button className="px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
+                  Contact Us
+                </button>
+              </div>
             </div>
-          </div>
-          
-          <div className="mb-10 overflow-hidden">
-            <p 
-              className="text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed"
-              style={{
-                transform: `translate(${(mousePosition.x - 0.5) * 6}px, ${(mousePosition.y - 0.5) * 6}px)`,
-                transition: 'transform 0.1s ease-out'
-              }}
-            >
-              {current.description}
-            </p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              className="px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300 shadow-lg relative overflow-hidden group"
-              style={{
-                transform: `translate(${(mousePosition.x - 0.5) * 5}px, ${(mousePosition.y - 0.5) * 5}px)`,
-                transition: 'transform 0.1s ease-out'
-              }}
-            >
-              <span className="relative z-10">Explore Solutions</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-            
-            <button 
-              className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 backdrop-blur-sm transform hover:scale-105 transition-all duration-300 group overflow-hidden"
-              style={{
-                transform: `translate(${(mousePosition.x - 0.5) * 5}px, ${(mousePosition.y - 0.5) * 5}px)`,
-                transition: 'transform 0.1s ease-out'
-              }}
-            >
-              <span className="relative z-10">Contact Us</span>
-              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Content Indicator */}
-      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
-        {content.map((_, index) => (
+      {/* Minimalist Indicators */}
+      <div className="absolute bottom-10 left-0 right-0 z-20 flex justify-center gap-3">
+        {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setActiveContent(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-500 ${
-              index === activeContent 
-                ? 'bg-white w-8 scale-125' 
+            onClick={() => goToSlide(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-500 ${
+              index === currentSlide 
+                ? 'bg-white w-8' 
                 : 'bg-white/40 hover:bg-white/60'
             }`}
-            aria-label={`Go to content ${index + 1}`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
-        </div>
-      </div>
-
-      {/* Custom Animations */}
+      {/* Custom Animation Styles */}
       <style jsx>{`
-        @keyframes float-in {
-          0% {
+        @keyframes fade-in-up {
+          from {
             opacity: 0;
-            transform: translateY(30px) scale(0.95);
+            transform: translateY(20px);
           }
-          100% {
+          to {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
           }
         }
-        .animate-float-in {
-          animation: float-in 1s ease-out forwards;
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.05; }
+          50% { opacity: 0.1; }
+        }
+        @keyframes rotate-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 6s ease-in-out infinite;
+        }
+        .animate-rotate-slow {
+          animation: rotate-slow 20s linear infinite;
         }
       `}</style>
     </div>
