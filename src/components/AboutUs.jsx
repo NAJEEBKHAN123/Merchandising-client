@@ -27,24 +27,16 @@ const AboutUs = () => {
         
         <div className="relative z-10 container mx-auto mt-10 px-4 text-center text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">We Transform Retail Spaces</h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-10">
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto ">
             Leading the merchandising industry with innovation, precision, and excellence for over a decade
           </p>
-          <div className="flex justify-center gap-4">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 flex items-center">
-              Our Services <ArrowRight className="ml-2" />
-            </button>
-            <button className="border-2 border-white text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:bg-white hover:text-black">
-              Contact Us
-            </button>
-          </div>
         </div>
       </section>
 
       {/* Stats Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2  md:grid-cols-4 gap-8 text-center">
             <div className="p-6">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="text-blue-600 w-8 h-8" />

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   ChevronDown, Search, X, Filter, Sparkles, 
   BookOpen, MessageCircle, Zap, ArrowRight,
-  Star, HelpCircle, Lightbulb
+  Star, HelpCircle, Lightbulb, Mail, Phone
 } from "lucide-react";
 
 const FAQ = () => {
@@ -152,13 +152,13 @@ const FAQ = () => {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <motion.div 
-              className="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center mr-4"
+              className="w-16 h-16 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 shadow-lg flex items-center justify-center mr-4"
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
-              <MessageCircle className="w-8 h-8 text-indigo-600" />
+              <MessageCircle className="w-8 h-8 text-white" />
             </motion.div>
-            <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-pink-600">
+            <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-600">
               Frequently Asked Questions
             </h1>
           </motion.div>
@@ -188,7 +188,7 @@ const FAQ = () => {
                 ref={searchRef}
                 type="text"
                 placeholder="Search questions or answers..."
-                className="block w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all duration-300"
+                className="block w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all duration-300"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -215,7 +215,7 @@ const FAQ = () => {
                 <Filter className="h-5 w-5 text-gray-400" />
               </div>
               <select
-                className="block w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none appearance-none transition-all duration-300 bg-white cursor-pointer"
+                className="block w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none appearance-none transition-all duration-300 bg-white cursor-pointer"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
               >
@@ -270,11 +270,11 @@ const FAQ = () => {
                     className="flex-shrink-0 ml-2"
                   >
                     <motion.div 
-                      className="bg-indigo-100 p-1.5 rounded-full"
+                      className="bg-teal-100 p-1.5 rounded-full"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                     >
-                      <ChevronDown className="w-5 h-5 text-indigo-600" />
+                      <ChevronDown className="w-5 h-5 text-teal-600" />
                     </motion.div>
                   </motion.div>
                 </button>
@@ -309,7 +309,7 @@ const FAQ = () => {
                           transition={{ delay: 0.2 }}
                         >
                           <div className="flex-shrink-0 mr-4 mt-1">
-                            <Sparkles className="w-5 h-5 text-indigo-400" />
+                            <Sparkles className="w-5 h-5 text-teal-400" />
                           </div>
                           <div>{faq.answer}</div>
                         </motion.div>
@@ -327,11 +327,11 @@ const FAQ = () => {
               className="text-center py-12 bg-white rounded-2xl shadow-lg border border-gray-100"
             >
               <motion.div 
-                className="mx-auto w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4"
+                className="mx-auto w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, ease: "easeInOut" }}
               >
-                <Search className="w-8 h-8 text-indigo-500" />
+                <Search className="w-8 h-8 text-teal-500" />
               </motion.div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">No results found</h3>
               <p className="text-gray-600 max-w-md mx-auto">
@@ -339,7 +339,7 @@ const FAQ = () => {
               </p>
               <motion.button
                 onClick={() => { setSearchTerm(""); setSelectedCategory("All"); }}
-                className="mt-4 px-6 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors duration-200 flex items-center justify-center mx-auto"
+                className="mt-4 px-6 py-2 bg-teal-600 text-white rounded-xl hover:bg-teal-700 transition-colors duration-200 flex items-center justify-center mx-auto"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -358,7 +358,7 @@ const FAQ = () => {
           className="mt-16 text-center"
         >
           <motion.div 
-            className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden"
+            className="bg-gradient-to-r from-teal-600 to-blue-600 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden"
             whileHover={{ y: -5 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
@@ -384,17 +384,32 @@ const FAQ = () => {
               <p className="mb-6 opacity-90 max-w-2xl mx-auto">
                 Can't find the answer you're looking for? Our team is here to help you with any questions about our services.
               </p>
-              <motion.button 
-                className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors duration-200 shadow-md flex items-center justify-center mx-auto"
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 10px 25px -5px rgba(99, 102, 241, 0.4)"
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Contact Support
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </motion.button>
+              <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <motion.a 
+                  href="mailto:support@merchelevate.com"
+                  className="bg-white text-teal-600 font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors duration-200 shadow-md flex items-center justify-center"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 10px 25px -5px rgba(13, 148, 136, 0.4)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Mail className="mr-2 w-4 h-4" />
+                  Email Us
+                </motion.a>
+                <motion.a 
+                  href="tel:+15551234567"
+                  className="bg-white text-teal-600 font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors duration-200 shadow-md flex items-center justify-center"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 10px 25px -5px rgba(13, 148, 136, 0.4)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Phone className="mr-2 w-4 h-4" />
+                  Call Now
+                </motion.a>
+              </div>
             </div>
           </motion.div>
         </motion.div>
