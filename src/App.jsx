@@ -1,6 +1,5 @@
 import React from 'react'
 import Navbar from './common/Navbar'
-import Hero from './components/Hero'
 import {BrowserRouter, Route, Routes, } from 'react-router-dom'
 import Home from './components/Home'
 import Services from './components/Services'
@@ -9,7 +8,8 @@ import Portfolio from './components/Portfolio'
 import AboutUs from './components/AboutUs'
 import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
-import { Contact } from 'lucide-react'
+import Footer from './common/Footer'
+import QetQoute from './components/GetQoute'
 
 function App() {
   return (
@@ -23,9 +23,9 @@ function App() {
         <Route path="/about" element={<AboutUs/>}/>
         <Route path="/testimonials" element={<Testimonials />}/>
         <Route path="/faq" element={<FAQ />}/>
-        <Route path="/contact" element={<Contact />}/>
-
+        <Route path="/contact" element={<QetQoute />}/>
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

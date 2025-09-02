@@ -1,7 +1,7 @@
 const services = [
   {
     id: 1,
-    title: "NEW STORE SETUPS AND RELOCATIONS",
+    title: "NEW STORE LAUNCHES",
     images: [
       "https://plus.unsplash.com/premium_photo-1661901543371-0d1279a79645?q=80&w=2127&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1974&auto=format&fit=crop",
@@ -61,7 +61,7 @@ const services = [
   },
   {
     id: 4,
-    title: "POP AND GRAPHICS INSTALLATIONS",
+    title: "MERCHANDISING & RESTOCKING",
     images: [
       "https://images.unsplash.com/photo-1580554430120-94cfcb3adf25?q=80&w=2070&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1515169067865-5387ec356754?q=80&w=2070&auto=format&fit=crop",
@@ -79,46 +79,6 @@ const services = [
       "Quality materials that maintain appearance over time"
     ]
   },
-  {
-    id: 5,
-    title: "IN STORE SERVICE PROGRAMS",
-    images: [
-      "https://images.unsplash.com/photo-1556742111-a301076d9d18?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1604014237744-4e3e2a6e8ec0?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1581092334873-7b1f1c2d41f0?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1594007654729-4f3f871e4b82?q=80&w=2070&auto=format&fit=crop"
-    ],
-    description: "Our in-store service programs provide ongoing support for merchandising, product placement, and promotional execution. We ensure your store always looks its best with regular maintenance, seasonal resets, and compliance checks. These programs enhance shopper experience, improve operational efficiency, and keep your retail environment consistent, organized, and aligned with your brand goals.",
-    features: [
-      "Regular maintenance and merchandising support",
-      "Consistent brand standards enforcement",
-      "Flexible scheduling based on your needs",
-      "Detailed reporting and performance metrics",
-      "Trained specialists familiar with your brand"
-    ]
-  },
-  {
-    id: 6,
-    title: "WAREHOUSE SERVICES",
-    images: [
-      "https://plus.unsplash.com/premium_photo-1749330697109-f30fad2ff259?q=80&w=1974&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1581093588401-22f54834ff59?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1560184897-7e4b52d7f54a?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1604328698692-6c264a6c2a7c?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600585154154-6fc7a5a4d2a1?q=80&w=2070&auto=format&fit=crop"
-    ],
-    description: "We offer comprehensive warehouse services, including storage, inventory management, and logistics coordination. Our solutions improve supply chain efficiency, reduce errors, and streamline distribution. By optimizing warehouse operations, we help businesses meet customer demands faster and more reliably while maintaining cost efficiency and ensuring accurate, on-time fulfillment for all product categories.",
-    features: [
-      "Efficient inventory management systems",
-      "Streamlined logistics and distribution",
-      "Space optimization for maximum storage",
-      "Accurate order fulfillment processes",
-      "Customized solutions for different product types"
-    ]
-  }
 ];
 
 export default services;

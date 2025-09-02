@@ -9,14 +9,13 @@ const Services = () => {
   })
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen  bg-gray-50">
       {/* Page Header */}
-      <div className="bg-gray-300 lg:pt-32 py-20">
+      <div className="bg-gradient-to-b from-gray-400 to-white lg:pt-32">
         <div className="mx-auto px-2 text-center">
           <h1 className="text-4xl md:text-5xl font-bold ">OUR SERVICES</h1>
           <p className="mt-4 text-xl  max-w-3xl mx-auto">
-            Comprehensive retail merchandising solutions tailored to your
-            business needs
+            We provide comprehensive retail merchandising solutions designed to fit your unique business needs. From setting up brand-new stores to remodeling existing ones, our team ensures shelves are installed, products are displayed strategically, pricing is accurate, and stores remain organized. Every solution is tailored to maximize visibility, enhance customer experience, and drive sales.
           </p>
         </div>
       </div>
@@ -74,7 +73,7 @@ const Services = () => {
           <div className="mt-8">
             <a
               href="#"
-              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
             >
               Get in touch
             </a>
