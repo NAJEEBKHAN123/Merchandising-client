@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Mail, Phone, MessageCircle, Send, 
+  User, Calendar, Clipboard, Award,
+  CheckCircle, X, Loader
+} from "lucide-react";
 
 const GetQuote = () => {
   const [formData, setFormData] = useState({
@@ -7,111 +13,340 @@ const GetQuote = () => {
     phone: "",
     service: "",
     message: "",
+    urgency: ""
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const services = [
+    { value: "store-setup", label: "Store Setup & Design" },
+    { value: "remodeling", label: "Store Remodeling" },
+    { value: "product-arrangement", label: "Product Arrangement" },
+    { value: "visual-merchandising", label: "Visual Merchandising" },
+    { value: "seasonal-displays", label: "Seasonal Displays" },
+    { value: "brand-implementation", label: "Brand Implementation" },
+    { value: "inventory-optimization", label: "Inventory Optimization" },
+    { value: "pricing-strategy", label: "Pricing Strategy" }
+  ];
+
+  const urgencyOptions = [
+    { value: "urgent", label: "Urgent (Within 1 week)" },
+    { value: "soon", label: "Soon (Within 2-3 weeks)" },
+    { value: "planning", label: "Planning (Next month)" },
+    { value: "future", label: "Future (Just gathering info)" }
+  ];
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!formData.phone.trim()) newErrors.phone = "Phone is required";
+    if (!formData.service) newErrors.service = "Please select a service";
+    if (!formData.urgency) newErrors.urgency = "Please select timeline";
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Quote Request:", formData);
-    alert("Your request has been submitted. We will contact you soon!");
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: "" });
+    }
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    try {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log("Quote Request:", formData);
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const resetForm = () => {
+    setFormData({ name: "", email: "", phone: "", service: "", message: "", urgency: "" });
+    setErrors({});
+    setIsSubmitted(false);
+  };
+
+  if (isSubmitted) {
+    return (
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="max-w-2xl mx-auto p-8 bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl shadow-2xl border border-green-200"
+      >
+        <div className="text-center">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", stiffness: 200 }}
+            className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+          >
+            <CheckCircle className="w-10 h-10 text-green-600" />
+          </motion.div>
+          
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Request Submitted!</h2>
+          <p className="text-lg text-gray-600 mb-8">
+            Thank you for your interest. We'll contact you within 24 hours to discuss your project.
+          </p>
+          
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={resetForm}
+            className="px-8 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 flex items-center mx-auto"
+          >
+            Submit Another Request
+          </motion.button>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-2xl">
-      <h2 className="text-2xl font-bold text-center mb-4">Get a Quote</h2>
-      <p className="text-center text-gray-600 mb-6">
-        Fill out the form or contact us directly through WhatsApp, Email, or Phone.
-      </p>
-
-      {/* Quote Form */}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Your Name"
-          className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Your Email"
-          className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          placeholder="Your Phone Number"
-          className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500"
-        />
-        <select
-          name="service"
-          value={formData.service}
-          onChange={handleChange}
-          className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500"
-          required
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden"
+    >
+      {/* Header Section */}
+      <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white p-8 text-center">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.2 }}
+          className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4"
         >
-          <option value="">Select a Service</option>
-          <option value="store-setup">Store Setup</option>
-          <option value="remodeling">Remodeling</option>
-          <option value="product-arrangement">Product Arrangement</option>
-          <option value="pricing">Pricing</option>
-        </select>
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Project Details..."
-          rows="4"
-          className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500"
-        ></textarea>
+          <Award className="w-8 h-8" />
+        </motion.div>
+        <h2 className="text-3xl font-bold mb-2">Get Your Custom Quote</h2>
+        <p className="text-blue-100">Complete the form below and we'll get back to you within 24 hours</p>
+      </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition"
-        >
-          Submit Request
-        </button>
-      </form>
+      <div className="p-8">
+        {/* Progress Indicators */}
+        <div className="flex justify-center mb-8">
+          <div className="flex items-center">
+            <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+            <div className="w-16 h-1 bg-blue-600 mx-2"></div>
+            <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+            <div className="w-16 h-1 bg-gray-300 mx-2"></div>
+            <div className="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">3</div>
+          </div>
+        </div>
 
-      {/* Direct Contact Options */}
-      <div className="mt-6 text-center">
-        <p className="text-gray-600 mb-3">Or contact us directly:</p>
-        <div className="flex justify-center gap-4">
-          <a
-            href="mailto:yourcompany@email.com"
-            className="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600"
+        {/* Quote Form */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+                <User className="w-4 h-4 mr-2 text-blue-600" />
+                Full Name *
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your full name"
+                className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                  errors.name ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
+                }`}
+              />
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+                <Mail className="w-4 h-4 mr-2 text-blue-600" />
+                Email Address *
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="your.email@example.com"
+                className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                  errors.email ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
+                }`}
+              />
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+                <Phone className="w-4 h-4 mr-2 text-blue-600" />
+                Phone Number *
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="+1 (555) 123-4567"
+                className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                  errors.phone ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
+                }`}
+              />
+              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+                <Clipboard className="w-4 h-4 mr-2 text-blue-600" />
+                Service Needed *
+              </label>
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                  errors.service ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
+                }`}
+              >
+                <option value="">Select a service</option>
+                {services.map((service) => (
+                  <option key={service.value} value={service.value}>
+                    {service.label}
+                  </option>
+                ))}
+              </select>
+              {errors.service && <p className="text-red-500 text-sm mt-1">{errors.service}</p>}
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+              <Calendar className="w-4 h-4 mr-2 text-blue-600" />
+              Project Timeline *
+            </label>
+            <select
+              name="urgency"
+              value={formData.urgency}
+              onChange={handleChange}
+              className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                errors.urgency ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
+              }`}
+            >
+              <option value="">When do you need this service?</option>
+              {urgencyOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+            {errors.urgency && <p className="text-red-500 text-sm mt-1">{errors.urgency}</p>}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Project Details (Optional)
+            </label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Tell us about your project, specific requirements, or any questions you have..."
+              rows="4"
+              className="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+            ></textarea>
+          </div>
+
+          <motion.button
+            type="submit"
+            disabled={isSubmitting}
+            whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+            whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+            className={`w-full py-4 text-white font-semibold rounded-xl transition-all flex items-center justify-center ${
+              isSubmitting 
+                ? 'bg-gray-400 cursor-not-allowed' 
+                : 'bg-gradient-to-r from-blue-600 to-teal-600 hover:shadow-lg'
+            }`}
           >
-            Email Us
-          </a>
-          <a
-            href="https://wa.me/923001234567"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600"
-          >
-            WhatsApp
-          </a>
-          <a
-            href="tel:+923001234567"
-            className="px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600"
-          >
-            Call Us
-          </a>
+            {isSubmitting ? (
+              <>
+                <Loader className="w-5 h-5 mr-2 animate-spin" />
+                Processing...
+              </>
+            ) : (
+              <>
+                <Send className="w-5 h-5 mr-2" />
+                Get Your Quote Now
+              </>
+            )}
+          </motion.button>
+        </form>
+
+        {/* Direct Contact Options */}
+        <div className="mt-8 pt-8 border-t border-gray-200">
+          <p className="text-center text-gray-600 mb-6 font-medium">Prefer to contact us directly?</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <motion.a
+              href="mailto:info@merchelevate.com"
+              whileHover={{ y: -2 }}
+              className="flex flex-col items-center p-4 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors border border-blue-200"
+            >
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                <Mail className="w-6 h-6 text-blue-600" />
+              </div>
+              <span className="font-medium text-blue-700">Email Us</span>
+              <span className="text-sm text-blue-600">info@merchelevate.com</span>
+            </motion.a>
+
+            <motion.a
+              href="https://wa.me/1234567890"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -2 }}
+              className="flex flex-col items-center p-4 bg-green-50 rounded-xl hover:bg-green-100 transition-colors border border-green-200"
+            >
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                <MessageCircle className="w-6 h-6 text-green-600" />
+              </div>
+              <span className="font-medium text-green-700">WhatsApp</span>
+              <span className="text-sm text-green-600">+1 (234) 567-890</span>
+            </motion.a>
+
+            <motion.a
+              href="tel:+1234567890"
+              whileHover={{ y: -2 }}
+              className="flex flex-col items-center p-4 bg-purple-50 rounded-xl hover:bg-purple-100 transition-colors border border-purple-200"
+            >
+              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-3">
+                <Phone className="w-6 h-6 text-purple-600" />
+              </div>
+              <span className="font-medium text-purple-700">Call Us</span>
+              <span className="text-sm text-purple-600">+1 (234) 567-890</span>
+            </motion.a>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
