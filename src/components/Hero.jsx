@@ -126,7 +126,7 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto w-full">
           <div className="">
             {/* Text Content */}
-            <div className="text-left">
+            <div className="text-left max-w-2xl"> 
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -162,7 +162,7 @@ const Hero = () => {
                   </motion.p>
 
                   <motion.div
-                    className="flex flex-col gap-4"
+                    className="flex flex-col sm:flex-row gap-4" 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 0.7 }}
@@ -170,7 +170,7 @@ const Hero = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-medium rounded-lg hover:shadow-xl transition-all duration-300 shadow-md flex items-center justify-center"
+                      className="px-8 py-3 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-lg hover:shadow-xl transition-all duration-300 shadow-md flex items-center justify-center sm:justify-start" 
                     >
                       Get Started <ArrowRight className="ml-2 w-5 h-5" />
                     </motion.button>
@@ -178,7 +178,7 @@ const Hero = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full sm:w-auto px-6 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 backdrop-blur-sm transition-all duration-300 flex items-center justify-center"
+                      className="px-8 py-3 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 backdrop-blur-sm transition-all duration-300 flex items-center justify-center sm:justify-start" 
                     >
                       <Play className="mr-2 w-5 h-5" /> Watch Video
                     </motion.button>

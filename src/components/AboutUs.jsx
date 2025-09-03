@@ -171,7 +171,7 @@ const AboutUs = () => {
           <p className="text-lg md:text-xl max-w-2xl md:max-w-3xl mx-auto mb-8 md:mb-10">
             Let's discuss how our merchandising expertise can elevate your brand and drive sales
           </p>
-          <div className="flex flex-col sm:flex-row  gap-4">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Link to='/contact' className="bg-white text-blue-700 cursor-pointer font-bold py-3 px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-sm md:text-base">
               Schedule a Consultation
             </Link>

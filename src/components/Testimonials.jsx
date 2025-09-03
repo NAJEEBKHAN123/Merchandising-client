@@ -96,6 +96,13 @@ const Testimonials = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+
   // Render star ratings
   const renderStars = (rating) => {
     return Array.from({ length: 5 }).map((_, i) => (

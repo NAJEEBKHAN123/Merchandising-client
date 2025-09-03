@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Mail, Phone, MessageCircle, Send, 
@@ -84,6 +84,13 @@ const GetQuote = () => {
     }
   };
 
+   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+
   const resetForm = () => {
     setFormData({ name: "", email: "", phone: "", service: "", message: "", urgency: "" });
     setErrors({});
@@ -132,7 +139,7 @@ const GetQuote = () => {
       className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden"
     >
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white p-8 text-center">
+      <div className="bg-gradient-to-r from-blue-600 mt-20 to-teal-600 text-white p-8 text-center">
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}

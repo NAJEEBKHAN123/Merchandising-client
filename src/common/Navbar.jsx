@@ -131,7 +131,7 @@ const Navbar = () => {
                         rounded-full shadow-lg transform transition-all duration-300 
                         hover:scale-105 hover:shadow-2xl hover:from-pink-600 hover:via-red-600 hover:to-pink-700"
             >
-              <span className="relative z-10">✨ Get a Quote ✨</span>
+              <span className="relative z-10">✨ Contact Us ✨</span>
               <span className="absolute inset-0 rounded-full bg-gradient-to-r from-white/20 to-transparent opacity-30 blur-md"></span>
             </Link>
           </div>

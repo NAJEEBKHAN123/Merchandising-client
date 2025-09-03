@@ -10,12 +10,17 @@ import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
 import Footer from './common/Footer'
 import QetQoute from './components/GetQoute'
+import ScrollToTopButton from './components/ScrollToTopButton'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <BrowserRouter>
         <Navbar />
       <Routes>
+     
+      
+     
         <Route index element={<Home />} /> 
         <Route path='/services' element={<Services />}/>
         <Route path='/services/:id' element={<ServicesDetails />}/>
