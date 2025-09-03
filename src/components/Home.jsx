@@ -11,10 +11,8 @@ function Home(){
         <>
           <Hero />
           <Services />
-          <Portfolio />
-          <AboutUs />
           <Testimonials />
-          <FAQ />
+          
 
           
         </>
