@@ -17,6 +17,7 @@ import {
   MessageCircle,
   ChevronDown,
   ChevronUp,
+  ArrowUp,
   Send,
   Star
 } from "lucide-react";
@@ -38,6 +39,13 @@ const Footer = () => {
 
   const toggleAccordion = (index) => {
     setActiveAccordion(activeAccordion === index ? null : index);
+  };
+
+   const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // smooth scrolling
+    });
   };
 
   const quickLinks = ['Services', 'Portfolio', 'Testimonials', 'Case Studies', 'Our Team', 'Contact'];
@@ -329,8 +337,6 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0 flex items-center">
-              Made with <Heart className="w-4 h-4 mx-1 text-red-400 fill-current" /> by MerchElevate
-              <span className="mx-2">•</span>
               © {new Date().getFullYear()} All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-5 text-sm text-gray-400">
@@ -350,20 +356,21 @@ const Footer = () => {
       </div>
 
       {/* Floating Contact Button */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-        className="fixed bottom-6 right-6 z-50"
+       <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 1, duration: 0.5 }}
+      className="fixed bottom-6 right-6 z-50"
+    >
+      <motion.button
+        whileHover={{ scale: 1.05, rotate: 5 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={scrollToTop}
+        className="bg-gradient-to-r from-indigo-600 to-purple-600 cursor-pointer text-white p-4 rounded-full shadow-lg flex items-center justify-center w-16 h-16 shadow-indigo-700/50"
       >
-        <motion.button 
-          whileHover={{ scale: 1.05, rotate: 5 }}
-          whileTap={{ scale: 0.95 }}
-          className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center w-16 h-16 shadow-indigo-700/50"
-        >
-          <MessageCircle className="w-7 h-7" />
-        </motion.button>
-      </motion.div>
+        <ArrowUp className="w-6 h-6" />
+      </motion.button>
+    </motion.div>
     </footer>
   );
 };

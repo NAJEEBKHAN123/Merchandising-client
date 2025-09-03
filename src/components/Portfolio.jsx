@@ -63,7 +63,7 @@ const Portfolio = () => {
       challenges: 'Security requirements, small item visibility, creating luxury appeal',
       solutions: 'Integrated security displays, specialized lighting, rotating platforms',
       featured: true,
-      image: 'https://images.unsplash.com/photo-1606760227093-3cbfb79f2f0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1171&q=80'
+      image: 'https://plus.unsplash.com/premium_photo-1682144849160-5d8c091c2e9b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWVyY2hhbmRpc2luZ3xlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       id: 4,
