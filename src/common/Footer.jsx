@@ -44,11 +44,11 @@ const Footer = () => {
    const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // smooth scrolling
+      behavior: "smooth", 
     });
   };
 
-  const quickLinks = ['Services', 'Portfolio', 'Testimonials', 'Case Studies', 'Our Team', 'Contact'];
+  const quickLinks = ['Services', 'Portfolio', 'Testimonials', 'About Us', 'FAQs', 'Contact'];
   const services = ['Store Layout Design', 'Visual Merchandising', 'Seasonal Displays', 'Inventory Optimization', 'Brand Implementation', 'Retail Analytics'];
 
   return (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   ChevronRight,
   Play,
@@ -9,14 +10,11 @@ import {
   Star,
   ChevronLeft,
 } from "lucide-react";
+import slide1 from '../assets/hero/slide2.jpg'
+import slide2 from '../assets/hero/banner.jpg'
+import slide3 from '../assets/hero/slide3.jpg'
 
-// Placeholder images from Unsplash
-const slide1 =
-  "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80";
-const slide2 =
-  "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80";
-const slide3 =
-  "https://images.unsplash.com/photo-1556906781-2f0520405b71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1772&q=80";
+
 
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -122,7 +120,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-1 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent"></div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center px-6 lg:px-12">
+      <div className="relative z-10 h-full lg:mt-4 flex items-center px-6 lg:px-12">
         <div className="max-w-7xl mx-auto w-full">
           <div className="">
             {/* Text Content */}
@@ -170,9 +168,12 @@ const Hero = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-8 py-3 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-lg hover:shadow-xl transition-all duration-300 shadow-md flex items-center justify-center sm:justify-start" 
+                      className="px-8 py-3 bg-gradient-to-r  from-blue-600 to-teal-600 text-white font-semibold cursor-pointer rounded-lg hover:shadow-xl transition-all duration-300 shadow-md flex items-center justify-center sm:justify-start" 
                     >
-                      Get Started <ArrowRight className="ml-2 w-5 h-5" />
+                      <Link to='/services'>
+                        Get Started
+                      </Link>
+                       <ArrowRight className="ml-2 w-5 h-5" />
                     </motion.button>
 
                     <motion.button

@@ -233,25 +233,6 @@ const Services = () => {
       ))}
     </div>
 
-    {/* CTA */}
-    <motion.div 
-      className="text-center mt-16"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.4, duration: 0.8 }}
-    >
-      <p className="text-lg text-gray-600 mb-8">
-        Ready to implement this proven process for your business?
-      </p>
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 shadow-lg"
-      >
-        Start Your Project Today
-      </motion.button>
-    </motion.div>
   </div>
 </section>
 
