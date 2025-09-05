@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { 
   Users, 
@@ -48,19 +48,19 @@ const fadeInVariants = {
   }
 };
 
-const slideInVariants = {
-  hidden: { x: -50, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut"
-    }
-  }
-};
+
+
 
 const AboutUs = () => {
+
+  useEffect(() => {
+    window.scrollTo(
+      {
+      top: 0,
+      behavior: "smooth",
+      }
+    )
+  }, []);
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

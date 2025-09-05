@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../assets/logoo.png";
+import Logo from "../assets/logooo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,8 +82,8 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-gray-100 shadow-lg py-2"
-          : "bg-gradient-to-r from-gray-50 to-gray-100 py-4"
+          ? "bg-gray-100 shadow-lg py-1"
+          : "bg-gradient-to-r from-gray-50 to-gray-100 py-3"
       }`}
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -97,7 +97,7 @@ const Navbar = () => {
             >
               <img
                 src={Logo}
-                className="h-10 w-10 md:h-12 md:w-12"
+                 className="h-12 w-auto md:h-16"
                 alt="Company Logo"
               />
             </Link>
@@ -201,13 +201,7 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            <Link
-              to="/contact"
-              className="block text-center mt-4 bg-gradient-to-r from-pink-600 to-pink-600 text-white px-5 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Get a Quote
-            </Link>
+           
           </div>
         </div>
       </div>

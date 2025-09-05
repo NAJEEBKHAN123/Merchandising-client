@@ -159,7 +159,7 @@ const FAQ = () => {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <motion.div 
-              className="w-16 h-16 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 shadow-lg flex items-center justify-center mr-4"
+              className="w-16 h-16  max-[588px]:hidden rounded-full bg-gradient-to-r from-teal-500 to-blue-600 shadow-lg flex items-center justify-center mr-4"
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >

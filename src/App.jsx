@@ -10,8 +10,6 @@ import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
 import Footer from './common/Footer'
 import QetQoute from './components/GetQoute'
-import ScrollToTopButton from './components/ScrollToTopButton'
-import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
@@ -29,6 +27,8 @@ function App() {
         <Route path="/testimonials" element={<Testimonials />}/>
         <Route path="/faq" element={<FAQ />}/>
         <Route path="/contact" element={<QetQoute />}/>
+
+        
       </Routes>
       <Footer />
     </BrowserRouter>
