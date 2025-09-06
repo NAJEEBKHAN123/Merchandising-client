@@ -104,7 +104,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex space-x-1 lg:space-x-6 items-center font-medium">
+          <div className="hidden md:flex space-x-1 md:space-x-0 lg:space-x-6 items-center font-medium">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -131,7 +131,7 @@ const Navbar = () => {
                         rounded-full shadow-lg transform transition-all duration-300 
                         hover:scale-105 hover:shadow-2xl hover:from-pink-600 hover:via-red-600 hover:to-pink-700"
             >
-              <span className="relative z-10">✨ Contact Us ✨</span>
+              <span className="relative z-10">✨Contact Us✨</span>
               <span className="absolute inset-0 rounded-full bg-gradient-to-r from-white/20 to-transparent opacity-30 blur-md"></span>
             </Link>
           </div>

@@ -20,13 +20,37 @@ import {
   Star,
   ThumbsUp,
   BriefcaseBusiness,
+  Home,
+  FileText,
+  Users as UsersIcon,
+  HelpCircle,
+  MessageCircle,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+// Custom TikTok icon component
+const TikTokIcon = ({ size = 20, color = "currentColor", ...props }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M12.525 2H8.475V16.4C8.475 17.72 7.445 18.8 6.175 18.8C4.905 18.8 3.875 17.72 3.875 16.4C3.875 15.08 4.905 14 6.175 14C6.675 14 7.125 14.12 7.525 14.36V10.04C7.075 10 6.625 10 6.175 10C2.765 10 0 12.92 0 16.4C0 19.88 2.765 22.8 6.175 22.8C9.585 22.8 12.35 19.88 12.35 16.4V8.48C13.45 9.44 14.875 10.04 16.475 10.04V6.08C14.325 6.08 12.525 4.16 12.525 2Z"
+      fill={color}
+    />
+  </svg>
+);
 
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   // Scroll to top function
   const scrollToTop = () => {
@@ -63,13 +87,21 @@ const Footer = () => {
     setActiveAccordion(activeAccordion === index ? null : index);
   };
 
+  // Handle navigation for quick links
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0); // Scroll to top after navigation
+  };
+
+  // Quick links with paths and icons
   const quickLinks = [
-    "Services",
-    "Portfolio",
-    "Testimonials",
-    "About Us",
-    "FAQs",
-    "Contact",
+    { name: "Home", path: "/", icon: Home },
+    { name: "Services", path: "/services", icon: FileText },
+    { name: "Portfolio", path: "/portfolio", icon: BriefcaseBusiness },
+    { name: "Testimonials", path: "/testimonials", icon: UsersIcon },
+    { name: "About Us", path: "/about", icon: Users },
+    { name: "FAQs", path: "/faq", icon: HelpCircle },
+    { name: "Contact", path: "/contact", icon: MessageCircle },
   ];
 
   return (
@@ -129,7 +161,7 @@ const Footer = () => {
 
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-3 gap-8  lg:gap-20">
           {/* Company Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -165,7 +197,11 @@ const Footer = () => {
                   color: "hover:bg-blue-600",
                   label: "Facebook",
                 },
-                { icon: Twitter, color: "hover:bg-blue-400", label: "Twitter" },
+                { 
+                  icon: Twitter, 
+                  color: "hover:bg-blue-400", 
+                  label: "Twitter" 
+                },
                 {
                   icon: Instagram,
                   color: "hover:bg-pink-600",
@@ -175,6 +211,11 @@ const Footer = () => {
                   icon: Linkedin,
                   color: "hover:bg-blue-700",
                   label: "LinkedIn",
+                },
+                {
+                  icon: TikTokIcon,
+                  color: "hover:bg-black",
+                  label: "TikTok",
                 },
               ].map((Social, index) => (
                 <motion.a
@@ -206,19 +247,19 @@ const Footer = () => {
               Quick Links
             </h4>
             <ul className="space-y-3">
-              {quickLinks.map((item, index) => (
+              {quickLinks.map((link, index) => (
                 <motion.li
                   key={index}
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-white transition-colors flex items-center group"
+                  <button
+                    onClick={() => handleNavigation(link.path)}
+                    className="text-gray-300 hover:text-white transition-colors cursor-pointer flex items-center group w-full text-left"
                   >
-                    <ArrowRight className="w-4 h-4 mr-2 text-indigo-400 group-hover:text-indigo-300 transition-colors" />
-                    {item}
-                  </a>
+                    <ArrowRight className="w-4 h-4 mr-2  text-indigo-400 group-hover:text-indigo-300 transition-colors" />
+                    {link.name}
+                  </button>
                 </motion.li>
               ))}
             </ul>
@@ -256,20 +297,20 @@ const Footer = () => {
                     className="px-4 pb-3"
                   >
                     <ul className="space-y-2">
-                      {quickLinks.map((item, index) => (
+                      {quickLinks.map((link, index) => (
                         <motion.li
                           key={index}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
                         >
-                          <a
-                            href="#"
-                            className="text-gray-300 hover:text-white transition-colors flex items-center py-1"
+                          <button
+                            onClick={() => handleNavigation(link.path)}
+                            className="text-gray-300 hover:text-white transition-colors flex items-center py-1 w-full text-left"
                           >
                             <ArrowRight className="w-3 h-3 mr-2 text-indigo-400" />
-                            {item}
-                          </a>
+                            {link.name}
+                          </button>
                         </motion.li>
                       ))}
                     </ul>

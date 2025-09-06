@@ -145,7 +145,7 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-12 px-4">
-      <div className="max-w-4xl mt-10 mx-auto">
+      <div className="max-w-4xl mt-16 mx-auto">
         {/* Header Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

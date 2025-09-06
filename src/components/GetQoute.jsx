@@ -102,9 +102,9 @@ const GetQuote = () => {
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="max-w-2xl mx-auto p-8 bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl shadow-2xl border border-green-200"
+        className="max-w-2xl mt-8 mx-auto p-8 bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl shadow-2xl border border-green-200"
       >
-        <div className="text-center">
+        <div className="text-center ">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
