@@ -97,7 +97,7 @@ const Navbar = () => {
             >
               <img
                 src={Logo}
-                className="h-12 w-auto md:h-16"
+                className="h-14 w-auto md:h-16"
                 alt="Company Logo"
               />
             </Link>
