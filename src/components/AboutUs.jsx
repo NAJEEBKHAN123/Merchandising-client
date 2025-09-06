@@ -48,27 +48,22 @@ const fadeInVariants = {
   }
 };
 
-
-
-
 const AboutUs = () => {
-
   useEffect(() => {
-    window.scrollTo(
-      {
+    window.scrollTo({
       top: 0,
       behavior: "smooth",
-      }
-    )
+    });
   }, []);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-12 md:py-20 lg:py-24 overflow-hidden bg-gradient-to-b from-blue-900 to-blue-700">
-        <div className="absolute inset-0 bg-black/50 md:bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/40 md:bg-black/50"></div>
         <div className="absolute top-0 left-0 w-full h-full">
           <motion.div 
-            className="absolute top-10 md:top-20 left-4 md:left-10 w-48 h-48 md:w-72 md:h-72 bg-blue-500 rounded-full mix-blend-overlay filter blur-2xl md:blur-3xl opacity-30"
+            className="absolute top-10 left-4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-500 rounded-full mix-blend-overlay filter blur-xl sm:blur-2xl opacity-30"
             animate={{
               scale: [1, 1.1, 1],
               opacity: [0.3, 0.4, 0.3]
@@ -80,7 +75,7 @@ const AboutUs = () => {
             }}
           />
           <motion.div 
-            className="absolute top-20 md:top-40 right-4 md:right-10 w-48 h-48 md:w-72 md:h-72 bg-blue-300 rounded-full mix-blend-overlay filter blur-2xl md:blur-3xl opacity-20"
+            className="absolute top-20 right-4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-300 rounded-full mix-blend-overlay filter blur-xl sm:blur-2xl opacity-20"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.2, 0.3, 0.2]
@@ -93,7 +88,7 @@ const AboutUs = () => {
             }}
           />
           <motion.div 
-            className="absolute bottom-10 md:bottom-20 left-8 md:left-20 w-48 h-48 md:w-72 md:h-72 bg-blue-700 rounded-full mix-blend-overlay filter blur-2xl md:blur-3xl opacity-30"
+            className="absolute bottom-10 left-8 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-700 rounded-full mix-blend-overlay filter blur-xl sm:blur-2xl opacity-30"
             animate={{
               scale: [1, 1.15, 1],
               opacity: [0.3, 0.4, 0.3]
@@ -107,7 +102,7 @@ const AboutUs = () => {
           />
         </div>
         
-        <div className="relative z-10 container mx-auto px-4 text-center text-white pt-16 md:pt-20">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white pt-12 md:pt-20">
           <motion.h1 
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight"
             initial={{ opacity: 0, y: 30 }}
@@ -129,31 +124,31 @@ const AboutUs = () => {
 
       {/* Stats Section */}
       <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-center"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
           >
             {[
-              { icon: Users, value: "250+", label: "Dedicated Team Members" },
+              { icon: Users, value: "250+", label: "Team Members" },
               { icon: Globe, value: "1.2k+", label: "Stores Nationwide" },
               { icon: Award, value: "15+", label: "Industry Awards" },
-              { icon: BarChart3, value: "98%", label: "Client Retention Rate" }
+              { icon: BarChart3, value: "98%", label: "Client Retention" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="p-4 md:p-6"
+                className="p-4 md:p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
                 whileHover={{ y: -5 }}
               >
-                <div className="bg-blue-100 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                  <stat.icon className="text-blue-600 w-6 h-6 md:w-8 md:h-8" />
+                <div className="bg-blue-100 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                  <stat.icon className="text-blue-600 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-1 md:mb-2">{stat.value}</h3>
-                <p className="text-sm md:text-base text-gray-600">{stat.label}</p>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-1">{stat.value}</h3>
+                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-tight">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -162,9 +157,9 @@ const AboutUs = () => {
 
       {/* Our Story Section */}
       <section className="py-12 md:py-16 lg:py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div 
-            className="flex flex-col lg:flex-row items-center gap-8 md:gap-10 lg:gap-12"
+            className="flex flex-col lg:flex-row items-center gap-6 md:gap-8 lg:gap-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
@@ -176,7 +171,7 @@ const AboutUs = () => {
             >
               <div className="relative">
                 <motion.div 
-                  className="w-full h-64 sm:h-80 md:h-96 bg-gradient-to-br from-blue-100 to-gray-100 rounded-xl md:rounded-2xl overflow-hidden"
+                  className="w-full h-64 sm:h-72 md:h-80 lg:h-96 bg-gradient-to-br from-blue-100 to-gray-100 rounded-xl overflow-hidden"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -187,8 +182,8 @@ const AboutUs = () => {
                   />
                 </motion.div>
                 <motion.div 
-                  className="absolute -bottom-4 -right-4 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-blue-600 rounded-xl md:rounded-2xl overflow-hidden border-4 md:border-8 border-white shadow-lg md:shadow-xl"
-                  initial={{ opacity: 0, x: 50, y: 50 }}
+                  className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 bg-blue-600 rounded-xl overflow-hidden border-4 border-white shadow-lg"
+                  initial={{ opacity: 0, x: 30, y: 30 }}
                   whileInView={{ opacity: 1, x: 0, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5, duration: 0.8 }}
@@ -204,7 +199,7 @@ const AboutUs = () => {
             </motion.div>
             
             <motion.div 
-              className="w-full lg:w-1/2"
+              className="w-full lg:w-1/2 mt-8 lg:mt-0"
               variants={itemVariants}
             >
               <motion.h2 
@@ -226,17 +221,17 @@ const AboutUs = () => {
                 Our journey has been guided by core values of integrity, excellence, and client success. We believe that exceptional merchandising isn't just about product placement—it's about creating immersive shopping experiences that drive results.
               </motion.p>
               <motion.div 
-                className="flex flex-col sm:flex-row gap-3 md:gap-4"
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 flex-wrap"
                 variants={containerVariants}
               >
                 {["Quality Assurance", "Innovation Focus", "Client First"].map((item, index) => (
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="flex items-center"
+                    className="flex items-center mb-2"
                     whileHover={{ x: 5 }}
                   >
-                    <CheckCircle className="text-blue-600 w-4 h-4 md:w-5 md:h-5 mr-2" />
+                    <CheckCircle className="text-blue-600 w-4 h-4 md:w-5 md:h-5 mr-2 flex-shrink-0" />
                     <span className="text-sm md:text-base font-medium">{item}</span>
                   </motion.div>
                 ))}
@@ -248,16 +243,16 @@ const AboutUs = () => {
 
       {/* Values Section */}
       <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div 
-            className="text-center mb-10 md:mb-14 lg:mb-16"
+            className="text-center mb-8 md:mb-12 lg:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">Our Core Values</h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-2xl md:max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl md:max-w-3xl mx-auto">
               These principles guide everything we do and define who we are as a company
             </p>
           </motion.div>
@@ -277,14 +272,14 @@ const AboutUs = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white p-6 md:p-8 rounded-xl md:rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
+                className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="bg-blue-100 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                  <value.icon className="text-blue-600 w-6 h-6 md:w-8 md:h-8" />
+                <div className="bg-blue-100 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mb-4 md:mb-6">
+                  <value.icon className="text-blue-600 w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 md:mb-4">{value.title}</h3>
-                <p className="text-gray-600 text-sm md:text-base">{value.description}</p>
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -294,30 +289,36 @@ const AboutUs = () => {
       {/* CTA Section */}
       <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-r from-blue-800 to-blue-600 text-white">
         <motion.div 
-          className="container mx-auto px-4 text-center"
+          className="container mx-auto px-4 sm:px-6 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">Ready to Transform Your Retail Space?</h2>
-          <p className="text-lg md:text-xl max-w-2xl md:max-w-3xl mx-auto mb-8 md:mb-10">
+          <p className="text-base md:text-lg lg:text-xl max-w-2xl md:max-w-3xl mx-auto mb-6 md:mb-8">
             Let's discuss how our merchandising expertise can elevate your brand and drive sales
           </p>
           <motion.div 
-            className="flex flex-col sm:flex-row justify-center items-center gap-4"
+            className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
             <motion.div variants={itemVariants}>
-              <Link to='/contact' className="bg-white text-blue-700 cursor-pointer font-bold py-3 px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-sm md:text-base inline-flex">
-                Contact Us <ArrowRight className="ml-2 w-5 h-5" />
+              <Link 
+                to='/contact' 
+                className="inline-flex items-center bg-white text-blue-700 font-semibold py-3 px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-sm md:text-base"
+              >
+                Contact Us <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
               </Link>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <Link to='/services' className="border-2 border-white cursor-pointer text-white font-bold py-3 px-6 md:px-8 rounded-full transition-all duration-300 hover:bg-white hover:text-blue-700 text-sm md:text-base inline-block">
+              <Link 
+                to='/services' 
+                className="inline-flex items-center border-2 border-white text-white font-semibold py-3 px-6 md:px-8 rounded-full transition-all duration-300 hover:bg-white hover:text-blue-700 text-sm md:text-base"
+              >
                 View Our Services
               </Link>
             </motion.div>
