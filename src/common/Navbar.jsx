@@ -131,7 +131,7 @@ const Navbar = () => {
                         rounded-full shadow-lg transition-all duration-300 
                         hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
             >
-              <span className="text-sm">✨Contact Us✨</span>
+              <span className="">✨Contact Us✨</span>
             </Link>
           </div>
 

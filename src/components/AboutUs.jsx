@@ -9,8 +9,7 @@ import {
   Shield,
   Heart,
   ArrowRight,
-  CheckCircle,
-  Star
+  CheckCircle
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -57,13 +56,13 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-y-hidden">
       {/* Hero Section */}
       <section className="relative py-12 md:py-20 lg:py-24 overflow-hidden bg-gradient-to-b from-blue-900 to-blue-700">
         <div className="absolute inset-0 bg-black/40 md:bg-black/50"></div>
         <div className="absolute top-0 left-0 w-full h-full">
           <motion.div 
-            className="absolute top-10 left-4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-500 rounded-full mix-blend-overlay filter blur-xl sm:blur-2xl opacity-30"
+            className="absolute top-10 left-4 w-20 h-20 sm:w-32 sm:h-32 md:w-48 md:h-48 bg-blue-500 rounded-full mix-blend-overlay filter blur-lg sm:blur-xl opacity-30"
             animate={{
               scale: [1, 1.1, 1],
               opacity: [0.3, 0.4, 0.3]
@@ -75,7 +74,7 @@ const AboutUs = () => {
             }}
           />
           <motion.div 
-            className="absolute top-20 right-4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-300 rounded-full mix-blend-overlay filter blur-xl sm:blur-2xl opacity-20"
+            className="absolute top-20 right-4 w-20 h-20 sm:w-32 sm:h-32 md:w-48 md:h-48 bg-blue-300 rounded-full mix-blend-overlay filter blur-lg sm:blur-xl opacity-20"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.2, 0.3, 0.2]
@@ -88,7 +87,7 @@ const AboutUs = () => {
             }}
           />
           <motion.div 
-            className="absolute bottom-10 left-8 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-700 rounded-full mix-blend-overlay filter blur-xl sm:blur-2xl opacity-30"
+            className="absolute bottom-10 left-8 w-20 h-20 sm:w-32 sm:h-32 md:w-48 md:h-48 bg-blue-700 rounded-full mix-blend-overlay filter blur-lg sm:blur-xl opacity-30"
             animate={{
               scale: [1, 1.15, 1],
               opacity: [0.3, 0.4, 0.3]
@@ -102,9 +101,9 @@ const AboutUs = () => {
           />
         </div>
         
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white pt-12 md:pt-20">
+        <div className="relative z-10 container mx-auto px-4 text-center text-white pt-20 md:pt-20">
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight"
+            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -112,7 +111,7 @@ const AboutUs = () => {
             We Transform Retail Spaces
           </motion.h1>
           <motion.p 
-            className="text-lg sm:text-xl md:text-2xl max-w-2xl md:max-w-3xl mx-auto leading-relaxed"
+            className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -124,9 +123,9 @@ const AboutUs = () => {
 
       {/* Stats Section */}
       <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-4">
           <motion.div 
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center"
+            className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 text-center"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -141,14 +140,14 @@ const AboutUs = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="p-4 md:p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                className="p-3 sm:p-4 md:p-6 bg-white rounded-lg shadow-sm"
                 whileHover={{ y: -5 }}
               >
-                <div className="bg-blue-100 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
-                  <stat.icon className="text-blue-600 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
+                <div className="bg-blue-100 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <stat.icon className="text-blue-600 w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
                 </div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-1">{stat.value}</h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-tight">{stat.label}</p>
+                <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-1">{stat.value}</h3>
+                <p className="text-xs xs:text-sm text-gray-600 leading-tight px-1">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -157,7 +156,7 @@ const AboutUs = () => {
 
       {/* Our Story Section */}
       <section className="py-12 md:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-4">
           <motion.div 
             className="flex flex-col lg:flex-row items-center gap-6 md:gap-8 lg:gap-12"
             initial="hidden"
@@ -171,7 +170,7 @@ const AboutUs = () => {
             >
               <div className="relative">
                 <motion.div 
-                  className="w-full h-64 sm:h-72 md:h-80 lg:h-96 bg-gradient-to-br from-blue-100 to-gray-100 rounded-xl overflow-hidden"
+                  className="w-full h-56 xs:h-64 sm:h-72 md:h-80 lg:h-96 bg-gradient-to-br from-blue-100 to-gray-100 rounded-lg md:rounded-xl overflow-hidden"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -182,8 +181,8 @@ const AboutUs = () => {
                   />
                 </motion.div>
                 <motion.div 
-                  className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 bg-blue-600 rounded-xl overflow-hidden border-4 border-white shadow-lg"
-                  initial={{ opacity: 0, x: 30, y: 30 }}
+                  className="absolute -bottom-2 -right-2 xs:-bottom-3 xs:-right-3 w-20 h-20 xs:w-24 xs:h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-blue-600 rounded-lg md:rounded-xl overflow-hidden border-2 xs:border-4 border-white shadow-md"
+                  initial={{ opacity: 0, x: 20, y: 20 }}
                   whileInView={{ opacity: 1, x: 0, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5, duration: 0.8 }}
@@ -203,25 +202,25 @@ const AboutUs = () => {
               variants={itemVariants}
             >
               <motion.h2 
-                className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-6"
+                className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-6"
                 variants={fadeInVariants}
               >
                 Our Story
               </motion.h2>
               <motion.p 
-                className="text-base md:text-lg text-gray-600 mb-4 md:mb-6 leading-relaxed"
+                className="text-sm xs:text-base md:text-lg text-gray-600 mb-3 md:mb-6 leading-relaxed"
                 variants={fadeInVariants}
               >
                 Founded in 2010, MSCO began with a simple mission: to revolutionize retail merchandising through innovative strategies and flawless execution. What started as a small team of passionate experts has grown into a industry leader serving major retailers across the nation.
               </motion.p>
               <motion.p 
-                className="text-base md:text-lg text-gray-600 mb-6 md:mb-8 leading-relaxed"
+                className="text-sm xs:text-base md:text-lg text-gray-600 mb-4 md:mb-8 leading-relaxed"
                 variants={fadeInVariants}
               >
                 Our journey has been guided by core values of integrity, excellence, and client success. We believe that exceptional merchandising isn't just about product placement—it's about creating immersive shopping experiences that drive results.
               </motion.p>
               <motion.div 
-                className="flex flex-col sm:flex-row gap-3 md:gap-4 flex-wrap"
+                className="flex flex-col xs:flex-row gap-2 xs:gap-3 md:gap-4 flex-wrap"
                 variants={containerVariants}
               >
                 {["Quality Assurance", "Innovation Focus", "Client First"].map((item, index) => (
@@ -231,8 +230,8 @@ const AboutUs = () => {
                     className="flex items-center mb-2"
                     whileHover={{ x: 5 }}
                   >
-                    <CheckCircle className="text-blue-600 w-4 h-4 md:w-5 md:h-5 mr-2 flex-shrink-0" />
-                    <span className="text-sm md:text-base font-medium">{item}</span>
+                    <CheckCircle className="text-blue-600 w-3 h-3 xs:w-4 xs:h-4 md:w-5 md:h-5 mr-2 flex-shrink-0" />
+                    <span className="text-xs xs:text-sm md:text-base font-medium">{item}</span>
                   </motion.div>
                 ))}
               </motion.div>
@@ -243,7 +242,7 @@ const AboutUs = () => {
 
       {/* Values Section */}
       <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-4">
           <motion.div 
             className="text-center mb-8 md:mb-12 lg:mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -251,14 +250,14 @@ const AboutUs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">Our Core Values</h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl md:max-w-3xl mx-auto">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">Our Core Values</h2>
+            <p className="text-sm xs:text-base md:text-lg text-gray-600 max-w-2xl md:max-w-3xl mx-auto px-2">
               These principles guide everything we do and define who we are as a company
             </p>
           </motion.div>
           
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 md:gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -272,14 +271,14 @@ const AboutUs = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+                className="bg-white p-4 xs:p-5 md:p-6 lg:p-8 rounded-lg md:rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="bg-blue-100 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                  <value.icon className="text-blue-600 w-6 h-6 md:w-7 md:h-7" />
+                <div className="bg-blue-100 w-10 h-10 xs:w-12 xs:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mb-3 xs:mb-4">
+                  <value.icon className="text-blue-600 w-5 h-5 xs:w-6 xs:h-6 md:w-7 md:h-7" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 md:mb-4">{value.title}</h3>
-                <p className="text-gray-600 text-sm md:text-base leading-relaxed">{value.description}</p>
+                <h3 className="text-base xs:text-lg md:text-xl font-bold text-gray-800 mb-2 xs:mb-3">{value.title}</h3>
+                <p className="text-xs xs:text-sm md:text-base text-gray-600 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -289,18 +288,18 @@ const AboutUs = () => {
       {/* CTA Section */}
       <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-r from-blue-800 to-blue-600 text-white">
         <motion.div 
-          className="container mx-auto px-4 sm:px-6 text-center"
+          className="container mx-auto px-4 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">Ready to Transform Your Retail Space?</h2>
-          <p className="text-base md:text-lg lg:text-xl max-w-2xl md:max-w-3xl mx-auto mb-6 md:mb-8">
+          <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-6">Ready to Transform Your Retail Space?</h2>
+          <p className="text-sm xs:text-base md:text-lg lg:text-xl max-w-2xl md:max-w-3xl mx-auto mb-4 md:mb-8 px-2">
             Let's discuss how our merchandising expertise can elevate your brand and drive sales
           </p>
           <motion.div 
-            className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4"
+            className="flex flex-col xs:flex-row justify-center items-center gap-2 xs:gap-3 sm:gap-4"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -309,15 +308,15 @@ const AboutUs = () => {
             <motion.div variants={itemVariants}>
               <Link 
                 to='/contact' 
-                className="inline-flex items-center bg-white text-blue-700 font-semibold py-3 px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-sm md:text-base"
+                className="inline-flex items-center bg-white text-blue-700 font-semibold py-2 px-4 xs:py-3 xs:px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-xs xs:text-sm md:text-base"
               >
-                Contact Us <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+                Contact Us <ArrowRight className="ml-1 xs:ml-2 w-3 h-3 xs:w-4 xs:h-4 md:w-5 md:h-5" />
               </Link>
             </motion.div>
             <motion.div variants={itemVariants}>
               <Link 
                 to='/services' 
-                className="inline-flex items-center border-2 border-white text-white font-semibold py-3 px-6 md:px-8 rounded-full transition-all duration-300 hover:bg-white hover:text-blue-700 text-sm md:text-base"
+                className="inline-flex items-center border border-white xs:border-2 text-white font-semibold py-2 px-4 xs:py-3 xs:px-6 md:px-8 rounded-full transition-all duration-300 hover:bg-white hover:text-blue-700 text-xs xs:text-sm md:text-base"
               >
                 View Our Services
               </Link>
