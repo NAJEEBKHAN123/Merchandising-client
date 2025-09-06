@@ -170,7 +170,7 @@ const Footer = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="lg:col-span-1"
           >
-            <div className="flex items-center mb-6">
+            <div className="flex items-start mb-6">
               <motion.div
                 className="w-12 h-12 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center mr-3 shadow-lg"
                 whileHover={{ rotate: 360 }}
@@ -178,11 +178,13 @@ const Footer = () => {
               >
                 <Award className="w-7 h-7" />
               </motion.div>
-              <div className="flex justify-center items-end gap-1">
-                <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-indigo-200">
-                  MIRAGE
-                </h3>
-                <span className="text-lg">erchandising</span>
+              <div>
+                <div className="flex items-end">
+                  <h3 className="text-2xl font-bold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-200">
+                    M I R A G E
+                  </h3>
+                </div>
+                <p className="text-lg ml-3 -mt-1">erchandising</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
@@ -197,10 +199,10 @@ const Footer = () => {
                   color: "hover:bg-blue-600",
                   label: "Facebook",
                 },
-                { 
-                  icon: Twitter, 
-                  color: "hover:bg-blue-400", 
-                  label: "Twitter" 
+                {
+                  icon: Twitter,
+                  color: "hover:bg-blue-400",
+                  label: "Twitter",
                 },
                 {
                   icon: Instagram,
@@ -469,14 +471,16 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-center items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0 flex items-center justify-center flex-wrap">
-              Designed & Developed by <span className="ml-1 text-gray-400 font-bold">Najeeb Ullah</span>
+              Designed & Developed by{" "}
               <a
                 href="https://personal-portfolio-six-delta-17.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mx-1"
               >
-                <BriefcaseBusiness className="w-5 h-5 text-blue-400 hover:text-blue-600" />
+                <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-bold hover:from-blue-300 hover:to-green-300 transition-all duration-300">
+                  Najeeb Ullah
+                </span>
               </a>
               <span className="mx-2 max-[400px]:hidden">•</span>©{" "}
               {new Date().getFullYear()} MIRAGE erchandising

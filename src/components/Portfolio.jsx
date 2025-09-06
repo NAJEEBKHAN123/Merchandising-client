@@ -13,6 +13,7 @@ import {
   ArrowRight,
   Play
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -424,9 +425,9 @@ const Portfolio = () => {
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
             Let's discuss how our merchandising expertise can elevate your brand and drive sales.
           </p>
-          <button className="bg-teal-600 hover:bg-teal-700 text-white font-medium px-8 py-3 rounded-lg transition-colors inline-flex items-center">
-            Start Your Project <ArrowRight className="ml-2 w-5 h-5" />
-          </button>
+          <Link to='/contact' className="bg-teal-600 hover:bg-teal-700 cursor-pointer text-white font-medium px-8 py-3 rounded-lg transition-colors inline-flex items-center">
+            Contact Us <ArrowRight className="ml-2 w-5 h-5" />
+          </Link>
         </motion.div>
       </div>
 

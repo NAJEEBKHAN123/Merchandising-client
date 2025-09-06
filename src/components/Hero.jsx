@@ -124,7 +124,7 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto w-full">
           <div className="">
             {/* Text Content */}
-            <div className="text-left max-w-2xl"> 
+            <div className="text-left max-w-4xl"> 
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}

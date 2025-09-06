@@ -312,8 +312,8 @@ const AboutUs = () => {
             viewport={{ once: true }}
           >
             <motion.div variants={itemVariants}>
-              <Link to='/contact' className="bg-white text-blue-700 cursor-pointer font-bold py-3 px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-sm md:text-base inline-block">
-                Contact Us
+              <Link to='/contact' className="bg-white text-blue-700 cursor-pointer font-bold py-3 px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-sm md:text-base inline-flex">
+                Contact Us <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </motion.div>
             <motion.div variants={itemVariants}>
