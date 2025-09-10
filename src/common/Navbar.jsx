@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../assets/stylish.jpg";
+import Logo from "../assets/logo4.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,8 +98,8 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg py-2"
-          : "bg-white py-3"
+          ? "bg-white/95 backdrop-blur-md shadow-lg py-0"
+          : "bg-white py-0"
       }`}
       style={{
         transform: isScrolled ? 'translateY(0)' : 'translateY(0)',
@@ -107,18 +107,22 @@ const Navbar = () => {
       }}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-        <div className="flex justify-between items-center">
-          {/* Logo with animation */}
-          <div className="flex-shrink-0">
+        <div className="flex justify-between items-center h-20"> {/* Increased height */}
+          {/* Logo with improved responsive sizing */}
+          <div className="flex-shrink-0 flex items-center">
             <Link
               to="/"
-              className="flex items-center  group"
+              className="flex items-center group"
               onClick={() => setIsOpen(false)}
             >
               <img
                 src={Logo}
-                className="h-12 w-auto md:h-14 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
-                alt="Company Logo"
+                className="h-10 w-auto sm:h-12 md:h-16 lg:h-20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
+                alt="MIRAGE Enchandising Logo"
+                style={{ 
+                  maxWidth: 'clamp(120px, 25vw, 180px)', // Responsive max-width
+                  minWidth: '100px' // Ensure minimum visibility
+                }}
               />
             </Link>
           </div>
@@ -131,12 +135,12 @@ const Navbar = () => {
                         rounded-full shadow-lg transition-all duration-300 
                         hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
             >
-              <span className="">✨Contact Us✨</span>
+              <span className="text-sm">✨Contact Us✨</span>
             </Link>
           </div>
 
           {/* Desktop Nav Links with enhanced animations */}
-          <div className="hidden md:flex space-x-0 lg:space-x-7 items-center font-medium">
+          <div className="hidden md:flex space-x-0 lg:space-x-5 items-center font-medium">
             {navLinks.map((link, index) => (
               <Link
                 key={link.path}
@@ -174,7 +178,6 @@ const Navbar = () => {
             >
               <span className="relative z-10 flex items-center">
                 ✨Contact Us✨
-  
               </span>
               <span className="absolute inset-0 rounded-full bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 animate-pulse"></span>
@@ -213,7 +216,7 @@ const Navbar = () => {
           ref={mobileMenuRef}
           className={`md:hidden transition-all duration-500 ease-out overflow-hidden ${
             isOpen 
-              ? " opacity-100 py-4 translate-y-0" 
+              ? "opacity-100 py-4 translate-y-0" 
               : "max-h-0 opacity-0 -translate-y-4"
           }`}
           style={{

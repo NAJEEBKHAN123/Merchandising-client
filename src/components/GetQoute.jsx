@@ -5,13 +5,13 @@ import {
   User, Calendar, Clipboard, Award,
   CheckCircle, X, Loader
 } from "lucide-react";
+import axios from 'axios'
 
 const GetQuote = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    service: "",
     message: "",
     urgency: ""
   });
@@ -19,17 +19,6 @@ const GetQuote = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
-
-  const services = [
-    { value: "store-setup", label: "Store Setup & Design" },
-    { value: "remodeling", label: "Store Remodeling" },
-    { value: "product-arrangement", label: "Product Arrangement" },
-    { value: "visual-merchandising", label: "Visual Merchandising" },
-    { value: "seasonal-displays", label: "Seasonal Displays" },
-    { value: "brand-implementation", label: "Brand Implementation" },
-    { value: "inventory-optimization", label: "Inventory Optimization" },
-    { value: "pricing-strategy", label: "Pricing Strategy" }
-  ];
 
   const urgencyOptions = [
     { value: "urgent", label: "Urgent (Within 1 week)" },
@@ -48,7 +37,6 @@ const GetQuote = () => {
       newErrors.email = "Email is invalid";
     }
     if (!formData.phone.trim()) newErrors.phone = "Phone is required";
-    if (!formData.service) newErrors.service = "Please select a service";
     if (!formData.urgency) newErrors.urgency = "Please select timeline";
     
     setErrors(newErrors);
@@ -72,17 +60,27 @@ const GetQuote = () => {
     
     setIsSubmitting(true);
     
-    // Simulate API call
+    // API call
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log("Quote Request:", formData);
+      const response = await axios.post("http://localhost:5000/api/contact", formData,
+         { headers: { "Content-Type": "application/json" } }
+      )
+      if(response.data.success){
+      console.log("✅ Quote Request Submitted:", response.data);
       setIsSubmitted(true);
-    } catch (error) {
-      console.error("Submission error:", error);
-    } finally {
-      setIsSubmitting(false);
+      } else {
+      console.error("❌ Submission failed:", response.data.message);
+      alert(response.data.message || "Something went wrong. Please try again.");
     }
-  };
+    }  catch (error) {
+    console.error("❌ Submission error:", error);
+    alert(
+      error.response?.data?.message || "Server error. Please try again later."
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
    useEffect(() => {
     window.scrollTo({
@@ -92,7 +90,7 @@ const GetQuote = () => {
   }, []);
 
   const resetForm = () => {
-    setFormData({ name: "", email: "", phone: "", service: "", message: "", urgency: "" });
+    setFormData({ name: "", email: "", phone: "", message: "", urgency: "" });
     setErrors({});
     setIsSubmitted(false);
   };
@@ -225,51 +223,28 @@ const GetQuote = () => {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
-                <Clipboard className="w-4 h-4 mr-2 text-blue-600" />
-                Service Needed *
+                <Calendar className="w-4 h-4 mr-2 text-blue-600" />
+                Project Timeline *
               </label>
               <select
-                name="service"
-                value={formData.service}
+                name="urgency"
+                value={formData.urgency}
                 onChange={handleChange}
                 className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
-                  errors.service ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
+                  errors.urgency ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
                 }`}
               >
-                <option value="">Select a service</option>
-                {services.map((service) => (
-                  <option key={service.value} value={service.value}>
-                    {service.label}
+                <option value="">When do you need this service?</option>
+                {urgencyOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
                   </option>
                 ))}
               </select>
-              {errors.service && <p className="text-red-500 text-sm mt-1">{errors.service}</p>}
+              {errors.urgency && <p className="text-red-500 text-sm mt-1">{errors.urgency}</p>}
             </div>
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
-              <Calendar className="w-4 h-4 mr-2 text-blue-600" />
-              Project Timeline *
-            </label>
-            <select
-              name="urgency"
-              value={formData.urgency}
-              onChange={handleChange}
-              className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
-                errors.urgency ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
-              }`}
-            >
-              <option value="">When do you need this service?</option>
-              {urgencyOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-            {errors.urgency && <p className="text-red-500 text-sm mt-1">{errors.urgency}</p>}
-          </div>
-
+         
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Project Details (Optional)
@@ -289,7 +264,7 @@ const GetQuote = () => {
             disabled={isSubmitting}
             whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
             whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-            className={`w-full py-4 text-white font-semibold rounded-xl transition-all flex items-center justify-center ${
+            className={`w-full py-4 text-white cursor-pointer font-semibold rounded-xl transition-all flex items-center justify-center ${
               isSubmitting 
                 ? 'bg-gray-400 cursor-not-allowed' 
                 : 'bg-gradient-to-r from-blue-600 to-teal-600 hover:shadow-lg'
