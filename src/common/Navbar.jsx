@@ -98,8 +98,8 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg py-0"
-          : "bg-white py-0"
+          ? "bg-white/95 backdrop-blur-md shadow-lg py-1"
+          : "bg-white py-3"
       }`}
       style={{
         transform: isScrolled ? 'translateY(0)' : 'translateY(0)',
@@ -108,8 +108,8 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="flex justify-between items-center h-20"> {/* Increased height */}
-          {/* Logo with improved responsive sizing */}
-          <div className="flex-shrink-0 flex items-center">
+          {/* Logo with increased size */}
+          <div className="flex-shrink-0">
             <Link
               to="/"
               className="flex items-center group"
@@ -117,12 +117,9 @@ const Navbar = () => {
             >
               <img
                 src={Logo}
-                className="h-10 w-auto sm:h-12 md:h-16 lg:h-20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
-                alt="MIRAGE Enchandising Logo"
-                style={{ 
-                  maxWidth: 'clamp(120px, 25vw, 180px)', // Responsive max-width
-                  minWidth: '100px' // Ensure minimum visibility
-                }}
+                className="h-16 w-auto md:h-20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
+                alt="Company Logo"
+                style={{ maxWidth: '180px' }} // Added max-width to control size
               />
             </Link>
           </div>
@@ -135,7 +132,7 @@ const Navbar = () => {
                         rounded-full shadow-lg transition-all duration-300 
                         hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
             >
-              <span className="text-sm">✨Contact Us✨</span>
+              <span className="">✨Contact Us✨</span>
             </Link>
           </div>
 

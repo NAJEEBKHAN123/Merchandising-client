@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Mail, Phone, MessageCircle, Send, 
-  User, Calendar, Clipboard, Award,
-  CheckCircle, X, Loader
+  User, Calendar, Award,
+  CheckCircle, Loader
 } from "lucide-react";
 import axios from 'axios'
 

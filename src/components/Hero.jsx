@@ -30,11 +30,7 @@ const Hero = () => {
       color: "from-blue-600 to-teal-600",
       bgColor: "bg-gradient-to-r from-blue-600/10 to-teal-600/10",
       image: slide1,
-      stats: [
-        { icon: Users, value: "250+", label: "Happy Clients" },
-        { icon: Award, value: "98%", label: "Satisfaction" },
-        { icon: Star, value: "15+", label: "Years Experience" },
-      ],
+     
     },
     {
       title: "Premium Branding Solutions",
@@ -44,11 +40,7 @@ const Hero = () => {
       color: "from-purple-600 to-pink-600",
       bgColor: "bg-gradient-to-r from-purple-600/10 to-pink-600/10",
       image: slide2,
-      stats: [
-        { icon: Users, value: "1.2K", label: "Projects Completed" },
-        { icon: Award, value: "28%", label: "Avg. Growth" },
-        { icon: Star, value: "24/7", label: "Support" },
-      ],
+      
     },
     {
       title: "Quality Apparel & Products",
@@ -58,11 +50,7 @@ const Hero = () => {
       color: "from-amber-600 to-orange-600",
       bgColor: "bg-gradient-to-r from-amber-600/10 to-orange-600/10",
       image: slide3,
-      stats: [
-        { icon: Users, value: "500+", label: "Products" },
-        { icon: Award, value: "4.9/5", label: "Rating" },
-        { icon: Star, value: "48h", label: "Delivery" },
-      ],
+     
     },
   ];
 
