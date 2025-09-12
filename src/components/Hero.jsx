@@ -10,9 +10,9 @@ import {
   Star,
   ChevronLeft,
 } from "lucide-react";
-import slide1 from '../assets/hero/slide2.jpg'
-import slide2 from '../assets/hero/banner.jpg'
-import slide3 from '../assets/hero/slide3.jpg'
+import slide1 from '/images/services/store-remodels/1.jpeg'
+import slide2 from '/images/services/store-remodels/2.jpeg'
+import slide3 from '/images/services/new-store-launches/1.jpeg'
 
 
 
