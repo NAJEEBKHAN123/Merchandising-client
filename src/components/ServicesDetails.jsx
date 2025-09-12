@@ -8,11 +8,27 @@ const ServiceDetails = () => {
   const navigate = useNavigate();
   const service = services.find((s) => s.id === parseInt(id));
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setCurrentIndex(0); // reset when switching services
-  }, [id]);
+    setCurrentIndex(0);
+    
+    // Set up the interval for automatic image change
+    let interval;
+    if (autoPlay && service && service.images.length > 1) {
+      interval = setInterval(() => {
+        setCurrentIndex((prev) =>
+          prev === service.images.length - 1 ? 0 : prev + 1
+        );
+      }, 3000); // Change image every 3 seconds
+    }
+    
+    // Clean up the interval on component unmount or when service changes
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [id, autoPlay, service]);
 
   if (!service) {
     return (
@@ -34,10 +50,20 @@ const ServiceDetails = () => {
     );
   };
 
+  // Pause auto-play when user hovers over the image
+  const handleMouseEnter = () => {
+    setAutoPlay(false);
+  };
+
+  // Resume auto-play when user moves mouse away
+  const handleMouseLeave = () => {
+    setAutoPlay(true);
+  };
+
   return (
     <main className="min-h-screen bg-gray-50 pt-20 pb-16 px-6 md:px-8">
       {/* Back Button */}
-      <div className="max-w-6xl mx-auto mb-8">
+      <div className="max-w-6xl mx-auto mb-8 mt-8">
         <button
           onClick={() => navigate(-1)}
           className="flex items-center cursor-pointer text-blue-600 hover:text-blue-800 font-medium transition-colors"
@@ -88,26 +114,52 @@ const ServiceDetails = () => {
         </div>
 
         {/* Right Image Slider */}
-        <div className="md:w-1/2 relative">
+        <div 
+          className="md:w-1/2 relative"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <img
             src={service.images[currentIndex]}
             alt={service.title}
-            className="rounded-xl shadow-md w-full h-80 object-cover"
+            className="rounded-xl shadow-md w-full h-80 object-cover transition-opacity duration-500"
           />
 
+          {/* Navigation Dots */}
+          {service.images.length > 1 && (
+            <div className="flex justify-center mt-4 space-x-2">
+              {service.images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-3 h-3 rounded-full ${
+                    index === currentIndex ? "bg-blue-600" : "bg-gray-300"
+                  }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
+
           {/* Slider Buttons */}
-          <button
-            onClick={prevImage}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100"
-          >
-            <ArrowLeftCircle size={28} />
-          </button>
-          <button
-            onClick={nextImage}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100"
-          >
-            <ArrowRight size={28} />
-          </button>
+          {service.images.length > 1 && (
+            <>
+              <button
+                onClick={prevImage}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
+                aria-label="Previous image"
+              >
+                <ArrowLeftCircle size={28} />
+              </button>
+              <button
+                onClick={nextImage}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
+                aria-label="Next image"
+              >
+                <ArrowRight size={28} />
+              </button>
+            </>
+          )}
         </div>
       </div>
     </main>

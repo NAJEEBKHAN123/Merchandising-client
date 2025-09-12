@@ -99,7 +99,7 @@ const Navbar = () => {
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-lg py-1"
-          : "bg-white py-3"
+          : "bg-white py-2"
       }`}
       style={{
         transform: isScrolled ? 'translateY(0)' : 'translateY(0)',

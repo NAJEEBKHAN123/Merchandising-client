@@ -1,14 +1,18 @@
+
+
 const services = [
   {
     id: 1,
     title: "NEW STORE LAUNCHES",
     images: [
-      "https://plus.unsplash.com/premium_photo-1661901543371-0d1279a79645?q=80&w=2127&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1974&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1595433562696-19a4dd77b3de?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1616627986042-7762dd5fcac1?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2070&auto=format&fit=crop"
+      "/images/services/new-store-launches/1.jpeg",
+      "/images/services/new-store-launches/2.jpeg",
+      "/images/services/new-store-launches/3.jpeg",
+      "/images/services/new-store-launches/4.jpeg",
+      "/images/services/new-store-launches/5.jpeg",
+      "/images/services/new-store-launches/6.jpeg",
+      "/images/services/new-store-launches/7.jpeg"
+
     ],
     description: "Our team specializes in seamless new store setups and relocations. From planning layouts to managing logistics, we ensure your retail space is ready for business quickly and efficiently. With minimal downtime, we help you create functional, attractive environments that improve customer experience and set the foundation for long-term retail success.",
     features: [
@@ -23,12 +27,18 @@ const services = [
     id: 2,
     title: "STORE REMODELS AND RESETS",
     images: [
-      "https://images.unsplash.com/photo-1546213290-e1b492ab3eee?q=80&w=774&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1582582494700-1c89d5929080?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600566753190-17f9b4f9e6c1?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1572276596230-6f8fdb8b5bd0?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1616627458222-6855a1a798fd?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1616627046276-f6a8ef40f19a?q=80&w=2070&auto=format&fit=crop"
+      '/images/services/store-remodels/1.jpeg',
+      '/images/services/store-remodels/2.jpeg',
+      '/images/services/store-remodels/3.jpeg',
+      '/images/services/store-remodels/4.jpeg',
+      '/images/services/store-remodels/5.jpeg',
+      '/images/services/store-remodels/6.jpeg',
+      '/images/services/store-remodels/7.jpeg',
+      '/images/services/store-remodels/8.jpeg',
+      '/images/services/store-remodels/9.jpeg',
+
+
+    
     ],
     description: "We provide expert store remodels and resets that revitalize your retail environment. Whether updating layouts, refreshing displays, or redesigning spaces, our process focuses on maximizing efficiency and visual appeal. Our goal is to create inviting atmospheres that attract customers, support sales growth, and align with your evolving branding and merchandising strategies.",
     features: [

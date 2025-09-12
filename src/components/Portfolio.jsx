@@ -111,8 +111,8 @@ const Portfolio = () => {
   const filteredProjects = projects.filter(project => {
     const matchesCategory = activeCategory === 'All' || project.category === activeCategory;
     const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         project.client.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         project.description.toLowerCase().includes(searchQuery.toLowerCase());
+                        project.client.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        project.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 

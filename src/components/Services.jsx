@@ -83,7 +83,7 @@ const Services = () => {
                   {/* Image */}
                   <div className="h-64 lg:h-96 overflow-hidden">
                     <img
-                      src={service.images}
+                      src={service.images[0]}
                       alt={service.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
