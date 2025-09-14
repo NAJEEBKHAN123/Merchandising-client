@@ -53,12 +53,19 @@ const services = [
     id: 3,
     title: "FIXTURE INSTALLATIONS",
     images: [
-      "https://plus.unsplash.com/premium_photo-1661881436846-5a0f53025711?q=80&w=928&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1576267423445-bd2ff6f10c1a?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1609942387710-fec7781b78b1?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556228578-0e6d9e4b8a7f?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1594007654729-4f3f871e4b82?q=80&w=2070&auto=format&fit=crop"
+      "/images/services/fixture-installations/1.jpeg",
+      "/images/services/fixture-installations/2.jpeg",
+      "/images/services/fixture-installations/3.jpeg",
+      "/images/services/fixture-installations/4.jpeg",
+      "/images/services/fixture-installations/5.jpeg",
+       "/images/services/fixture-installations/9.jpeg",
+      "/images/services/fixture-installations/10.jpeg",
+      "/images/services/fixture-installations/6.jpeg",
+      "/images/services/fixture-installations/7.jpeg",
+      "/images/services/fixture-installations/8.jpeg",
+      "/images/services/fixture-installations/11.jpeg",
+      "/images/services/fixture-installations/12.jpeg",
+
     ],
     description: "Our fixture installation services ensure your displays and retail fixtures are installed securely, accurately, and on schedule. We handle shelving, racks, signage, and custom fixtures with precision to bring your store design to life. Professional installations enhance merchandising impact, create organized layouts, and contribute to smooth customer navigation throughout your store.",
     features: [
@@ -73,12 +80,16 @@ const services = [
     id: 4,
     title: "MERCHANDISING & RESTOCKING",
     images: [
-      "https://images.unsplash.com/photo-1580554430120-94cfcb3adf25?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515169067865-5387ec356754?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1573497019959-0c3d9d04a06d?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2070&auto=format&fit=crop"
+      
+       "/images/services/merchandising-restocking/1.jpeg",
+       "/images/services/merchandising-restocking/2.jpeg",
+       "/images/services/merchandising-restocking/3.jpeg",
+       "/images/services/merchandising-restocking/4.jpeg",
+       "/images/services/merchandising-restocking/5.jpeg",
+       "/images/services/merchandising-restocking/6.jpeg",
+       "/images/services/merchandising-restocking/7.jpeg",
+       "/images/services/merchandising-restocking/8.jpeg",
+       "/images/services/merchandising-restocking/9.jpeg",
     ],
     description: "We deliver professional POP (point-of-purchase) and graphics installations that elevate your brand presence in-store. From banners and posters to window displays and wall graphics, our team ensures flawless application. Eye-catching visuals grab attention, reinforce branding, and encourage purchases, helping you create memorable retail experiences that connect with customers and drive engagement.",
     features: [
