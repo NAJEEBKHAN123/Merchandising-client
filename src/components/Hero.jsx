@@ -157,7 +157,7 @@ const Hero = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-8 py-3 bg-gradient-to-r  from-blue-600 to-teal-600 text-white font-semibold cursor-pointer rounded-lg hover:shadow-xl transition-all duration-300 shadow-md flex items-center justify-center sm:justify-start" 
+                      className="px-8 py-3 w-full bg-gradient-to-r  from-blue-600 to-teal-600 text-white font-semibold cursor-pointer rounded-lg hover:shadow-xl transition-all duration-300 shadow-md flex items-center justify-center sm:justify-start" 
                     >
                         Get Started
                        <ArrowRight className="ml-2 w-5 h-5" />
