@@ -106,9 +106,10 @@ const Navbar = () => {
         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
       }}
     >
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-        <div className="flex justify-between items-center h-20"> {/* Increased height */}
-          {/* Logo with increased size */}
+      <div className="max-w-7xl mx-auto px-1 sm:px-4 lg:px-8">
+        {/* Reduced navbar height to accommodate larger logo */}
+        <div className="flex justify-between items-center h-16">
+          {/* Logo with negative margin to make it appear larger without increasing navbar height */}
           <div className="flex-shrink-0">
             <Link
               to="/"
@@ -117,9 +118,12 @@ const Navbar = () => {
             >
               <img
                 src={Logo}
-                className="h-16 w-auto md:h-20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
+                className="h-24 w-auto md:h-24 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
                 alt="Company Logo"
-                style={{ maxWidth: '180px' }} // Added max-width to control size
+                style={{ 
+                  marginTop: '-8px',
+                  marginBottom: '-8px'
+                }}
               />
             </Link>
           </div>
@@ -132,7 +136,7 @@ const Navbar = () => {
                         rounded-full shadow-lg transition-all duration-300 
                         hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
             >
-              <span className="">✨Contact Us✨</span>
+              <span className="text-sm">✨Contact Us✨</span>
             </Link>
           </div>
 
