@@ -1,7 +1,7 @@
 const services = [
   {
     id: 1,
-    title: "NEW STORE LAUNCHES",
+    title: "LANCEMENT DE NOUVEAUX MAGASINS",
     images: [
       "/images/services/new-store-launches/1.jpeg",
       "/images/services/new-store-launches/2.jpeg",
@@ -12,14 +12,15 @@ const services = [
       "/images/services/new-store-launches/7.jpeg",
     ],
     description:
-      "Our team specializes in seamless new store setups and relocations. From planning layouts to managing logistics, we ensure your retail space is ready for business quickly and efficiently. With minimal downtime, we help you create functional, attractive environments that improve customer experience and set the foundation for long-term retail success.",
+      "Notre équipe se spécialise dans l'aménagement et l’implantation de nouveaux magasins. De la planification de l'aménagement à la gestion de la logistique, nous veillons à ce que votre espace de vente soit prêt à l'activité rapidement et efficacement. Avec un temps d'arrêt minimal voir nul, nous vous aidons à créer des environnements fonctionnels et attrayants qui améliorent l'expérience client et jettent les bases du succès à long terme du commerce de détail.",
     features: [
-      "Complete space planning and layout design",
-      "Efficient logistics and inventory management",
-      "Minimal business disruption during transition",
-      "Customized solutions for your specific retail needs",
-      "Expert project management from start to finish",
-    ],
+  "Planification complète de l’espace et conception de l’aménagement",
+  "Gestion efficace de la logistique et des stocks",
+  "Perturbation minimale de l’activité durant la transition",
+  "Solutions personnalisées pour vos besoins spécifiques en vente au détail",
+  "Gestion de projet experte du début à la fin",
+],
+
   },
   {
     id: 2,
@@ -47,7 +48,7 @@ const services = [
   },
   {
     id: 3,
-    title: "FIXTURE INSTALLATIONS",
+    title: "Installation de Mobilier metalique",
     images: [
       "/images/services/fixture-installations/1.jpeg",
       "/images/services/fixture-installations/2.jpeg",
@@ -63,7 +64,7 @@ const services = [
       "/images/services/fixture-installations/12.jpeg",
     ],
     description:
-      "Our fixture installation services ensure your displays and retail fixtures are installed securely, accurately, and on schedule. We handle shelving, racks, signage, and custom fixtures with precision to bring your store design to life. Professional installations enhance merchandising impact, create organized layouts, and contribute to smooth customer navigation throughout your store.",
+      "Nos services d'installation de mobilier garantissent que vos présentoirs et vos mobilier de vente au détail sont installés en toute sécurité, avec précision et dans les délais. Nous nous occupons des étagères, des accessoires personnalisés avec précision pour donner vie à l'aménagement de votre magasin. Les installations professionnelles améliorent l'impact du merchandising, créent des mises en page organisées et contribuent à une navigation fluide des clients dans votre magasin.Caractéristiques clés Installation de précision de tous les types de mobilier et présentoirs.",
     features: [
       "Precision installation of all fixture types",
       "Custom fabrication and modification capabilities",

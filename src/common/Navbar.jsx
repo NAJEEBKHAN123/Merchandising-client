@@ -110,7 +110,7 @@ const Navbar = () => {
         {/* Reduced navbar height to accommodate larger logo */}
         <div className="flex justify-between items-center h-16">
           {/* Logo with negative margin to make it appear larger without increasing navbar height */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 flex items-center">
             <Link
               to="/"
               className="flex items-center group"
@@ -118,7 +118,7 @@ const Navbar = () => {
             >
               <img
                 src={Logo}
-                className="h-24 w-auto md:h-24 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
+                className="h-32 w-auto md:h-32 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
                 alt="Company Logo"
                 style={{ 
                   marginTop: '-8px',
@@ -128,20 +128,8 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile CTA Button - Visible only on mobile */}
-          <div className="md:hidden flex items-center">
-            <Link
-              to="/contact"
-              className="relative inline-flex items-center px-4 py-2 font-semibold text-white bg-gradient-to-r from-pink-500 to-red-500 
-                        rounded-full shadow-lg transition-all duration-300 
-                        hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <span className="text-sm">✨Contact Us✨</span>
-            </Link>
-          </div>
-
           {/* Desktop Nav Links with enhanced animations */}
-          <div className="hidden md:flex space-x-0 lg:space-x-5 items-center font-medium">
+          <div className="hidden md:flex flex-1 justify-center space-x-0 lg:space-x-5 items-center font-medium">
             {navLinks.map((link, index) => (
               <Link
                 key={link.path}
@@ -169,10 +157,10 @@ const Navbar = () => {
           </div>
 
           {/* Desktop CTA Button with enhanced animation */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center">
             <Link
               to="/contact"
-              className="relative inline-flex items-center px-3  py-2.5 font-semibold text-white bg-gradient-to-r from-pink-500 via-red-500 to-pink-600 
+              className="relative inline-flex items-center px-3 py-2.5 font-semibold text-white bg-gradient-to-r from-pink-500 via-red-500 to-pink-600 
                         rounded-full shadow-lg transition-all duration-500 
                         hover:scale-105 hover:shadow-xl hover:from-pink-600 hover:via-red-600 hover:to-pink-700
                         transform hover:-translate-y-0.5 group"
@@ -185,8 +173,19 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile menu button with animation */}
-          <div className="md:hidden">
+          {/* Mobile CTA Button and Menu Button Container */}
+          <div className="md:hidden flex items-center space-x-2">
+            {/* Mobile CTA Button - Centered properly */}
+            <Link
+              to="/contact"
+              className="relative inline-flex items-center justify-center px-3 py-2 font-semibold text-white bg-gradient-to-r from-pink-500 to-red-500 
+                        rounded-full shadow-lg transition-all duration-300 
+                        hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              <span className="text-xs whitespace-nowrap">✨Contact✨</span>
+            </Link>
+
+            {/* Mobile menu button with animation */}
             <button
               onClick={toggleMenu}
               className={`inline-flex items-center justify-center p-3 rounded-full transition-all duration-300 ${
@@ -212,12 +211,12 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu with enhanced animation */}
+        {/* Mobile Menu with enhanced animation and improved layout */}
         <div
           ref={mobileMenuRef}
           className={`md:hidden transition-all duration-500 ease-out overflow-hidden ${
             isOpen 
-              ? "opacity-100 py-4 translate-y-0" 
+              ? "max-h-screen opacity-100 py-4 translate-y-0" 
               : "max-h-0 opacity-0 -translate-y-4"
           }`}
           style={{
@@ -229,7 +228,7 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`block px-4 py-2 rounded-xl text-lg font-medium transition-all duration-300 transform ${
+                className={`flex items-center px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 transform ${
                   activeLink === link.path
                     ? "bg-gradient-to-r from-pink-50 to-red-50 text-pink-600 border-l-4 border-pink-600 scale-105"
                     : "text-gray-700 hover:bg-gray-50 hover:text-pink-600 border-l-4 border-transparent hover:border-pink-300 hover:scale-105"
@@ -241,13 +240,25 @@ const Navbar = () => {
                 }}
                 onClick={() => setIsOpen(false)}
               >
-                {link.label}
+                <span className="flex-1">{link.label}</span>
                 {activeLink === link.path && (
-                  <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-pink-600 rounded-full animate-pulse"></div>
+                  <div className="w-2 h-2 bg-pink-600 rounded-full animate-pulse ml-2"></div>
                 )}
               </Link>
             ))}
-          
+            
+            {/* Mobile-specific contact button in menu */}
+            <div className="pt-4 border-t border-gray-200">
+              <Link
+                to="/contact"
+                className="flex justify-center items-center px-4 py-3 font-semibold text-white bg-gradient-to-r from-pink-500 to-red-500 
+                          rounded-xl shadow-lg transition-all duration-300 
+                          hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="text-lg">✨ Contact Us Now ✨</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
