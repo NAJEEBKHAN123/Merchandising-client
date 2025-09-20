@@ -73,9 +73,9 @@ const Navbar = () => {
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
   }, [isOpen]);
 
@@ -86,14 +86,14 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/services", label: "Services" },
-    { path: "/portfolio", label: "Portfolio" },
-    { path: "/about", label: "About Us" },
-    { path: "/testimonials", label: "Testimonials" },
-    { path: "/faq", label: "FAQ" },
+    { path: "/", label: "Accueil" }, // Home
+    { path: "/services", label: "Services" }, // Services
+    { path: "/portfolio", label: "Portfolio" }, // Portfolio
+    { path: "/about", label: "À propos" }, // About Us
+    { path: "/testimonials", label: "Témoignages" }, // Testimonials
+    { path: "/faq", label: "FAQs" }, // FAQs
   ];
-
+  
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
@@ -102,11 +102,11 @@ const Navbar = () => {
           : "bg-white py-2"
       }`}
       style={{
-        transform: isScrolled ? 'translateY(0)' : 'translateY(0)',
-        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+        transform: isScrolled ? "translateY(0)" : "translateY(0)",
+        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-1 sm:px-4 lg:px-8">
+      <div className="max-w-7xl mx-auto px-1  lg:px-8">
         {/* Reduced navbar height to accommodate larger logo */}
         <div className="flex justify-between items-center h-16">
           {/* Logo with negative margin to make it appear larger without increasing navbar height */}
@@ -120,9 +120,9 @@ const Navbar = () => {
                 src={Logo}
                 className="h-32 w-auto md:h-32 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
                 alt="Company Logo"
-                style={{ 
-                  marginTop: '-8px',
-                  marginBottom: '-8px'
+                style={{
+                  marginTop: "-8px",
+                  marginBottom: "-8px",
                 }}
               />
             </Link>
@@ -140,7 +140,7 @@ const Navbar = () => {
                     : "text-gray-700 hover:text-pink-600"
                 }`}
                 style={{
-                  animationDelay: `${index * 100}ms`
+                  animationDelay: `${index * 100}ms`,
                 }}
               >
                 {link.label}
@@ -160,52 +160,60 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
             <Link
               to="/contact"
-              className="relative inline-flex items-center px-3 py-2.5 font-semibold text-white bg-gradient-to-r from-pink-500 via-red-500 to-pink-600 
+              className="relative inline-flex items-center px-5 py-2.5 font-semibold text-white bg-gradient-to-r from-pink-500 via-red-500 to-pink-600 
                         rounded-full shadow-lg transition-all duration-500 
                         hover:scale-105 hover:shadow-xl hover:from-pink-600 hover:via-red-600 hover:to-pink-700
                         transform hover:-translate-y-0.5 group"
             >
               <span className="relative z-10 flex items-center">
-                ✨Contact Us✨
+                Contactez-nous
               </span>
               <span className="absolute inset-0 rounded-full bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 animate-pulse"></span>
             </Link>
           </div>
 
-          {/* Mobile CTA Button and Menu Button Container */}
-          <div className="md:hidden flex items-center space-x-2">
-            {/* Mobile CTA Button - Centered properly */}
-            <Link
-              to="/contact"
-              className="relative inline-flex items-center justify-center px-3 py-2 font-semibold text-white bg-gradient-to-r from-pink-500 to-red-500 
-                        rounded-full shadow-lg transition-all duration-300 
-                        hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <span className="text-xs whitespace-nowrap">✨Contact✨</span>
-            </Link>
+          {/* Mobile CTA Button and Menu Button Container - FIXED CENTERING */}
+          <div className="md:hidden flex items-center justify-end space-x-2 w-full">
+            {/* Mobile CTA Button - Now properly centered */}
+            <div className="flex-1 flex justify-center">
+              <Link
+                to="/contact"
+                className="relative inline-flex items-center justify-center px-3 py-2 font-semibold text-white bg-gradient-to-r from-pink-500 to-red-500 
+                          rounded-full shadow-lg transition-all duration-300 
+                          hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                <span className="text-xs whitespace-nowrap">✨Contact✨</span>
+              </Link>
+            </div>
 
             {/* Mobile menu button with animation */}
             <button
               onClick={toggleMenu}
               className={`inline-flex items-center justify-center p-3 rounded-full transition-all duration-300 ${
-                isOpen 
-                  ? "bg-pink-100 text-pink-600 rotate-90" 
+                isOpen
+                  ? "bg-pink-100 text-pink-600 rotate-90"
                   : "bg-gray-100 text-gray-700 hover:bg-pink-100 hover:text-pink-600"
               } ${isAnimating ? "animate-pulse" : ""}`}
               aria-expanded={isOpen}
               aria-label="Toggle navigation menu"
             >
               <div className="relative w-6 h-6 transform transition-all duration-300">
-                <span className={`absolute top-1/2 left-1/2 w-4 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
-                  isOpen ? "rotate-45" : "-translate-y-2"
-                }`}></span>
-                <span className={`absolute top-1/2 left-1/2 w-4 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
-                  isOpen ? "opacity-0" : "opacity-100"
-                }`}></span>
-                <span className={`absolute top-1/2 left-1/2 w-4 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
-                  isOpen ? "-rotate-45" : "translate-y-2"
-                }`}></span>
+                <span
+                  className={`absolute top-1/2 left-1/2 w-4 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
+                    isOpen ? "rotate-45" : "-translate-y-2"
+                  }`}
+                ></span>
+                <span
+                  className={`absolute top-1/2 left-1/2 w-4 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
+                    isOpen ? "opacity-0" : "opacity-100"
+                  }`}
+                ></span>
+                <span
+                  className={`absolute top-1/2 left-1/2 w-4 h-0.5 bg-current transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
+                    isOpen ? "-rotate-45" : "translate-y-2"
+                  }`}
+                ></span>
               </div>
             </button>
           </div>
@@ -215,12 +223,12 @@ const Navbar = () => {
         <div
           ref={mobileMenuRef}
           className={`md:hidden transition-all duration-500 ease-out overflow-hidden ${
-            isOpen 
-              ? "max-h-screen opacity-100 py-4 translate-y-0" 
+            isOpen
+              ? "max-h-screen opacity-100 py-4 translate-y-0"
               : "max-h-0 opacity-0 -translate-y-4"
           }`}
           style={{
-            transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+            transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
           }}
         >
           <div className="px-4 pt-4 pb-6 space-y-3 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-100">
@@ -233,10 +241,12 @@ const Navbar = () => {
                     ? "bg-gradient-to-r from-pink-50 to-red-50 text-pink-600 border-l-4 border-pink-600 scale-105"
                     : "text-gray-700 hover:bg-gray-50 hover:text-pink-600 border-l-4 border-transparent hover:border-pink-300 hover:scale-105"
                 } ${
-                  isOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
+                  isOpen
+                    ? "translate-x-0 opacity-100"
+                    : "translate-x-4 opacity-0"
                 }`}
                 style={{
-                  transitionDelay: isOpen ? `${index * 100}ms` : '0ms'
+                  transitionDelay: isOpen ? `${index * 100}ms` : "0ms",
                 }}
                 onClick={() => setIsOpen(false)}
               >
@@ -246,13 +256,13 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
-            
-            {/* Mobile-specific contact button in menu */}
-            <div className="pt-4 border-t border-gray-200">
+
+            {/* Mobile-specific contact button in menu - Now properly centered */}
+            <div className="pt-4 border-t border-gray-200 flex justify-center">
               <Link
                 to="/contact"
-                className="flex justify-center items-center px-4 py-3 font-semibold text-white bg-gradient-to-r from-pink-500 to-red-500 
-                          rounded-xl shadow-lg transition-all duration-300 
+                className="flex justify-center items-center px-6 py-3 font-semibold text-white bg-gradient-to-r from-pink-500 to-red-500 
+                          rounded-xl shadow-lg transition-all duration-300 w-full max-w-xs
                           hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
                 onClick={() => setIsOpen(false)}
               >
