@@ -21,23 +21,23 @@ const GetQuote = () => {
   const [errors, setErrors] = useState({});
 
   const urgencyOptions = [
-    { value: "urgent", label: "Urgent (Within 1 week)" },
-    { value: "soon", label: "Soon (Within 2-3 weeks)" },
-    { value: "planning", label: "Planning (Next month)" },
-    { value: "future", label: "Future (Just gathering info)" }
+    { value: "urgent", label: "Urgent (Dans 1 semaine)" },
+    { value: "soon", label: "Bientôt (Dans 2-3 semaines)" },
+    { value: "planning", label: "Planification (Le mois prochain)" },
+    { value: "future", label: "Futur (Juste en recueil d'infos)" }
   ];
 
   const validateForm = () => {
     const newErrors = {};
     
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.name.trim()) newErrors.name = "Le nom est requis";
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = "L'email est requis";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
+      newErrors.email = "L'email est invalide";
     }
-    if (!formData.phone.trim()) newErrors.phone = "Phone is required";
-    if (!formData.urgency) newErrors.urgency = "Please select timeline";
+    if (!formData.phone.trim()) newErrors.phone = "Le téléphone est requis";
+    if (!formData.urgency) newErrors.urgency = "Veuillez sélectionner un délai";
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -47,7 +47,7 @@ const GetQuote = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     
-    // Clear error when user starts typing
+    // Effacer l'erreur quand l'utilisateur commence à taper
     if (errors[name]) {
       setErrors({ ...errors, [name]: "" });
     }
@@ -60,22 +60,22 @@ const GetQuote = () => {
     
     setIsSubmitting(true);
     
-    // API call
+    // Appel API
     try {
       const response = await axios.post("http://localhost:5000/api/contact", formData,
          { headers: { "Content-Type": "application/json" } }
       )
       if(response.data.success){
-      console.log("✅ Quote Request Submitted:", response.data);
+      console.log("✅ Demande de devis soumise:", response.data);
       setIsSubmitted(true);
       } else {
-      console.error("❌ Submission failed:", response.data.message);
-      alert(response.data.message || "Something went wrong. Please try again.");
+      console.error("❌ Échec de la soumission:", response.data.message);
+      alert(response.data.message || "Quelque chose s'est mal passé. Veuillez réessayer.");
     }
     }  catch (error) {
-    console.error("❌ Submission error:", error);
+    console.error("❌ Erreur de soumission:", error);
     alert(
-      error.response?.data?.message || "Server error. Please try again later."
+      error.response?.data?.message || "Erreur serveur. Veuillez réessayer plus tard."
     );
   } finally {
     setIsSubmitting(false);
@@ -112,9 +112,9 @@ const GetQuote = () => {
             <CheckCircle className="w-10 h-10 text-green-600" />
           </motion.div>
           
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Request Submitted!</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Demande Envoyée !</h2>
           <p className="text-lg text-gray-600 mb-8">
-            Thank you for your interest. We'll contact you within 24 hours to discuss your project.
+            Merci pour votre intérêt. Nous vous contacterons dans les 24 heures pour discuter de votre projet.
           </p>
           
           <motion.button
@@ -123,7 +123,7 @@ const GetQuote = () => {
             onClick={resetForm}
             className="px-8 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 flex items-center mx-auto"
           >
-            Submit Another Request
+            Soumettre une Autre Demande
           </motion.button>
         </div>
       </motion.div>
@@ -136,7 +136,7 @@ const GetQuote = () => {
       animate={{ opacity: 1, y: 0 }}
       className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden"
     >
-      {/* Header Section */}
+      {/* Section En-tête */}
       <div className="bg-gradient-to-r from-blue-600 mt-20 to-teal-600 text-white p-8 text-center">
         <motion.div
           initial={{ scale: 0 }}
@@ -146,12 +146,12 @@ const GetQuote = () => {
         >
           <Award className="w-8 h-8" />
         </motion.div>
-        <h2 className="text-3xl font-bold mb-2">Get Your Custom Quote</h2>
-        <p className="text-blue-100">Complete the form below and we'll get back to you within 24 hours</p>
+        <h2 className="text-3xl font-bold mb-2">Obtenez Votre Devis Personnalisé</h2>
+        <p className="text-blue-100">Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures</p>
       </div>
 
       <div className="p-8">
-        {/* Progress Indicators */}
+        {/* Indicateurs de Progression */}
         <div className="flex justify-center mb-8">
           <div className="flex items-center">
             <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
@@ -162,20 +162,20 @@ const GetQuote = () => {
           </div>
         </div>
 
-        {/* Quote Form */}
+        {/* Formulaire de Devis */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
                 <User className="w-4 h-4 mr-2 text-blue-600" />
-                Full Name *
+                Nom Complet *
               </label>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Your full name"
+                placeholder="Votre nom complet"
                 className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
                   errors.name ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
                 }`}
@@ -186,14 +186,14 @@ const GetQuote = () => {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
                 <Mail className="w-4 h-4 mr-2 text-blue-600" />
-                Email Address *
+                Adresse Email *
               </label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="your.email@example.com"
+                placeholder="votre.email@exemple.com"
                 className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
                   errors.email ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
                 }`}
@@ -206,14 +206,14 @@ const GetQuote = () => {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
                 <Phone className="w-4 h-4 mr-2 text-blue-600" />
-                Phone Number *
+                Numéro de Téléphone *
               </label>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="+1 (555) 123-4567"
+                placeholder="+33 1 23 45 67 89"
                 className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
                   errors.phone ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
                 }`}
@@ -224,7 +224,7 @@ const GetQuote = () => {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
                 <Calendar className="w-4 h-4 mr-2 text-blue-600" />
-                Project Timeline *
+                Délai du Projet *
               </label>
               <select
                 name="urgency"
@@ -234,7 +234,7 @@ const GetQuote = () => {
                   errors.urgency ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
                 }`}
               >
-                <option value="">When do you need this service?</option>
+                <option value="">Quand avez-vous besoin de ce service ?</option>
                 {urgencyOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
@@ -247,13 +247,13 @@ const GetQuote = () => {
          
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Project Details (Optional)
+              Détails du Projet (Optionnel)
             </label>
             <textarea
               name="message"
               value={formData.message}
               onChange={handleChange}
-              placeholder="Tell us about your project, specific requirements, or any questions you have..."
+              placeholder="Parlez-nous de votre projet, des exigences spécifiques ou de toute question que vous avez..."
               rows="4"
               className="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
             ></textarea>
@@ -273,20 +273,20 @@ const GetQuote = () => {
             {isSubmitting ? (
               <>
                 <Loader className="w-5 h-5 mr-2 animate-spin" />
-                Processing...
+                Traitement en cours...
               </>
             ) : (
               <>
                 <Send className="w-5 h-5 mr-2" />
-                Get Your Quote Now
+                Obtenez Votre Devis Maintenant
               </>
             )}
           </motion.button>
         </form>
 
-        {/* Direct Contact Options */}
+        {/* Options de Contact Direct */}
         <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-center text-gray-600 mb-6 font-medium">Prefer to contact us directly?</p>
+          <p className="text-center text-gray-600 mb-6 font-medium">Vous préférez nous contacter directement ?</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <motion.a
               href="mailto:info@merchelevate.com"
@@ -296,7 +296,7 @@ const GetQuote = () => {
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
                 <Mail className="w-6 h-6 text-blue-600" />
               </div>
-              <span className="font-medium text-blue-700">Email Us</span>
+              <span className="font-medium text-blue-700">Envoyez-nous un Email</span>
               <span className="text-sm text-blue-600">info@merchelevate.com</span>
             </motion.a>
 
@@ -311,19 +311,19 @@ const GetQuote = () => {
                 <MessageCircle className="w-6 h-6 text-green-600" />
               </div>
               <span className="font-medium text-green-700">WhatsApp</span>
-              <span className="text-sm text-green-600">+1 (234) 567-890</span>
+              <span className="text-sm text-green-600">+33 1 23 45 67 89</span>
             </motion.a>
 
             <motion.a
-              href="tel:+1234567890"
+              href="tel:+33123456789"
               whileHover={{ y: -2 }}
               className="flex flex-col items-center p-4 bg-purple-50 rounded-xl hover:bg-purple-100 transition-colors border border-purple-200"
             >
               <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-3">
                 <Phone className="w-6 h-6 text-purple-600" />
               </div>
-              <span className="font-medium text-purple-700">Call Us</span>
-              <span className="text-sm text-purple-600">+1 (234) 567-890</span>
+              <span className="font-medium text-purple-700">Appelez-nous</span>
+              <span className="text-sm text-purple-600">+33 1 23 45 67 89</span>
             </motion.a>
           </div>
         </div>
