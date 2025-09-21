@@ -4,62 +4,62 @@ import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 
 const testimonials = [
   {
-    message: "MSCO has completely transformed our retail operations. Their team's attention to detail and commitment to excellence is unmatched in the industry. We've seen a 34% increase in customer satisfaction scores since implementing their merchandising strategies across all our locations.",
+    message: "Mirage Merchandising a complètement transformé nos opérations de vente au détail. L’attention aux détails et l’engagement envers l’excellence de leur équipe sont inégalés dans le secteur. Nous avons constaté une augmentation de 34 % de la satisfaction client depuis la mise en œuvre de leurs stratégies de merchandising dans tous nos magasins.",
     client: "HEARTLAND RETAIL GROUP",
     rating: 5
   },
   {
-    message: "The team handled everything professionally and efficiently. Highly recommend their services!",
+    message: "L’équipe a tout géré de manière professionnelle et efficace. Nous recommandons vivement leurs services !",
     client: "JOHNSON GROUP",
     rating: 5
   },
   {
-    message: "Amazing service! They kept everything neat and on time. Very reliable team.",
+    message: "Service incroyable ! Tout a été organisé proprement et livré à temps. Une équipe très fiable.",
     client: "GREEN MART",
     rating: 4
   },
   {
-    message: "We have been partnering with MSCO for over five years now, and they consistently exceed our expectations. Their ability to adapt to our changing needs while maintaining the highest standards of quality and efficiency has made them an indispensable part of our success story.",
+    message: "Nous collaborons avec Mirage Merchandising depuis plus de cinq ans maintenant, et ils dépassent constamment nos attentes. Leur capacité à s’adapter à nos besoins changeants tout en maintenant les plus hauts standards de qualité et d’efficacité fait d’eux une partie indispensable de notre réussite.",
     client: "SUNRISE STORES INTERNATIONAL",
     rating: 5
   },
   {
-    message: "The best merchandising team we have ever partnered with. Highly cooperative.",
+    message: "La meilleure équipe de merchandising avec laquelle nous ayons travaillé. Très coopérative.",
     client: "CITY RETAIL",
     rating: 5
   },
   {
-    message: "Great experience overall. They understood our requirements and delivered perfectly.",
+    message: "Excellente expérience dans l’ensemble. Ils ont compris nos besoins et ont livré parfaitement.",
     client: "RIVER VALLEY",
     rating: 4
   },
   {
-    message: "Very professional and quick. Communication was smooth and clear throughout.",
+    message: "Très professionnels et rapides. La communication a été fluide et claire du début à la fin.",
     client: "HIGHLAND",
     rating: 5
   },
   {
-    message: "MSCO's comprehensive approach to visual merchandising revolutionized our in-store experience. Their innovative display solutions and strategic product placement resulted in a 27% increase in impulse purchases and significantly improved overall store aesthetics.",
+    message: "L’approche complète de Mirage Merchandising en matière de merchandising visuel a révolutionné notre expérience en magasin. Leurs solutions innovantes et leur placement stratégique des produits ont entraîné une augmentation de 27 % des achats impulsifs et ont considérablement amélioré l’esthétique globale du magasin.",
     client: "MEGA STORES CORPORATION",
     rating: 5
   },
   {
-    message: "Dependable and trustworthy team. Always satisfied with their work.",
+    message: "Équipe fiable et digne de confiance. Toujours satisfaits de leur travail.",
     client: "GLOBAL MART",
     rating: 4
   },
   {
-    message: "Absolutely wonderful experience working with them. Highly recommend.",
+    message: "Une expérience absolument formidable avec eux. Nous recommandons vivement.",
     client: "FRESH MARKET",
     rating: 5
   },
   {
-    message: "After implementing MSCO's retail optimization strategies across our chain of stores, we saw a dramatic improvement in both customer engagement and sales metrics. Their data-driven approach combined with creative solutions has delivered measurable ROI that far exceeded our initial expectations.",
+    message: "Après avoir mis en œuvre les stratégies d’optimisation du commerce de détail de Mirage Merchandising dans notre chaîne de magasins, nous avons constaté une nette amélioration de l’engagement des clients et des indicateurs de ventes. Leur approche axée sur les données combinée à des solutions créatives a généré un retour sur investissement mesurable, bien au-delà de nos attentes initiales.",
     client: "NATIONAL RETAIL PARTNERS",
     rating: 5
   },
   {
-    message: "What sets MSCO apart is their unparalleled commitment to client success. They don't just execute tasks—they truly partner with you to understand your business objectives and develop customized solutions that drive real results. Their team feels like an extension of our own company.",
+    message: "Ce qui distingue Mirage Merchandising, c’est leur engagement incomparable envers la réussite des clients. Ils ne se contentent pas d’exécuter des tâches : ils deviennent de véritables partenaires, comprenant vos objectifs commerciaux et développant des solutions personnalisées qui génèrent de vrais résultats. Leur équipe est perçue comme une extension de notre propre entreprise.",
     client: "PREMIUM RETAIL SOLUTIONS",
     rating: 5
   }
@@ -67,7 +67,7 @@ const testimonials = [
 
 const Testimonials = () => {
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // 0: right, 1: left
+  const [direction, setDirection] = useState(0); // 0: droite, 1: gauche
 
   const prevSlide = () => {
     setDirection(1);
@@ -98,7 +98,7 @@ const Testimonials = () => {
     });
   }, []);
 
-  // Render star ratings
+  // Affichage des étoiles
   const renderStars = (rating) => {
     return Array.from({ length: 5 }).map((_, i) => (
       <Star
@@ -107,8 +107,6 @@ const Testimonials = () => {
       />
     ));
   };
-
-  
 
   return (
     <motion.div 
@@ -121,7 +119,7 @@ const Testimonials = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Animated background elements */}
+      {/* Éléments animés de fond */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         {[...Array(5)].map((_, i) => (
           <motion.div 
@@ -146,7 +144,7 @@ const Testimonials = () => {
         ))}
       </div>
 
-      {/* Content */}
+      {/* Contenu */}
       <div className="relative z-10 text-center mt-12 max-w-6xl px-4 w-full">
         <motion.div 
           className="mb-12"
@@ -155,15 +153,15 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Client Testimonials
+            Témoignages Clients
           </h2>
           <p className="text-xl text-green-300 max-w-2xl mx-auto">
-            Discover what our valued partners have to say about their experience working with us
+            Découvrez ce que nos précieux partenaires disent de leur expérience avec nous
           </p>
         </motion.div>
         
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8">
-          {/* Navigation Buttons - Left (Desktop) */}
+          {/* Bouton gauche (desktop) */}
           <motion.div 
             className="hidden lg:flex"
             initial={{ x: -20, opacity: 0 }}
@@ -173,13 +171,13 @@ const Testimonials = () => {
             <button
               onClick={prevSlide}
               className="bg-green-600 hover:bg-green-700 p-4 rounded-full transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 shadow-lg"
-              aria-label="Previous testimonial"
+              aria-label="Témoignage précédent"
             >
               <ChevronLeft className="text-white w-6 h-6" />
             </button>
           </motion.div>
 
-          {/* Testimonial Card */}
+          {/* Carte Témoignage */}
           <div className="flex-1 max-w-4xl">
             <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 md:p-12 shadow-2xl border border-gray-700">
               <motion.div 
@@ -222,13 +220,13 @@ const Testimonials = () => {
                     <p className="font-bold text-2xl uppercase tracking-widest text-green-400">
                       {testimonials[index].client}
                     </p>
-                    <p className="text-gray-400 text-sm mt-2">Valued Client</p>
+                    <p className="text-gray-400 text-sm mt-2">Client Privilégié</p>
                   </motion.div>
                 </AnimatePresence>
               </div>
             </div>
 
-            {/* Navigation Dots */}
+            {/* Points de navigation */}
             <motion.div 
               className="flex justify-center space-x-3 mt-8"
               initial={{ opacity: 0 }}
@@ -240,31 +238,31 @@ const Testimonials = () => {
                   key={idx}
                   onClick={() => goToSlide(idx)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${index === idx ? 'bg-green-500 scale-125' : 'bg-gray-600 hover:bg-gray-500'}`}
-                  aria-label={`Go to testimonial ${idx + 1}`}
+                  aria-label={`Aller au témoignage ${idx + 1}`}
                 />
               ))}
             </motion.div>
 
-            {/* Mobile Navigation Buttons */}
+            {/* Boutons mobiles */}
             <div className="flex justify-center space-x-6 mt-8 lg:hidden">
               <button
                 onClick={prevSlide}
                 className="bg-green-600 hover:bg-green-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 shadow-lg"
-                aria-label="Previous testimonial"
+                aria-label="Témoignage précédent"
               >
                 <ChevronLeft className="text-white w-5 h-5" />
               </button>
               <button
                 onClick={nextSlide}
                 className="bg-green-600 hover:bg-green-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 shadow-lg"
-                aria-label="Next testimonial"
+                aria-label="Témoignage suivant"
               >
                 <ChevronRight className="text-white w-5 h-5" />
               </button>
             </div>
           </div>
 
-          {/* Navigation Buttons - Right (Desktop) */}
+          {/* Bouton droite (desktop) */}
           <motion.div 
             className="hidden lg:flex"
             initial={{ x: 20, opacity: 0 }}
@@ -274,21 +272,21 @@ const Testimonials = () => {
             <button
               onClick={nextSlide}
               className="bg-green-600 hover:bg-green-700 p-4 rounded-full transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 shadow-lg"
-              aria-label="Next testimonial"
+              aria-label="Témoignage suivant"
             >
               <ChevronRight className="text-white w-6 h-6" />
             </button>
           </motion.div>
         </div>
 
-        {/* Client Logos Bar */}
+        {/* Logos clients */}
         <motion.div 
           className="mt-16 pt-8 border-t border-gray-800"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          <p className="text-gray-400 mb-6">Trusted by industry leaders</p>
+          <p className="text-gray-400 mb-6">Ils nous font confiance</p>
           <div className="flex flex-wrap justify-center gap-8 opacity-80">
             {testimonials.slice(0, 6).map((testimonial, i) => (
               <motion.div 

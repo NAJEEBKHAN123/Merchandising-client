@@ -14,8 +14,6 @@ import slide1 from '/images/services/store-remodels/1.jpeg'
 import slide2 from '/images/services/store-remodels/2.jpeg'
 import slide3 from '/images/services/new-store-launches/1.jpeg'
 
-
-
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -23,38 +21,35 @@ const Hero = () => {
 
   const content = [
     {
-      title: "Building Brand Loyalty",
-      highlight: "Just Got Easier",
+      title: "Solutions de Merchandising Sur Mesure",
+      highlight: "Transformez Votre Espace Retail",
       description:
-        "We create exceptional value for our partners through detailed planning and superior execution",
+        "Conception et implantation stratégique qui maximisent l'expérience client et boostent vos ventes",
       color: "from-blue-600 to-teal-600",
       bgColor: "bg-gradient-to-r from-blue-600/10 to-teal-600/10",
       image: slide1,
-     
     },
     {
-      title: "Premium Branding Solutions",
-      highlight: "Elevate Your Identity",
+      title: "Lancement de Nouveaux Points de Vente",
+      highlight: "Excellence Opérationnelle Garantie",
       description:
-        "Transform your brand with our innovative merchandise and marketing solutions",
+        "Ouverture réussie avec merchandising optimisé, formation équipe et mise en place clé en main",
       color: "from-purple-600 to-pink-600",
       bgColor: "bg-gradient-to-r from-purple-600/10 to-pink-600/10",
       image: slide2,
-      
     },
     {
-      title: "Quality Apparel & Products",
-      highlight: "Crafted With Care",
+      title: "Optimisation de l'Espace de Vente",
+      highlight: "Augmentez Votre Chiffre d'Affaires",
       description:
-        "Discover our collection of high-quality branded products that represent your values",
+        "Réagencement stratégique, implantation produits et signalétique pour convertir plus de visiteurs",
       color: "from-amber-600 to-orange-600",
       bgColor: "bg-gradient-to-r from-amber-600/10 to-orange-600/10",
       image: slide3,
-     
     },
   ];
 
-  // Auto-rotation with pause/play control
+  // Auto-rotation avec contrôle pause/play
   useEffect(() => {
     let interval;
     if (isPlaying) {
@@ -65,7 +60,7 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [content.length, isPlaying]);
 
-  // Navigation functions
+  // Fonctions de navigation
   const nextSlide = () => {
     setActiveIndex((prev) => (prev + 1) % content.length);
     setIsPlaying(false);
@@ -83,7 +78,7 @@ const Hero = () => {
       ref={heroRef}
       className="relative h-screen overflow-hidden w-full bg-gray-900"
     >
-      {/* Background images */}
+      {/* Images de fond */}
       <div className="absolute inset-0 z-0">
         {content.map((item, index) => (
           <motion.div
@@ -104,14 +99,14 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Gradient overlay */}
+      {/* Superposition dégradée */}
       <div className="absolute inset-0 z-1 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent"></div>
 
-      {/* Content */}
+      {/* Contenu */}
       <div className="relative z-10 h-full lg:mt-4 flex items-center px-6 lg:px-12">
         <div className="max-w-7xl mx-auto w-full">
           <div className="">
-            {/* Text Content */}
+            {/* Contenu texte */}
             <div className="text-left max-w-4xl"> 
               <AnimatePresence mode="wait">
                 <motion.div
@@ -122,7 +117,7 @@ const Hero = () => {
                   transition={{ duration: 0.7, ease: "easeOut" }}
                 >
                   <motion.h1
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+                    className="text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-6"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.7 }}
@@ -159,7 +154,7 @@ const Hero = () => {
                       whileTap={{ scale: 0.95 }}
                       className="px-8 py-3 w-full bg-gradient-to-r  from-blue-600 to-teal-600 text-white font-semibold cursor-pointer rounded-lg hover:shadow-xl transition-all duration-300 shadow-md flex items-center justify-center sm:justify-start" 
                     >
-                        Get Started
+                        Démarrer un Projet
                        <ArrowRight className="ml-2 w-5 h-5" />
                     </motion.button>
                       </Link>
@@ -169,7 +164,7 @@ const Hero = () => {
                       whileTap={{ scale: 0.95 }}
                       className="px-8 py-3 bg-white/10 cursor-pointer text-white font-semibold rounded-lg hover:bg-white/20 backdrop-blur-sm transition-all duration-300 flex items-center justify-center sm:justify-start" 
                     >
-                      <Play className="mr-2 w-5 h-5" /> Watch Video
+                      <Play className="mr-2 w-5 h-5" /> Voir la Vidéo
                     </motion.button>
                   </motion.div>
                 </motion.div>
@@ -179,7 +174,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Flèches de navigation */}
       <motion.button
         onClick={prevSlide}
         className="absolute left-6 bottom-6 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
@@ -204,7 +199,7 @@ const Hero = () => {
         <ChevronRight className="w-5 h-5" />
       </motion.button>
 
-      {/* Indicators */}
+      {/* Indicateurs */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex justify-center gap-2">
         {content.map((_, index) => (
           <motion.button
@@ -221,7 +216,7 @@ const Hero = () => {
             }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
-            aria-label={`Show content ${index + 1}`}
+            aria-label={`Afficher le contenu ${index + 1}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 + index * 0.1 }}
@@ -229,7 +224,7 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Scroll indicator */}
+      {/* Indicateur de défilement */}
       <motion.div
         className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20"
         initial={{ opacity: 0 }}

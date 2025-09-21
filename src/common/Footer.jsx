@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-// Custom TikTok icon component
+// Composant d'icône TikTok personnalisé
 const TikTokIcon = ({ size = 20, color = "currentColor", ...props }) => (
   <svg
     width={size}
@@ -52,7 +52,7 @@ const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
 
-  // Scroll to top function
+  // Fonction de défilement vers le haut
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -60,7 +60,7 @@ const Footer = () => {
     });
   };
 
-  // Show scroll-to-top button when scrolling
+  // Afficher le bouton de défilement vers le haut lors du défilement
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
@@ -87,26 +87,26 @@ const Footer = () => {
     setActiveAccordion(activeAccordion === index ? null : index);
   };
 
-  // Handle navigation for quick links
+  // Gérer la navigation pour les liens rapides
   const handleNavigation = (path) => {
     navigate(path);
-    window.scrollTo(0, 0); // Scroll to top after navigation
+    window.scrollTo(0, 0); // Défiler vers le haut après la navigation
   };
 
-  // Quick links with paths and icons
+  // Liens rapides avec chemins et icônes
   const quickLinks = [
-    { name: "Home", path: "/", icon: Home },
+    { name: "Accueil", path: "/", icon: Home },
     { name: "Services", path: "/services", icon: FileText },
     { name: "Portfolio", path: "/portfolio", icon: BriefcaseBusiness },
-    { name: "Testimonials", path: "/testimonials", icon: UsersIcon },
-    { name: "About Us", path: "/about", icon: Users },
-    { name: "FAQs", path: "/faq", icon: HelpCircle },
+    { name: "Témoignages", path: "/testimonials", icon: UsersIcon },
+    { name: "À Propos", path: "/about", icon: Users },
+    { name: "FAQ", path: "/faq", icon: HelpCircle },
     { name: "Contact", path: "/contact", icon: MessageCircle },
   ];
 
   return (
     <footer className="bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900 text-white relative overflow-hidden">
-      {/* Enhanced Background decorative elements */}
+      {/* Éléments décoratifs d'arrière-plan améliorés */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <motion.div
           className="absolute top-1/4 left-10 w-64 h-64 bg-indigo-800 rounded-full mix-blend-overlay filter blur-3xl opacity-20"
@@ -133,7 +133,7 @@ const Footer = () => {
             delay: 2,
           }}
         />
-        {/* Additional floating elements */}
+        {/* Éléments flottants supplémentaires */}
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
@@ -159,10 +159,10 @@ const Footer = () => {
         ))}
       </div>
 
-      {/* Main Footer Content */}
+      {/* Contenu principal du pied de page */}
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-3 gap-8  lg:gap-20">
-          {/* Company Info */}
+          {/* Informations sur l'entreprise */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -188,9 +188,9 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Transforming retail spaces into engaging shopping experiences. We
-              specialize in strategic merchandising solutions that drive sales
-              and enhance brand presence.
+              Transformer les espaces de vente au détail en expériences d'achat engageantes. Nous nous spécialisons dans
+              des solutions stratégiques de merchandising qui stimulent les ventes et améliorent la présence de la
+              marque.
             </p>
             <div className="flex space-x-3">
               {[
@@ -237,7 +237,7 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Quick Links - Desktop */}
+          {/* Liens rapides - Bureau */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -246,7 +246,7 @@ const Footer = () => {
             className="hidden md:block"
           >
             <h4 className="text-xl font-semibold mb-6 pb-2 border-b border-indigo-700">
-              Quick Links
+              Liens Rapides
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
@@ -267,9 +267,9 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Accordions for Mobile */}
+          {/* Accordéons pour mobile */}
           <div className="md:hidden space-y-4">
-            {/* Quick Links Accordion */}
+            {/* Accordéon des liens rapides */}
             <motion.div
               className="bg-indigo-900/30 rounded-lg overflow-hidden"
               whileHover={{ y: -2 }}
@@ -278,7 +278,7 @@ const Footer = () => {
                 onClick={() => toggleAccordion(0)}
                 className="w-full px-4 py-3 flex justify-between items-center text-left font-semibold"
               >
-                <span>Quick Links</span>
+                <span>Liens Rapides</span>
                 <motion.div
                   animate={{ rotate: activeAccordion === 0 ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
@@ -322,7 +322,7 @@ const Footer = () => {
             </motion.div>
           </div>
 
-          {/* Contact Info */}
+          {/* Informations de contact */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -330,17 +330,17 @@ const Footer = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <h4 className="text-xl font-semibold mb-6 pb-2 border-b border-indigo-700">
-              Contact Us
+              Contactez-Nous
             </h4>
             <ul className="space-y-4">
               {[
                 {
                   icon: MapPin,
-                  text: "123 Retail Street, Commerce City, CC 90210",
+                  text: "123 Rue du Commerce, Ville Commerce, CC 90210",
                 },
                 { icon: Phone, text: "+1 (555) 123-4567" },
                 { icon: Mail, text: "info@merchelevate.com" },
-                { icon: Clock, text: "Mon-Fri: 9AM - 6PM\nSat: 10AM - 4PM" },
+                { icon: Clock, text: "Lun-Ven: 9h - 18h\nSam: 10h - 16h" },
               ].map((item, index) => (
                 <motion.li
                   key={index}
@@ -359,7 +359,7 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Newsletter Section */}
+        {/* Section Newsletter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -371,10 +371,10 @@ const Footer = () => {
             <div className="mb-6 md:mb-0 md:mr-8 text-center md:text-left">
               <h4 className="text-xl font-semibold mb-2 flex items-center justify-center md:justify-start">
                 <Send className="w-5 h-5 mr-2 text-indigo-400" />
-                Stay Updated with Retail Trends
+                Restez Informé des Tendances Retail
               </h4>
               <p className="text-gray-300">
-                Subscribe to our newsletter for industry insights and tips
+                Abonnez-vous à notre newsletter pour des insights et conseils du secteur
               </p>
             </div>
             <form
@@ -386,7 +386,7 @@ const Footer = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
+                  placeholder="Votre adresse e-mail"
                   className="px-4 py-3 rounded-lg focus:outline-none focus:ring-2 border border-indigo-700 focus:ring-indigo-400 text-gray-100 w-full bg-indigo-900/30 backdrop-blur-sm placeholder-indigo-300/70"
                   required
                 />
@@ -397,12 +397,12 @@ const Footer = () => {
                 type="submit"
                 className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-6 py-3 rounded-lg font-medium transition-all shadow-lg shadow-indigo-700/30 flex items-center justify-center"
               >
-                Subscribe <Send className="ml-2 w-4 h-4" />
+                S'abonner <Send className="ml-2 w-4 h-4" />
               </motion.button>
             </form>
           </div>
 
-          {/* Success message */}
+          {/* Message de succès */}
           <AnimatePresence>
             {isSubscribed && (
               <motion.div
@@ -413,7 +413,7 @@ const Footer = () => {
               >
                 <div className="flex items-center justify-center">
                   <ThumbsUp className="w-5 h-5 mr-2" />
-                  Thank you for subscribing! Check your email for confirmation.
+                  Merci de votre abonnement ! Vérifiez votre e-mail pour confirmation.
                 </div>
               </motion.div>
             )}
@@ -421,7 +421,7 @@ const Footer = () => {
         </motion.div>
       </div>
 
-      {/* Trust Badges */}
+      {/* Badges de confiance */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -434,22 +434,22 @@ const Footer = () => {
             {[
               {
                 icon: Shield,
-                text: "Certified Retail Merchandisers",
+                text: "Merchandisers Retail Certifiés",
                 color: "text-green-400",
               },
               {
                 icon: Users,
-                text: "200+ Clients Nationwide",
+                text: "200+ Clients à l'Échelle Nationale",
                 color: "text-blue-400",
               },
               {
                 icon: Award,
-                text: "Industry Award Winners 2023",
+                text: "Lauréats des Prix du Secteur 2023",
                 color: "text-yellow-400",
               },
               {
                 icon: Star,
-                text: "4.9/5 Customer Rating",
+                text: "4.9/5 Note Clients",
                 color: "text-amber-400",
               },
             ].map((item, index) => (
@@ -466,12 +466,12 @@ const Footer = () => {
         </div>
       </motion.div>
 
-      {/* Bottom Footer */}
+      {/* Pied de page inférieur */}
       <div className="bg-gradient-to-r from-indigo-950 to-purple-900 py-6 relative z-10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-center items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0 flex items-center justify-center flex-wrap">
-              Designed & Developed by{" "}
+              Conçu & Développé par{" "}
               <a
                 href="https://personal-portfolio-six-delta-17.vercel.app/"
                 target="_blank"
@@ -489,9 +489,9 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Floating Action Buttons */}
+      {/* Boutons d'action flottants */}
       <AnimatePresence>
-        {/* Scroll to Top Button */}
+        {/* Bouton de défilement vers le haut */}
         {isVisible && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -505,7 +505,7 @@ const Footer = () => {
               whileTap={{ scale: 0.9 }}
               onClick={scrollToTop}
               className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center w-14 h-14 shadow-indigo-700/50 border-2 border-white/20"
-              aria-label="Scroll to top"
+              aria-label="Défiler vers le haut"
             >
               <ArrowUp className="w-6 h-6" />
             </motion.button>

@@ -12,19 +12,18 @@ const services = [
       "/images/services/new-store-launches/7.jpeg",
     ],
     description:
-      "Notre équipe se spécialise dans l'aménagement et l’implantation de nouveaux magasins. De la planification de l'aménagement à la gestion de la logistique, nous veillons à ce que votre espace de vente soit prêt à l'activité rapidement et efficacement. Avec un temps d'arrêt minimal voir nul, nous vous aidons à créer des environnements fonctionnels et attrayants qui améliorent l'expérience client et jettent les bases du succès à long terme du commerce de détail.",
+      "Notre équipe est spécialisée dans l’aménagement et l’implantation de nouveaux magasins. De la planification de l’espace à la gestion logistique, nous veillons à ce que votre point de vente soit opérationnel rapidement et efficacement. Avec un temps d’arrêt minimal, nous vous aidons à créer des environnements fonctionnels et attrayants qui améliorent l’expérience client et posent les bases du succès à long terme de votre commerce de détail.",
     features: [
-  "Planification complète de l’espace et conception de l’aménagement",
-  "Gestion efficace de la logistique et des stocks",
-  "Perturbation minimale de l’activité durant la transition",
-  "Solutions personnalisées pour vos besoins spécifiques en vente au détail",
-  "Gestion de projet experte du début à la fin",
-],
-
+      "Planification complète de l’espace et conception de l’aménagement",
+      "Gestion efficace de la logistique et des stocks",
+      "Perturbation minimale de l’activité pendant la transition",
+      "Solutions personnalisées adaptées à vos besoins spécifiques en retail",
+      "Gestion de projet experte du début à la fin",
+    ],
   },
   {
     id: 2,
-    title: "STORE REMODELS AND RESETS",
+    title: "REMODÉLISATION ET RÉAGENCEMENT DE MAGASINS",
     images: [
       "/images/services/store-remodels/1.jpeg",
       "/images/services/store-remodels/2.jpeg",
@@ -37,18 +36,18 @@ const services = [
       "/images/services/store-remodels/9.jpeg",
     ],
     description:
-      "We provide expert store remodels and resets that revitalize your retail environment. Whether updating layouts, refreshing displays, or redesigning spaces, our process focuses on maximizing efficiency and visual appeal. Our goal is to create inviting atmospheres that attract customers, support sales growth, and align with your evolving branding and merchandising strategies.",
+      "Nous proposons des services experts de remodélisation et de réagencement qui redonnent vie à votre espace de vente. Qu’il s’agisse de moderniser les agencements, de rafraîchir les présentoirs ou de repenser les espaces, notre approche vise à maximiser l’efficacité et l’attrait visuel. Notre objectif est de créer des environnements accueillants qui attirent les clients, soutiennent la croissance des ventes et s’alignent sur vos stratégies de marque et de merchandising.",
     features: [
-      "Strategic layout optimization for increased sales",
-      "Brand-aligned visual merchandising updates",
-      "Efficient implementation with minimal customer disruption",
-      "Modernization of fixtures and displays",
-      "Seasonal and promotional reset capabilities",
+      "Optimisation stratégique des agencements pour augmenter les ventes",
+      "Mises à jour de merchandising visuel alignées sur la marque",
+      "Mise en œuvre efficace avec perturbation minimale des clients",
+      "Modernisation des équipements et présentoirs",
+      "Capacités de réagencement saisonnier et promotionnel",
     ],
   },
   {
     id: 3,
-    title: "Installation de Mobilier metalique",
+    title: "INSTALLATION DE MOBILIER MÉTALLIQUE",
     images: [
       "/images/services/fixture-installations/1.jpeg",
       "/images/services/fixture-installations/2.jpeg",
@@ -64,18 +63,18 @@ const services = [
       "/images/services/fixture-installations/12.jpeg",
     ],
     description:
-      "Nos services d'installation de mobilier garantissent que vos présentoirs et vos mobilier de vente au détail sont installés en toute sécurité, avec précision et dans les délais. Nous nous occupons des étagères, des accessoires personnalisés avec précision pour donner vie à l'aménagement de votre magasin. Les installations professionnelles améliorent l'impact du merchandising, créent des mises en page organisées et contribuent à une navigation fluide des clients dans votre magasin.Caractéristiques clés Installation de précision de tous les types de mobilier et présentoirs.",
+      "Nos services d’installation de mobilier garantissent que vos présentoirs et équipements de vente sont installés en toute sécurité, avec précision et dans les délais. Nous nous occupons des étagères, des accessoires personnalisés et des solutions adaptées pour donner vie à l’aménagement de votre magasin. Des installations professionnelles renforcent l’impact du merchandising, créent des espaces organisés et facilitent la circulation fluide des clients dans votre magasin.",
     features: [
-      "Precision installation of all fixture types",
-      "Custom fabrication and modification capabilities",
-      "Adherence to safety standards and regulations",
-      "Efficient project timelines with minimal disruption",
-      "Expert knowledge of retail fixture systems",
+      "Installation précise de tous types de mobilier et présentoirs",
+      "Capacités de fabrication et de modification personnalisées",
+      "Respect des normes et réglementations de sécurité",
+      "Délais de projet efficaces avec perturbation minimale",
+      "Expertise approfondie des systèmes de mobilier de vente au détail",
     ],
   },
   {
     id: 4,
-    title: "MERCHANDISING & RESTOCKING",
+    title: "MERCHANDISING & RÉAPPROVISIONNEMENT",
     images: [
       "/images/services/merchandising-restocking/1.jpeg",
       "/images/services/merchandising-restocking/2.jpeg",
@@ -88,13 +87,13 @@ const services = [
       "/images/services/merchandising-restocking/9.jpeg",
     ],
     description:
-      "We deliver professional POP (point-of-purchase) and graphics installations that elevate your brand presence in-store. From banners and posters to window displays and wall graphics, our team ensures flawless application. Eye-catching visuals grab attention, reinforce branding, and encourage purchases, helping you create memorable retail experiences that connect with customers and drive engagement.",
+      "Nous réalisons des installations professionnelles de PLV (publicité sur lieu de vente) et de supports graphiques qui renforcent la présence de votre marque en magasin. Des bannières et affiches aux vitrines et habillages muraux, notre équipe assure une mise en place impeccable. Des visuels percutants attirent l’attention, renforcent l’image de marque et incitent à l’achat, vous aidant à créer des expériences mémorables qui engagent vos clients.",
     features: [
-      "Expert application of various graphic materials",
-      "Attention to detail for flawless visual presentation",
-      "Strategic placement for maximum customer impact",
-      "Seasonal and promotional graphic updates",
-      "Quality materials that maintain appearance over time",
+      "Application experte de divers supports graphiques",
+      "Souci du détail pour une présentation visuelle impeccable",
+      "Positionnement stratégique pour un impact client maximal",
+      "Mises à jour graphiques saisonnières et promotionnelles",
+      "Matériaux de qualité qui conservent leur apparence dans le temps",
     ],
   },
 ];

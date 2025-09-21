@@ -8,7 +8,6 @@ import {
   Calendar, 
   User, 
   TrendingUp, 
-  Award,
   X,
   ArrowRight,
   Play
@@ -16,107 +15,107 @@ import {
 import { Link } from 'react-router-dom';
 
 const Portfolio = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState('Tous');
   const [selectedProject, setSelectedProject] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('featured');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  // Categories for filtering
-  const categories = ['All', 'Retail Transformations', 'Seasonal Displays', 'Window Designs', 'Product Merchandising'];
+  // Catégories
+  const categories = ['Tous', 'Transformations de magasins', 'Vitrines saisonnières', 'Designs de vitrines', 'Marchandisage de produits'];
   
-  // Portfolio projects
+  // Projets du portfolio
   const projects = [
     {
       id: 1,
-      title: 'Luxury Fashion Boutique Transformation',
-      category: 'Retail Transformations',
-      client: 'Elena Fashion Boutique',
-      duration: '3 weeks',
-      results: '32% sales increase, 45% longer customer dwell time',
-      description: 'Complete store redesign focusing on luxury customer experience with enhanced lighting, custom fixtures, and strategic product placement.',
-      challenges: 'Limited space, high-end product display requirements, maintaining brand elegance',
-      solutions: 'Custom modular displays, strategic lighting plan, optimized customer flow',
+      title: "Ouverture d’un hypermarché",
+      category: "Transformations de magasins",
+      client: "MegaMart International",
+      duration: "4 semaines",
+      results: "40% de ventes supplémentaires la semaine d’ouverture, 60k visiteurs",
+      description: "Mise en place complète d’un nouvel hypermarché incluant la planification des espaces, l’installation de mobilier et le merchandising visuel afin de créer un parcours client fluide.",
+      challenges: "Coordination à grande échelle, délais stricts, intégration de plusieurs départements",
+      solutions: "Équipes projet dédiées, planogrammes détaillés, stratégie d’exécution par phases",
       featured: true,
-      image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
+      image: "https://images.unsplash.com/photo-1679954570743-fadc1f2953f4?q=80&w=1974&auto=format&fit=crop"
     },
     {
       id: 2,
-      title: 'Department Store Holiday Display',
-      category: 'Seasonal Displays',
-      client: 'Metro Department Store',
-      duration: '2 weeks',
-      results: '78% increase in holiday sales YoY',
-      description: 'Large-scale holiday transformation across all departments with thematic consistency and interactive elements.',
-      challenges: 'Tight timeline, coordinating multiple departments, creating wow factor',
-      solutions: 'Pre-fabricated display elements, dedicated installation teams, interactive digital elements',
+      title: "Grande vitrine de la saison des fêtes",
+      category: "Vitrines saisonnières",
+      client: "CityMall",
+      duration: "2 semaines",
+      results: "85% d’augmentation des ventes de produits saisonniers",
+      description: "Création de décorations de Noël et Nouvel An à grande échelle avec storytelling thématique, zones interactives et accessoires attractifs.",
+      challenges: "Délais serrés, expériences clients engageantes, forte affluence",
+      solutions: "Accessoires préfabriqués, décors modulaires festifs, bornes digitales interactives",
       featured: true,
-      image: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
+      image: "https://images.unsplash.com/photo-1622020619472-1ce723164183?q=80&w=870&auto=format&fit=crop"
     },
     {
       id: 3,
-      title: 'Jewelry Store Window Design',
-      category: 'Window Designs',
-      client: 'Diamond Gallery',
-      duration: '1 week',
-      results: 'Tripled window engagement, 15% traffic increase',
-      description: 'Luxury jewelry window displays with custom lighting, security integration, and dramatic presentation.',
-      challenges: 'Security requirements, small item visibility, creating luxury appeal',
-      solutions: 'Integrated security displays, specialized lighting, rotating platforms',
+      title: "Design de vitrine pour une marque de cosmétiques de luxe",
+      category: "Designs de vitrines",
+      client: "Glow Cosmetics",
+      duration: "1 semaine",
+      results: "Taux d’engagement triplé, +20% d’entrées en magasin",
+      description: "Vitrines élégantes avec éclairage premium, accessoires en acrylique et branding saisonnier pour mettre en avant les nouveaux lancements.",
+      challenges: "Petite surface vitrine, exigences premium, clientèle haut de gamme",
+      solutions: "Éclairage sur mesure, présentoirs rotatifs, visuels à thème luxe",
       featured: true,
-      image: 'https://plus.unsplash.com/premium_photo-1682144849160-5d8c091c2e9b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWVyY2hhbmRpc2luZ3xlbnwwfHwwfHx8MA%3D%3D'
+      image: "https://images.unsplash.com/photo-1593214451196-37e0651f8ef2?w=600&auto=format&fit=crop"
     },
     {
       id: 4,
-      title: 'Sportswear Store Layout Optimization',
-      category: 'Retail Transformations',
-      client: 'ActiveLife Sports',
-      duration: '2 weeks',
-      results: '28% sales increase, better product visibility',
-      description: 'Reorganized store layout to improve customer flow and highlight key product categories.',
-      challenges: 'High inventory turnover, diverse product categories, active customer demographic',
-      solutions: 'Zoned layout, dynamic signage, interactive product testing areas',
+      title: "Optimisation des allées de supermarché",
+      category: "Transformations de magasins",
+      client: "FreshMart",
+      duration: "3 semaines",
+      results: "+25% de ventes dans les catégories clés, navigation plus fluide",
+      description: "Réorganisation des allées et du placement des produits afin d’augmenter leur visibilité et améliorer le parcours client.",
+      challenges: "Grand volume de références, continuité opérationnelle, confort d’achat",
+      solutions: "Refonte des planogrammes, signalétique claire, placement stratégique des produits à forte demande",
       featured: false,
-      image: 'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1179&q=80'
+      image: "https://images.unsplash.com/photo-1670684684445-a4504dca0bbc?w=600&auto=format&fit=crop"
     },
     {
       id: 5,
-      title: 'Spring Collection Launch',
-      category: 'Seasonal Displays',
-      client: 'Nature\'s Blossom Boutique',
-      duration: '1 week',
-      results: '42% sales increase for featured collection',
-      description: 'Seasonal launch with floral themes, custom props, and coordinated color storytelling.',
-      challenges: 'Quick seasonal transition, limited budget, creating Instagrammable moments',
-      solutions: 'Multi-use display elements, botanical rentals, social media integration',
+      title: "Lancement de la collection printemps",
+      category: "Vitrines saisonnières",
+      client: "Urban Chic",
+      duration: "1 semaine",
+      results: "+50% de ventes pour les nouveautés",
+      description: "Merchandising à thème floral avec palettes de couleurs coordonnées et vitrines adaptées aux réseaux sociaux pour lancer la collection printemps.",
+      challenges: "Budget limité, rotation saisonnière rapide, buzz sur les réseaux sociaux",
+      solutions: "Éléments réutilisables, location de décors floraux, zones photo-friendly pour influenceurs",
       featured: false,
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
+      image: "https://plus.unsplash.com/premium_photo-1724220736623-3dec690300c7?w=600&auto=format&fit=crop"
     },
     {
       id: 6,
-      title: 'Product Line Merchandising',
-      category: 'Product Merchandising',
-      client: 'HomeStyle Living',
-      duration: '4 days',
-      results: '65% sell-through rate for featured products',
-      description: 'Strategic placement and presentation of new home goods product line across multiple stores.',
-      challenges: 'Consistent execution across locations, training staff, competitive market',
-      solutions: 'Detailed planograms, video training modules, performance tracking',
+      title: "Merchandising de produits électroniques",
+      category: "Marchandisage de produits",
+      client: "TechZone",
+      duration: "5 jours",
+      results: "70% de taux de vente dans le premier mois",
+      description: "Placement stratégique des produits électroniques et accessoires avec zones de démonstration interactives.",
+      challenges: "Installation technique complexe, formation du personnel, forte concurrence",
+      solutions: "Comptoirs de démonstration interactifs, optimisation du flux clients, manuels de formation",
       featured: false,
-      image: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
+      image: "https://images.unsplash.com/photo-1713387918705-18caf0b377df?w=600&auto=format&fit=crop"
     },
   ];
 
-  // Filter projects based on selected category and search query
+  // Filtrage
   const filteredProjects = projects.filter(project => {
-    const matchesCategory = activeCategory === 'All' || project.category === activeCategory;
+    const matchesCategory = activeCategory === 'Tous' || project.category === activeCategory;
     const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                         project.client.toLowerCase().includes(searchQuery.toLowerCase()) ||
                         project.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
-  // Sort projects
+  // Tri
   const sortedProjects = [...filteredProjects].sort((a, b) => {
     if (sortBy === 'featured') {
       return b.featured - a.featured;
@@ -164,7 +163,7 @@ const Portfolio = () => {
               </button>
               {project.featured && (
                 <div className="absolute top-4 left-4 bg-teal-600 text-white text-sm font-bold px-3 py-1 rounded-full">
-                  Featured Project
+                  Projet vedette
                 </div>
               )}
             </div>
@@ -186,7 +185,7 @@ const Portfolio = () => {
                   <div className="flex items-start">
                     <Calendar className="w-5 h-5 text-teal-600 mr-3 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold text-gray-800">Project Duration</h4>
+                      <h4 className="font-semibold text-gray-800">Durée du projet</h4>
                       <p className="text-gray-600">{project.duration}</p>
                     </div>
                   </div>
@@ -196,7 +195,7 @@ const Portfolio = () => {
                   <div className="flex items-start">
                     <TrendingUp className="w-5 h-5 text-teal-600 mr-3 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold text-gray-800">Results Achieved</h4>
+                      <h4 className="font-semibold text-gray-800">Résultats obtenus</h4>
                       <p className="text-teal-600 font-medium">{project.results}</p>
                     </div>
                   </div>
@@ -204,23 +203,23 @@ const Portfolio = () => {
               </div>
               
               <div className="mb-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Project Overview</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Aperçu du projet</h3>
                 <p className="text-gray-600 leading-relaxed">{project.description}</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Challenges</h4>
+                  <h4 className="font-semibold text-gray-800 mb-2">Défis</h4>
                   <p className="text-gray-600">{project.challenges}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Our Solutions</h4>
+                  <h4 className="font-semibold text-gray-800 mb-2">Nos solutions</h4>
                   <p className="text-gray-600">{project.solutions}</p>
                 </div>
               </div>
               
               <button className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 rounded-lg transition-colors flex items-center justify-center">
-                View Full Case Study <ArrowRight className="ml-2 w-5 h-5" />
+                Voir l’étude de cas complète <ArrowRight className="ml-2 w-5 h-5" />
               </button>
             </div>
           </div>
@@ -232,20 +231,20 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-gray-50 lg:px-6 py-16 pt-24">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
+        {/* En-tête */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Portfolio</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Notre Portfolio</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Explore our successful merchandising transformations that have driven measurable results for retail businesses nationwide.
+            Découvrez nos transformations réussies en merchandising qui ont généré des résultats mesurables pour les enseignes à travers le pays.
           </p>
         </motion.div>
 
-        {/* Filters and Search */}
+        {/* Filtres et recherche */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -257,7 +256,7 @@ const Portfolio = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search projects..."
+                placeholder="Rechercher un projet..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
@@ -270,7 +269,7 @@ const Portfolio = () => {
                 className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
               >
                 <Filter className="w-4 h-4" />
-                Filters
+                Filtres
                 <ChevronDown className={`w-4 h-4 transition-transform ${isFilterOpen ? 'rotate-180' : ''}`} />
               </button>
               
@@ -279,13 +278,13 @@ const Portfolio = () => {
                 onChange={(e) => setSortBy(e.target.value)}
                 className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               >
-                <option value="featured">Sort by: Featured</option>
-                <option value="recent">Sort by: Recent</option>
+                <option value="featured">Trier par : Vedette</option>
+                <option value="recent">Trier par : Récent</option>
               </select>
             </div>
           </div>
           
-          {/* Expanded Filters */}
+          {/* Filtres développés */}
           {isFilterOpen && (
             <motion.div 
               initial={{ opacity: 0, height: 0 }}
@@ -293,7 +292,7 @@ const Portfolio = () => {
               exit={{ opacity: 0, height: 0 }}
               className="mt-4 pt-4 border-t border-gray-100"
             >
-              <h4 className="font-medium text-gray-700 mb-3">Filter by Category</h4>
+              <h4 className="font-medium text-gray-700 mb-3">Filtrer par catégorie</h4>
               <div className="flex flex-wrap gap-2">
                 {categories.map(category => (
                   <button
@@ -313,7 +312,7 @@ const Portfolio = () => {
           )}
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Grille de projets */}
         {sortedProjects.length > 0 ? (
           <motion.div 
             layout
@@ -344,7 +343,7 @@ const Portfolio = () => {
                     </div>
                     {project.featured && (
                       <div className="absolute top-3 left-3 bg-teal-600 text-white text-xs font-bold px-2 py-1 rounded">
-                        Featured
+                        Vedette
                       </div>
                     )}
                   </div>
@@ -359,12 +358,12 @@ const Portfolio = () => {
                     </div>
                     
                     <div className="mt-4 pt-3 border-t border-gray-100">
-                      <h4 className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">Results</h4>
+                      <h4 className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">Résultats</h4>
                       <p className="text-teal-600 font-medium text-sm">{project.results}</p>
                     </div>
                     
                     <button className="mt-4 w-full flex items-center justify-center text-teal-600 hover:text-teal-700 font-medium py-2 text-sm group-hover:bg-gray-50 rounded-lg transition-colors">
-                      View Details <ArrowRight className="ml-1 w-4 h-4" />
+                      Voir les détails <ArrowRight className="ml-1 w-4 h-4" />
                     </button>
                   </div>
                 </motion.div>
@@ -373,60 +372,60 @@ const Portfolio = () => {
           </motion.div>
         ) : (
           <div className="text-center py-12">
-            <div className="text-gray-400 mb-4">No projects found matching your criteria</div>
+            <div className="text-gray-400 mb-4">Aucun projet ne correspond à vos critères</div>
             <button 
               onClick={() => {
-                setActiveCategory('All');
+                setActiveCategory('Tous');
                 setSearchQuery('');
               }}
               className="text-teal-600 hover:text-teal-700 font-medium"
             >
-              Clear filters
+              Réinitialiser les filtres
             </button>
           </div>
         )}
 
-        {/* Summary Stats */}
+        {/* Statistiques */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="bg-gradient-to-r from-teal-600 to-blue-600 rounded-2xl p-8 text-white shadow-lg"
         >
-          <h2 className="text-2xl font-bold text-center mb-8">Our Impact By the Numbers</h2>
+          <h2 className="text-2xl font-bold text-center mb-8">Notre impact en chiffres</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
               <div className="text-3xl font-bold">{projects.length}+</div>
-              <div className="text-teal-100">Completed Projects</div>
+              <div className="text-teal-100">Projets réalisés</div>
             </div>
             <div>
               <div className="text-3xl font-bold">28%</div>
-              <div className="text-teal-100">Average Sales Increase</div>
+              <div className="text-teal-100">Hausse moyenne des ventes</div>
             </div>
             <div>
               <div className="text-3xl font-bold">97%</div>
-              <div className="text-teal-100">Client Satisfaction</div>
+              <div className="text-teal-100">Satisfaction client</div>
             </div>
             <div>
               <div className="text-3xl font-bold">15</div>
-              <div className="text-teal-100">Industries Served</div>
+              <div className="text-teal-100">Secteurs desservis</div>
             </div>
           </div>
         </motion.div>
 
-        {/* CTA Section */}
+        {/* CTA */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">Ready to transform your retail space?</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-4">Prêt à transformer votre espace de vente ?</h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Let's discuss how our merchandising expertise can elevate your brand and drive sales.
+            Discutons ensemble de la manière dont notre expertise en merchandising peut valoriser votre marque et stimuler vos ventes.
           </p>
           <Link to='/contact' className="bg-teal-600 hover:bg-teal-700 cursor-pointer text-white font-medium px-8 py-3 rounded-lg transition-colors inline-flex items-center">
-            Contact Us <ArrowRight className="ml-2 w-5 h-5" />
+            Contactez-nous <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
         </motion.div>
       </div>
