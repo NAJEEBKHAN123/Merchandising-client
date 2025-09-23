@@ -336,7 +336,7 @@ const Footer = () => {
               {[
                 {
                   icon: MapPin,
-                  text: "123 Rue du Commerce, Ville Commerce, CC 90210",
+                  text: "Str. Principala 69 Galați, Romania",
                 },
                 { icon: Phone, text: "+40 749 111 592" },
                 { icon: Mail, text: "Sveta@mymirage.fr" },

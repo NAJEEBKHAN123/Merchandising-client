@@ -180,7 +180,7 @@ const Navbar = () => {
             >
               <img
                 src={Logo}
-                className="h-32 w-auto md:h-32 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
+                className="h-28 flex justify-center w-auto md:h-32 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
                 alt="Company Logo"
                 style={{
                   marginTop: "-8px",
@@ -225,16 +225,7 @@ const Navbar = () => {
 
           {/* Mobile CTA Button and Menu Button Container */}
           <div className="md:hidden flex items-center justify-end space-x-2 w-full">
-            <div className="flex-1 flex justify-center">
-              <Link
-                to="/contact"
-                className="relative inline-flex items-center justify-center px-3 py-2 font-semibold text-white bg-gradient-to-r from-pink-500 to-red-500 
-                          rounded-full shadow-lg transition-all duration-300 
-                          hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
-              >
-                <span className="text-xs whitespace-nowrap">✨Contact✨</span>
-              </Link>
-            </div>
+           
 
             <button
               onClick={toggleMenu}

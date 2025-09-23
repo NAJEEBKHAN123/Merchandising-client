@@ -5,9 +5,6 @@ import {
   ChevronRight,
   Play,
   ArrowRight,
-  Award,
-  Users,
-  Star,
   ChevronLeft,
 } from "lucide-react";
 import slide1 from '/images/services/store-remodels/1.jpeg'
