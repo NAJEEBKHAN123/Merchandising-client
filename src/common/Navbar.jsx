@@ -313,7 +313,7 @@ const Navbar = () => {
                           hover:scale-105 hover:shadow-xl transform hover:-translate-y-0.5"
                 onClick={() => setIsOpen(false)}
               >
-                <span className="text-lg">✨ Contact Us Now ✨</span>
+                <span className="text-lg">Contactez-nous maintenant</span>
               </Link>
             </div>
           </div>
