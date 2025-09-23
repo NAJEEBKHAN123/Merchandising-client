@@ -181,10 +181,10 @@ const Footer = () => {
               <div>
                 <div className="flex items-end">
                   <h3 className="text-2xl font-bold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-200">
-                    M I R A G E
+                    MIRAGE
                   </h3>
                 </div>
-                <p className="text-lg ml-3 -mt-1">erchandising</p>
+                <p className="text-sm ml-2 mt-[-8px]">erchandising</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
@@ -338,8 +338,8 @@ const Footer = () => {
                   icon: MapPin,
                   text: "123 Rue du Commerce, Ville Commerce, CC 90210",
                 },
-                { icon: Phone, text: "+1 (555) 123-4567" },
-                { icon: Mail, text: "info@merchelevate.com" },
+                { icon: Phone, text: "+40 749 111 592" },
+                { icon: Mail, text: "Sveta@mymirage.fr" },
                 { icon: Clock, text: "Lun-Ven: 9h - 18h\nSam: 10h - 16h" },
               ].map((item, index) => (
                 <motion.li

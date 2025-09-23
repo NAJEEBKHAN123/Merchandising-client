@@ -33,7 +33,7 @@ const ServiceDetails = () => {
   if (!service) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <h2 className="text-2xl font-bold text-red-500">Service not found</h2>
+        <h2 className="text-2xl font-bold text-red-500">Service non trouvé</h2>
       </div>
     );
   }
@@ -96,7 +96,7 @@ const ServiceDetails = () => {
           {service.features && service.features.length > 0 && (
             <div className="pt-4">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Key Features
+                Caractéristiques principales
               </h3>
               <div className="space-y-3">
                 {service.features.map((feature, index) => (

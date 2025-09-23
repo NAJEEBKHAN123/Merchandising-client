@@ -1,6 +1,48 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo4.png";
+
+// Custom NavLink component that handles scroll to top
+const NavLink = ({ to, children, activeLink, onClick, ...props }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    if (onClick) onClick();
+    
+    // If we're already on the target page, scroll to top
+    if (location.pathname === to) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  return (
+    <Link
+      to={to}
+      onClick={handleClick}
+      className={`relative px-3 py-2 transition-all duration-300 group ${
+        activeLink === to
+          ? "text-pink-600 font-semibold"
+          : "text-gray-700 hover:text-pink-600"
+      }`}
+      {...props}
+    >
+      {children}
+      <span
+        className={`absolute bottom-0 left-0 h-0.5 bg-pink-600 transition-all duration-500 ${
+          activeLink === to
+            ? "w-full opacity-100"
+            : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
+        }`}
+      ></span>
+      <span className="absolute inset-0 bg-gradient-to-r from-pink-100 to-transparent opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></span>
+    </Link>
+  );
+};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,13 +127,25 @@ const Navbar = () => {
     setTimeout(() => setIsAnimating(false), 300);
   };
 
+  // Handle mobile menu link clicks with scroll to top
+  const handleMobileLinkClick = (path) => {
+    setIsOpen(false);
+    
+    // If we're already on the target page, scroll to top
+    if (location.pathname === path) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  };
+
   const navLinks = [
-    { path: "/", label: "Accueil" }, // Home
-    { path: "/services", label: "Services" }, // Services
-    { path: "/portfolio", label: "Portfolio" }, // Portfolio
-    { path: "/about", label: "À propos" }, // About Us
-    { path: "/testimonials", label: "Témoignages" }, // Testimonials
-    { path: "/faq", label: "FAQs" }, // FAQs
+    { path: "/", label: "Accueil" },
+    { path: "/services", label: "Services" },
+    { path: "/portfolio", label: "Portfolio" },
+    { path: "/testimonials", label: "Témoignages" },
+    { path: "/faq", label: "FAQs" },
   ];
   
   return (
@@ -106,15 +160,23 @@ const Navbar = () => {
         transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-1  lg:px-8">
-        {/* Reduced navbar height to accommodate larger logo */}
+      <div className="max-w-7xl mx-auto px-1 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo with negative margin to make it appear larger without increasing navbar height */}
+          {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link
               to="/"
               className="flex items-center group"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                // Scroll to top when clicking logo from home page
+                if (location.pathname === "/") {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                  });
+                }
+              }}
             >
               <img
                 src={Logo}
@@ -128,35 +190,23 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Nav Links with enhanced animations */}
+          {/* Desktop Nav Links */}
           <div className="hidden md:flex flex-1 justify-center space-x-0 lg:space-x-5 items-center font-medium">
             {navLinks.map((link, index) => (
-              <Link
+              <NavLink
                 key={link.path}
                 to={link.path}
-                className={`relative px-3 py-2 transition-all duration-300 group ${
-                  activeLink === link.path
-                    ? "text-pink-600 font-semibold"
-                    : "text-gray-700 hover:text-pink-600"
-                }`}
+                activeLink={activeLink}
                 style={{
                   animationDelay: `${index * 100}ms`,
                 }}
               >
                 {link.label}
-                <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-pink-600 transition-all duration-500 ${
-                    activeLink === link.path
-                      ? "w-full opacity-100"
-                      : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
-                  }`}
-                ></span>
-                <span className="absolute inset-0 bg-gradient-to-r from-pink-100 to-transparent opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></span>
-              </Link>
+              </NavLink>
             ))}
           </div>
 
-          {/* Desktop CTA Button with enhanced animation */}
+          {/* Desktop CTA Button */}
           <div className="hidden md:flex items-center">
             <Link
               to="/contact"
@@ -173,9 +223,8 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile CTA Button and Menu Button Container - FIXED CENTERING */}
+          {/* Mobile CTA Button and Menu Button Container */}
           <div className="md:hidden flex items-center justify-end space-x-2 w-full">
-            {/* Mobile CTA Button - Now properly centered */}
             <div className="flex-1 flex justify-center">
               <Link
                 to="/contact"
@@ -187,7 +236,6 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Mobile menu button with animation */}
             <button
               onClick={toggleMenu}
               className={`inline-flex items-center justify-center p-3 rounded-full transition-all duration-300 ${
@@ -219,7 +267,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu with enhanced animation and improved layout */}
+        {/* Mobile Menu */}
         <div
           ref={mobileMenuRef}
           className={`md:hidden transition-all duration-500 ease-out overflow-hidden ${
@@ -248,7 +296,7 @@ const Navbar = () => {
                 style={{
                   transitionDelay: isOpen ? `${index * 100}ms` : "0ms",
                 }}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleMobileLinkClick(link.path)}
               >
                 <span className="flex-1">{link.label}</span>
                 {activeLink === link.path && (
@@ -257,7 +305,6 @@ const Navbar = () => {
               </Link>
             ))}
 
-            {/* Mobile-specific contact button in menu - Now properly centered */}
             <div className="pt-4 border-t border-gray-200 flex justify-center">
               <Link
                 to="/contact"
