@@ -16,35 +16,36 @@ const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const heroRef = useRef(null);
 
-  const content = [
-    {
-      title: "Solutions de Merchandising Sur Mesure",
-      highlight: "Transformez Votre Espace Retail",
-      description:
-        "Conception et implantation stratégique qui maximisent l'expérience client et boostent vos ventes",
-      color: "from-blue-600 to-teal-600",
-      bgColor: "bg-gradient-to-r from-blue-600/10 to-teal-600/10",
-      image: slide1,
-    },
-    {
-      title: "Lancement de Nouveaux Points de Vente",
-      highlight: "Excellence Opérationnelle Garantie",
-      description:
-        "Ouverture réussie avec merchandising optimisé, formation équipe et mise en place clé en main",
-      color: "from-purple-600 to-pink-600",
-      bgColor: "bg-gradient-to-r from-purple-600/10 to-pink-600/10",
-      image: slide2,
-    },
-    {
-      title: "Optimisation de l'Espace de Vente",
-      highlight: "Augmentez Votre Chiffre d'Affaires",
-      description:
-        "Réagencement stratégique, implantation produits et signalétique pour convertir plus de visiteurs",
-      color: "from-amber-600 to-orange-600",
-      bgColor: "bg-gradient-to-r from-amber-600/10 to-orange-600/10",
-      image: slide3,
-    },
-  ];
+ const content = [
+  {
+    title: "Solutions de Merchandising Sur Mesure",
+    highlight: "Transformez votre espace de vente.",
+    description:
+      "Conception et implantation stratégique qui maximisent l'expérience client et boostent vos ventes",
+    color: "from-amber-500 to-orange-600",
+    bgColor: "bg-gradient-to-r from-amber-500/10 to-orange-600/10",
+    image: slide1,
+  },
+  {
+    title: "Lancement de Nouveaux Points de Vente",
+    highlight: "Excellence Opérationnelle Garantie",
+    description:
+      "Ouverture réussie avec merchandising optimisé, formation équipe et mise en place clé en main",
+    color: "from-rose-500 to-red-600",
+    bgColor: "bg-gradient-to-r from-rose-500/10 to-red-600/10",
+    image: slide2,
+  },
+  {
+    title: "Optimisation de l'Espace de Vente",
+    highlight: "Augmentez Votre Chiffre d'Affaires",
+    description:
+      "Réagencement stratégique, implantation produits et signalétique pour convertir plus de visiteurs",
+    color: "from-amber-600 to-orange-600",
+    bgColor: "bg-gradient-to-r from-amber-600/10 to-orange-600/10",
+    image: slide3,
+  },
+];
+
 
   // Auto-rotation avec contrôle pause/play
   useEffect(() => {
@@ -52,7 +53,7 @@ const Hero = () => {
     if (isPlaying) {
       interval = setInterval(() => {
         setActiveIndex((prev) => (prev + 1) % content.length);
-      }, 5000);
+      }, 8000);
     }
     return () => clearInterval(interval);
   }, [content.length, isPlaying]);
@@ -104,7 +105,7 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto w-full">
           <div className="">
             {/* Contenu texte */}
-            <div className="text-left max-w-4xl"> 
+            <div className="text-left max-w-5xl"> 
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -121,7 +122,7 @@ const Hero = () => {
                   >
                     <span className="block">{content[activeIndex].title}</span>
                     <motion.span
-                      className={`block bg-clip-text text-transparent bg-gradient-to-r ${content[activeIndex].color} mt-2`}
+                      className={`block text-3xl md:text-4xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${content[activeIndex].color} mt-3`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.4, duration: 0.7 }}
