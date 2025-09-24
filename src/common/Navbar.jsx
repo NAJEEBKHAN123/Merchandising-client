@@ -162,8 +162,8 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-1 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
+          {/* Logo - Centered on mobile, left on desktop */}
+          <div className="flex-shrink-0 flex items-center md:flex-none absolute left-1/2 transform -translate-x-1/2 md:static md:translate-x-0 md:relative">
             <Link
               to="/"
               className="flex items-center group"
@@ -180,7 +180,7 @@ const Navbar = () => {
             >
               <img
                 src={Logo}
-                className="h-28 flex justify-center w-auto md:h-32 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
+                className="h-40 w-auto md:h-32 transition-all duration-300 group-hover:scale-110 group-hover:rotate-2"
                 alt="Company Logo"
                 style={{
                   marginTop: "-8px",
@@ -223,10 +223,8 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile CTA Button and Menu Button Container */}
-          <div className="md:hidden flex items-center justify-end space-x-2 w-full">
-           
-
+          {/* Mobile Menu Button - Always on right side */}
+          <div className="md:hidden flex items-center justify-end w-full">
             <button
               onClick={toggleMenu}
               className={`inline-flex items-center justify-center p-3 rounded-full transition-all duration-300 ${

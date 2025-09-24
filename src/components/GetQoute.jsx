@@ -193,7 +193,7 @@ const GetQuote = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="votre.email@exemple.com"
+                placeholder="Sveta@mymirage.fr"
                 className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
                   errors.email ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
                 }`}
@@ -213,7 +213,7 @@ const GetQuote = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="+33 1 23 45 67 89"
+                placeholder="+40 749 111 592"
                 className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
                   errors.phone ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
                 }`}
@@ -289,7 +289,7 @@ const GetQuote = () => {
           <p className="text-center text-gray-600 mb-6 font-medium">Vous préférez nous contacter directement ?</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <motion.a
-              href="mailto:info@merchelevate.com"
+              href="mailto:Sveta@mymirage.fr"
               whileHover={{ y: -2 }}
               className="flex flex-col items-center p-4 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors border border-blue-200"
             >
@@ -297,11 +297,11 @@ const GetQuote = () => {
                 <Mail className="w-6 h-6 text-blue-600" />
               </div>
               <span className="font-medium text-blue-700">Envoyez-nous un Email</span>
-              <span className="text-sm text-blue-600">info@merchelevate.com</span>
+              <span className="text-sm text-blue-600">Sveta@mymirage.fr</span>
             </motion.a>
 
             <motion.a
-              href="https://wa.me/1234567890"
+              href="https://wa.me/message/U26XD6MV7V6XC1 "
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -2 }}
@@ -311,11 +311,11 @@ const GetQuote = () => {
                 <MessageCircle className="w-6 h-6 text-green-600" />
               </div>
               <span className="font-medium text-green-700">WhatsApp</span>
-              <span className="text-sm text-green-600">+33 1 23 45 67 89</span>
+              <span className="text-sm text-green-600">+40 749 111 592</span>
             </motion.a>
 
             <motion.a
-              href="tel:+33123456789"
+              href="tel:+40749111592"
               whileHover={{ y: -2 }}
               className="flex flex-col items-center p-4 bg-purple-50 rounded-xl hover:bg-purple-100 transition-colors border border-purple-200"
             >
@@ -323,7 +323,7 @@ const GetQuote = () => {
                 <Phone className="w-6 h-6 text-purple-600" />
               </div>
               <span className="font-medium text-purple-700">Appelez-nous</span>
-              <span className="text-sm text-purple-600">+33 1 23 45 67 89</span>
+              <span className="text-sm text-purple-600">+40 749 111 592</span>
             </motion.a>
           </div>
         </div>
