@@ -69,7 +69,7 @@ const ServiceDetails = () => {
           className="flex items-center cursor-pointer text-blue-600 hover:text-blue-800 font-medium transition-colors"
         >
           <ArrowLeft size={20} className="mr-2" />
-          Volver a Servicios
+          Retour aux Services
         </button>
       </div>
 
@@ -79,7 +79,7 @@ const ServiceDetails = () => {
           {service.title}
         </h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          {service.tagline || "Solution professionnelle pour vos besoins"}
+          {service.tagline || "Solution professionnelle adaptée à vos besoins"}
         </p>
       </div>
 

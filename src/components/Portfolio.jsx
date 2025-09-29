@@ -160,7 +160,7 @@ const Portfolio = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Notre Portfolio</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Notre Portefeuille</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Découvrez nos transformations réussies en merchandising qui ont généré des résultats mesurables pour les enseignes à travers le pays.
           </p>
@@ -200,7 +200,7 @@ const Portfolio = () => {
                 onChange={(e) => setSortBy(e.target.value)}
                 className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               >
-                <option value="featured">Trier par : Vedette</option>
+                <option value="featured">Trier par : En Vedette</option>
                 <option value="recent">Trier par : Récent</option>
               </select>
             </div>

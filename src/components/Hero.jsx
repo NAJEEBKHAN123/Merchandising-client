@@ -39,7 +39,7 @@ const Hero = () => {
     title: "Optimisation de l'Espace de Vente",
     highlight: "Augmentez Votre Chiffre d'Affaires",
     description:
-      "Réagencement stratégique, implantation produits et signalétique pour convertir plus de visiteurs",
+      "Assistance stratégique, implantation des produits et signalétique pour convertir davantage de visiteurs.",
     color: "from-amber-600 to-orange-600",
     bgColor: "bg-gradient-to-r from-amber-600/10 to-orange-600/10",
     image: slide3,
@@ -175,7 +175,7 @@ const Hero = () => {
       {/* Flèches de navigation */}
       <motion.button
         onClick={prevSlide}
-        className="absolute left-6 bottom-6 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+        className="absolute  left-6 bottom-6 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0 }}

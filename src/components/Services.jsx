@@ -32,7 +32,7 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            Nos Services Premium
+            Nos Services
           </motion.h1>
           <motion.p
             className="text-xl md:text-2xl text-blue-100 mt-6 max-w-4xl mx-auto leading-relaxed"

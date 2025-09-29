@@ -96,10 +96,9 @@ const Footer = () => {
   // Liens rapides avec chemins et icônes
   const quickLinks = [
     { name: "Accueil", path: "/", icon: Home },
-    { name: "Services", path: "/services", icon: FileText },
-    { name: "Portfolio", path: "/portfolio", icon: BriefcaseBusiness },
-    { name: "Témoignages", path: "/testimonials", icon: UsersIcon },
-    { name: "À Propos", path: "/about", icon: Users },
+    { name: "Servicii", path: "/services", icon: FileText },
+    { name: "Portefeuille", path: "/portfolio", icon: BriefcaseBusiness },
+    { name: "Avis clients", path: "/testimonials", icon: UsersIcon },
     { name: "FAQ", path: "/faq", icon: HelpCircle },
     { name: "Contact", path: "/contact", icon: MessageCircle },
   ];
@@ -188,9 +187,10 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Transformer les espaces de vente au détail en expériences d'achat engageantes. Nous nous spécialisons dans
-              des solutions stratégiques de merchandising qui stimulent les ventes et améliorent la présence de la
-              marque.
+              Transformer les espaces de vente en expériences d’achat
+              engageantes. Nous sommes spécialisés dans la stratégie de
+              merchandising qui stimule les ventes et améliore la
+              présentation de la marque.
             </p>
             <div className="flex space-x-3">
               {[
@@ -340,7 +340,7 @@ const Footer = () => {
                 },
                 { icon: Phone, text: "+40 749 111 592" },
                 { icon: Mail, text: "Sveta@mymirage.fr" },
-                { icon: Clock, text: "Lun-Ven: 9h - 18h\nSam: 10h - 16h" },
+                { icon: Clock, text: "Lun-Ven: 9 h - 18 h\nSam: 10 h - 16 h" },
               ].map((item, index) => (
                 <motion.li
                   key={index}
@@ -374,7 +374,7 @@ const Footer = () => {
                 Restez Informé des Tendances Retail
               </h4>
               <p className="text-gray-300">
-                Abonnez-vous à notre newsletter pour des insights et conseils du secteur
+                Abonnez-vous à notre newsletter pour recevoir des analyses et des conseils du secteur.
               </p>
             </div>
             <form
@@ -386,7 +386,7 @@ const Footer = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Votre adresse e-mail"
+                  placeholder="Adresse e-mail"
                   className="px-4 py-3 rounded-lg focus:outline-none focus:ring-2 border border-indigo-700 focus:ring-indigo-400 text-gray-100 w-full bg-indigo-900/30 backdrop-blur-sm placeholder-indigo-300/70"
                   required
                 />
@@ -397,7 +397,7 @@ const Footer = () => {
                 type="submit"
                 className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-6 py-3 rounded-lg font-medium transition-all shadow-lg shadow-indigo-700/30 flex items-center justify-center"
               >
-                S'abonner <Send className="ml-2 w-4 h-4" />
+                 S’abonner <Send className="ml-2 w-4 h-4" />
               </motion.button>
             </form>
           </div>
@@ -413,7 +413,8 @@ const Footer = () => {
               >
                 <div className="flex items-center justify-center">
                   <ThumbsUp className="w-5 h-5 mr-2" />
-                  Merci de votre abonnement ! Vérifiez votre e-mail pour confirmation.
+                  Merci de votre abonnement ! Vérifiez votre e-mail pour
+                  confirmation.
                 </div>
               </motion.div>
             )}
@@ -434,22 +435,22 @@ const Footer = () => {
             {[
               {
                 icon: Shield,
-                text: "Merchandisers Retail Certifiés",
+                text: "Commerçants certifiés au détail",
                 color: "text-green-400",
               },
               {
                 icon: Users,
-                text: "200+ Clients à l'Échelle Nationale",
+                text: "200+ clients à l’échelle nationale",
                 color: "text-blue-400",
               },
               {
                 icon: Award,
-                text: "Lauréats des Prix du Secteur 2023",
+                text: "Lauréats du Prix du Secteur 2023",
                 color: "text-yellow-400",
               },
               {
                 icon: Star,
-                text: "4.9/5 Note Clients",
+                text: "4,9 / 5 – Note des clients",
                 color: "text-amber-400",
               },
             ].map((item, index) => (

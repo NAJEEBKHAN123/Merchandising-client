@@ -99,8 +99,7 @@ const Testimonials = () => {
             Témoignages Clients
           </h2>
           <p className="text-xl text-green-300 max-w-2xl mx-auto">
-            Découvrez ce que nos précieux partenaires disent de leur expérience
-            avec nous
+            Découvrez ce que nos précieux partenaires disent de leur expérience avec nous.
           </p>
         </motion.div>
 
