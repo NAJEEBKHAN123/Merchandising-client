@@ -16,36 +16,44 @@ const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const heroRef = useRef(null);
 
- const content = [
-  {
-    title: "Solutions de Merchandising Sur Mesure",
-    highlight: "Transformez votre espace de vente.",
-    description:
-      "Conception et implantation stratégique qui maximisent l'expérience client et boostent vos ventes",
-    color: "from-amber-500 to-orange-600",
-    bgColor: "bg-gradient-to-r from-amber-500/10 to-orange-600/10",
-    image: slide1,
-  },
-  {
-    title: "Lancement de Nouveaux Points de Vente",
-    highlight: "Excellence Opérationnelle Garantie",
-    description:
-      "Ouverture réussie avec merchandising optimisé, formation équipe et mise en place clé en main",
-    color: "from-rose-500 to-red-600",
-    bgColor: "bg-gradient-to-r from-rose-500/10 to-red-600/10",
-    image: slide2,
-  },
-  {
-    title: "Optimisation de l'Espace de Vente",
-    highlight: "Augmentez Votre Chiffre d'Affaires",
-    description:
-      "Assistance stratégique, implantation des produits et signalétique pour convertir davantage de visiteurs.",
-    color: "from-amber-600 to-orange-600",
-    bgColor: "bg-gradient-to-r from-amber-600/10 to-orange-600/10",
-    image: slide3,
-  },
-];
-
+  const content = [
+    {
+      title: "Solutions de Merchandising Sur Mesure",
+      highlight: "Transformez votre espace de vente.",
+      description:
+        "Conception et implantation stratégique qui maximisent l'expérience client et boostent vos ventes",
+      // Warm professional tones that complement strategic planning imagery
+      color: "from-amber-400 to-orange-500",
+      buttonColor: "from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700",
+      textColor: "text-amber-100",
+      highlightColor: "from-amber-300 to-orange-400",
+      image: slide1,
+    },
+    {
+      title: "Lancement de Nouveaux Points de Vente",
+      highlight: "Excellence Opérationnelle Garantie",
+      description:
+        "Ouverture réussie avec merchandising optimisé, formation équipe et mise en place clé en main",
+      // Cool, professional blue tones that complement store launch imagery
+      color: "from-blue-400 to-cyan-500",
+      buttonColor: "from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700",
+      textColor: "text-blue-100",
+      highlightColor: "from-blue-300 to-cyan-400",
+      image: slide2,
+    },
+    {
+      title: "Optimisation de l'Espace de Vente",
+      highlight: "Augmentez Votre Chiffre d'Affaires",
+      description:
+        "Assistance stratégique, implantation des produits et signalétique pour convertir davantage de visiteurs.",
+      // Success/growth green tones that complement optimization imagery
+      color: "from-emerald-400 to-green-500",
+      buttonColor: "from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700",
+      textColor: "text-emerald-100",
+      highlightColor: "from-emerald-300 to-green-400",
+      image: slide3,
+    },
+  ];
 
   // Auto-rotation avec contrôle pause/play
   useEffect(() => {
@@ -97,8 +105,9 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Superposition dégradée */}
-      <div className="absolute inset-0 z-1 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent"></div>
+      {/* Superposition dégradée améliorée */}
+      <div className="absolute inset-0 z-1 bg-gradient-to-t from-gray-900/95 via-gray-900/60 to-transparent"></div>
+      <div className="absolute inset-0 z-1 bg-gradient-to-r from-gray-900/80 to-transparent"></div>
 
       {/* Contenu */}
       <div className="relative z-10 h-full lg:mt-4 flex items-center px-6 lg:px-12">
@@ -122,7 +131,7 @@ const Hero = () => {
                   >
                     <span className="block">{content[activeIndex].title}</span>
                     <motion.span
-                      className={`block text-3xl md:text-4xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${content[activeIndex].color} mt-3`}
+                      className={`block text-3xl md:text-4xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${content[activeIndex].highlightColor} mt-3`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.4, duration: 0.7 }}
@@ -132,7 +141,7 @@ const Hero = () => {
                   </motion.h1>
 
                   <motion.p
-                    className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl leading-relaxed"
+                    className={`text-lg md:text-xl ${content[activeIndex].textColor} mb-8 max-w-xl leading-relaxed`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.7 }}
@@ -150,7 +159,7 @@ const Hero = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-8 py-3 w-full bg-gradient-to-r  from-blue-600 to-teal-600 text-white font-semibold cursor-pointer rounded-lg hover:shadow-xl transition-all duration-300 shadow-md flex items-center justify-center sm:justify-start" 
+                      className={`px-8 py-3 w-full bg-gradient-to-r ${content[activeIndex].buttonColor} text-white font-semibold cursor-pointer rounded-lg hover:shadow-xl transition-all duration-300 shadow-md flex items-center justify-center sm:justify-start`} 
                     >
                         Démarrer un Projet
                        <ArrowRight className="ml-2 w-5 h-5" />
@@ -175,7 +184,7 @@ const Hero = () => {
       {/* Flèches de navigation */}
       <motion.button
         onClick={prevSlide}
-        className="absolute  left-6 bottom-6 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+        className="absolute left-6 bottom-6 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0 }}
