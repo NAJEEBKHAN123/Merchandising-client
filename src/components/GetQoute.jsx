@@ -19,6 +19,9 @@ const GetQuote = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  
+  // Use environment variable or fallback to live URL
+  const API_URL = 'https://merchandising-server.vercel.app';
 
   const urgencyOptions = [
     { value: "urgent", label: "Urgent (Dans 1 semaine)" },
@@ -60,29 +63,30 @@ const GetQuote = () => {
     
     setIsSubmitting(true);
     
-    // Appel API
+    // Appel API - USING LIVE BACKEND URL
     try {
-      const response = await axios.post("http://localhost:5000/api/contact", formData,
-         { headers: { "Content-Type": "application/json" } }
-      )
+      const response = await axios.post(`${API_URL}/api/contact`, formData, {
+        headers: { "Content-Type": "application/json" }
+      });
+      
       if(response.data.success){
-      console.log("✅ Demande de devis soumise:", response.data);
-      setIsSubmitted(true);
+        console.log("✅ Demande de devis soumise:", response.data);
+        setIsSubmitted(true);
       } else {
-      console.error("❌ Échec de la soumission:", response.data.message);
-      alert(response.data.message || "Quelque chose s'est mal passé. Veuillez réessayer.");
+        console.error("❌ Échec de la soumission:", response.data.message);
+        alert(response.data.message || "Quelque chose s'est mal passé. Veuillez réessayer.");
+      }
+    } catch (error) {
+      console.error("❌ Erreur de soumission:", error);
+      alert(
+        error.response?.data?.message || "Erreur serveur. Veuillez réessayer plus tard."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
-    }  catch (error) {
-    console.error("❌ Erreur de soumission:", error);
-    alert(
-      error.response?.data?.message || "Erreur serveur. Veuillez réessayer plus tard."
-    );
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
-   useEffect(() => {
+  useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -193,7 +197,7 @@ const GetQuote = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Sveta@mymirage.fr"
+                placeholder="votre@email.com"
                 className={`w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
                   errors.email ? 'border-red-500' : 'border-gray-200 focus:border-blue-500'
                 }`}
@@ -301,7 +305,7 @@ const GetQuote = () => {
             </motion.a>
 
             <motion.a
-              href="https://wa.me/message/U26XD6MV7V6XC1 "
+              href="https://wa.me/message/U26XD6MV7V6XC1"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -2 }}

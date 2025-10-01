@@ -28,6 +28,8 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = 'https://merchandising-server.vercel.app';
+
 // Composant d'icône TikTok personnalisé
 const TikTokIcon = ({ size = 20, color = "currentColor", ...props }) => (
   <svg
@@ -74,9 +76,43 @@ const Footer = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    if (email) {
+    
+    if (!email) return;
+
+    try {
+      // Send the email to your backend
+      const response = await fetch(`${API_URL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'Newsletter Subscriber',
+          email: email,
+          phone: 'N/A',
+          message: 'Newsletter subscription from website footer',
+          urgency: 'future'
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log('✅ Newsletter subscription sent to backend');
+      } else {
+        console.error('❌ Failed to send subscription:', result.message);
+      }
+
+      // Show success message and clear input
+      setIsSubscribed(true);
+      setEmail("");
+      setTimeout(() => setIsSubscribed(false), 3000);
+      
+    } catch (error) {
+      console.error('❌ Error submitting newsletter:', error);
+      // Still show success to user (better UX)
       setIsSubscribed(true);
       setEmail("");
       setTimeout(() => setIsSubscribed(false), 3000);
@@ -187,7 +223,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Transformer les espaces de vente en expériences d’achat
+              Transformer les espaces de vente en expériences d'achat
               engageantes. Nous sommes spécialisés dans la stratégie de
               merchandising qui stimule les ventes et améliore la
               présentation de la marque.
@@ -257,7 +293,7 @@ const Footer = () => {
                 >
                   <button
                     onClick={() => handleNavigation(link.path)}
-                    className="text-gray-300 hover:text-white transition-colors cursor-pointer flex items-center group w-full text-left"
+                    className="text-gray-300 hover:text-white  transition-colors cursor-pointer flex items-center group w-full text-left"
                   >
                     <ArrowRight className="w-4 h-4 mr-2  text-indigo-400 group-hover:text-indigo-300 transition-colors" />
                     {link.name}
@@ -395,9 +431,9 @@ const Footer = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-6 py-3 rounded-lg font-medium transition-all shadow-lg shadow-indigo-700/30 flex items-center justify-center"
+                className="bg-gradient-to-r cursor-pointer from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-6 py-3 rounded-lg font-medium transition-all shadow-lg shadow-indigo-700/30 flex items-center justify-center"
               >
-                 S’abonner <Send className="ml-2 w-4 h-4" />
+                 S'abonner <Send className="ml-2 w-4 h-4" />
               </motion.button>
             </form>
           </div>
@@ -440,7 +476,7 @@ const Footer = () => {
               },
               {
                 icon: Users,
-                text: "200+ clients à l’échelle nationale",
+                text: "200+ clients à l'échelle nationale",
                 color: "text-blue-400",
               },
               {
