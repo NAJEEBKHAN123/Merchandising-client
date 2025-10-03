@@ -21,7 +21,7 @@ const Hero = () => {
       title: "Solutions de Merchandising Sur Mesure",
       highlight: "Transformez votre espace de vente.",
       description:
-        "Conception et implantation stratégique qui maximisent l'expérience client et boostent vos ventes",
+        "Qui optimisent l’expérience client et dynamisent vos ventes.",
       // Warm professional tones that complement strategic planning imagery
       color: "from-amber-400 to-orange-500",
       buttonColor: "from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700",
@@ -33,7 +33,7 @@ const Hero = () => {
       title: "Lancement de Nouveaux Points de Vente",
       highlight: "Excellence Opérationnelle Garantie",
       description:
-        "Ouverture réussie avec merchandising optimisé, formation équipe et mise en place clé en main",
+        "Ouverture réussie avec un merchandising optimisé, la formation de votre équipe et une mise en place clé-en-main.",
       // Cool, professional blue tones that complement store launch imagery
       color: "from-blue-400 to-cyan-500",
       buttonColor: "from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700",
@@ -45,7 +45,7 @@ const Hero = () => {
       title: "Optimisation de l'Espace de Vente",
       highlight: "Augmentez Votre Chiffre d'Affaires",
       description:
-        "Assistance stratégique, implantation des produits et signalétique pour convertir davantage de visiteurs.",
+        "Assistance stratégique, implantation des produits et signalétique pour convertir D’avantage de visiteurs.",
       // Success/growth green tones that complement optimization imagery
       color: "from-emerald-400 to-green-500",
       buttonColor: "from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700",
@@ -61,7 +61,7 @@ const Hero = () => {
     if (isPlaying) {
       interval = setInterval(() => {
         setActiveIndex((prev) => (prev + 1) % content.length);
-      }, 8000);
+      }, 12000);
     }
     return () => clearInterval(interval);
   }, [content.length, isPlaying]);

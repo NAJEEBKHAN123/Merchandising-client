@@ -132,7 +132,7 @@ const Footer = () => {
   // Liens rapides avec chemins et icônes
   const quickLinks = [
     { name: "Accueil", path: "/", icon: Home },
-    { name: "Servicii", path: "/services", icon: FileText },
+    { name: "Services", path: "/services", icon: FileText },
     { name: "Portefeuille", path: "/portfolio", icon: BriefcaseBusiness },
     { name: "Avis clients", path: "/testimonials", icon: UsersIcon },
     { name: "FAQ", path: "/faq", icon: HelpCircle },
