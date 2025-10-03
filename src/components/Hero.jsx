@@ -21,7 +21,7 @@ const Hero = () => {
       title: "Solutions de Merchandising Sur Mesure",
       highlight: "Transformez votre espace de vente.",
       description:
-        "Qui optimisent l’expérience client et dynamisent vos ventes.",
+        "Des solutions qui optimisent l’expérience client et dynamisent vos ventes.",
       // Warm professional tones that complement strategic planning imagery
       color: "from-amber-400 to-orange-500",
       buttonColor: "from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700",
@@ -45,7 +45,7 @@ const Hero = () => {
       title: "Optimisation de l'Espace de Vente",
       highlight: "Augmentez Votre Chiffre d'Affaires",
       description:
-        "Assistance stratégique, implantation des produits et signalétique pour convertir D’avantage de visiteurs.",
+        "Assistance stratégique, implantation des produits et signalétique pour convertir davantage de visiteurs.",
       // Success/growth green tones that complement optimization imagery
       color: "from-emerald-400 to-green-500",
       buttonColor: "from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700",
