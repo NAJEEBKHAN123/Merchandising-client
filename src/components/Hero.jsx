@@ -16,30 +16,30 @@ const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const heroRef = useRef(null);
 
-  const content = [
+ const content = [
     {
       title: "Solutions de Merchandising Sur Mesure",
       highlight: "Transformez votre espace de vente.",
       description:
-        "Des solutions qui optimisent l’expérience client et dynamisent vos ventes.",
-      // Warm professional tones that complement strategic planning imagery
-      color: "from-amber-400 to-orange-500",
-      buttonColor: "from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700",
-      textColor: "text-amber-100",
-      highlightColor: "from-amber-300 to-orange-400",
-      image: slide1,
-    },
-    {
-      title: "Lancement de Nouveaux Points de Vente",
-      highlight: "Excellence Opérationnelle Garantie",
-      description:
-        "Ouverture réussie avec un merchandising optimisé, la formation de votre équipe et une mise en place clé-en-main.",
-      // Cool, professional blue tones that complement store launch imagery
+        "Des solutions qui optimisent l'expérience client et dynamisent vos ventes.",
+      // Cool, professional blue tones (swapped from slide 2)
       color: "from-blue-400 to-cyan-500",
       buttonColor: "from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700",
       textColor: "text-blue-100",
       highlightColor: "from-blue-300 to-cyan-400",
       image: slide2,
+    },
+    {
+      title: "Lancement de Nouveaux Points de Vente",
+      highlight: "Excellence Opérationnelle Garantie",
+      description:
+        "Ouverture réussie avec un merchandising optimisé, la formation de votre équipe et une mise en place clé-en-main.",
+      // Warm professional tones (swapped from slide 1)
+      color: "from-amber-400 to-orange-500",
+      buttonColor: "from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700",
+      textColor: "text-amber-100",
+      highlightColor: "from-amber-300 to-orange-400",
+      image: slide1,
     },
     {
       title: "Optimisation de l'Espace de Vente",
