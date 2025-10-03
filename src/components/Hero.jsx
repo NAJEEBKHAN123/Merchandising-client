@@ -61,7 +61,7 @@ const Hero = () => {
     if (isPlaying) {
       interval = setInterval(() => {
         setActiveIndex((prev) => (prev + 1) % content.length);
-      }, 12000);
+      }, 10000);
     }
     return () => clearInterval(interval);
   }, [content.length, isPlaying]);
