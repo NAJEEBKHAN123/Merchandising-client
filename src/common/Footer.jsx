@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = 'https://merchandising-server.vercel.app';
+const API_URL = "https://merchandising-server.vercel.app";
 
 // Composant d'icône TikTok personnalisé
 const TikTokIcon = ({ size = 20, color = "currentColor", ...props }) => (
@@ -78,40 +78,39 @@ const Footer = () => {
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
-    
+
     if (!email) return;
 
     try {
       // Send the email to your backend
       const response = await fetch(`${API_URL}`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: 'Newsletter Subscriber',
+          name: "Newsletter Subscriber",
           email: email,
-          phone: 'N/A',
-          message: 'Newsletter subscription from website footer',
-          urgency: 'future'
-        })
+          phone: "N/A",
+          message: "Newsletter subscription from website footer",
+          urgency: "future",
+        }),
       });
 
       const result = await response.json();
 
       if (response.ok) {
-        console.log('✅ Newsletter subscription sent to backend');
+        console.log("✅ Newsletter subscription sent to backend");
       } else {
-        console.error('❌ Failed to send subscription:', result.message);
+        console.error("❌ Failed to send subscription:", result.message);
       }
 
       // Show success message and clear input
       setIsSubscribed(true);
       setEmail("");
       setTimeout(() => setIsSubscribed(false), 3000);
-      
     } catch (error) {
-      console.error('❌ Error submitting newsletter:', error);
+      console.error("❌ Error submitting newsletter:", error);
       // Still show success to user (better UX)
       setIsSubscribed(true);
       setEmail("");
@@ -234,39 +233,40 @@ const Footer = () => {
                   icon: Facebook,
                   color: "hover:bg-blue-600",
                   label: "Facebook",
-                },
-                {
-                  icon: Twitter,
-                  color: "hover:bg-blue-400",
-                  label: "Twitter",
+                  url: "https://www.facebook.com/profile.php?id=61582155891489", // Replace with actual URL
                 },
                 {
                   icon: Instagram,
                   color: "hover:bg-pink-600",
                   label: "Instagram",
+                  url: "https://www.instagram.com/miragemerchandising/", // Replace with actual URL
                 },
                 {
                   icon: Linkedin,
                   color: "hover:bg-blue-700",
                   label: "LinkedIn",
+                  url: "https://www.linkedin.com/in/mirage-merchandising-a33237389/", // Replace with actual URL
                 },
                 {
                   icon: TikTokIcon,
                   color: "hover:bg-black",
                   label: "TikTok",
+                  url: "https://www.tiktok.com/@miragemerchandising", // Replace with actual URL
                 },
-              ].map((Social, index) => (
+              ].map((social, index) => (
                 <motion.a
                   key={index}
                   whileHover={{ y: -5, scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  href="#"
-                  className={`w-10 h-10 rounded-full bg-indigo-800/70 flex items-center justify-center transition-colors backdrop-blur-sm ${Social.color} group`}
-                  aria-label={Social.label}
+                  href={social.url}
+                  target="_blank" // Opens in new tab
+                  rel="noopener noreferrer" // Security best practice
+                  className={`w-10 h-10 rounded-full bg-indigo-800/70 flex items-center justify-center transition-colors backdrop-blur-sm ${social.color} group`}
+                  aria-label={social.label}
                 >
-                  <Social.icon className="w-5 h-5" />
+                  <social.icon className="w-5 h-5" />
                   <span className="absolute -top-8 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                    {Social.label}
+                    {social.label}
                   </span>
                 </motion.a>
               ))}
@@ -410,7 +410,8 @@ const Footer = () => {
                 Restez Informé des Tendances Retail
               </h4>
               <p className="text-gray-300">
-                Abonnez-vous à notre newsletter pour recevoir des analyses et des conseils du secteur.
+                Abonnez-vous à notre newsletter pour recevoir des analyses et
+                des conseils du secteur.
               </p>
             </div>
             <form
@@ -433,7 +434,7 @@ const Footer = () => {
                 type="submit"
                 className="bg-gradient-to-r cursor-pointer from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-6 py-3 rounded-lg font-medium transition-all shadow-lg shadow-indigo-700/30 flex items-center justify-center"
               >
-                 S'abonner <Send className="ml-2 w-4 h-4" />
+                S'abonner <Send className="ml-2 w-4 h-4" />
               </motion.button>
             </form>
           </div>
