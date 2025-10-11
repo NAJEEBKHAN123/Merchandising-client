@@ -134,7 +134,7 @@ const Services = () => {
         </motion.div>
 
         {/* Étapes du processus */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 px-4 lg:px-10 relative">
           {[
             {
               step: "01",

@@ -61,7 +61,7 @@ const ServiceDetails = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 pt-20 pb-16 px-6 md:px-8">
+    <main className="min-h-screen bg-gray-50 pt-20 pb-16 px-4 md:px-8">
       {/* Back Button */}
       <div className="max-w-6xl mx-auto mb-8 mt-8">
         <button
