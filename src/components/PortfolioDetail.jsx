@@ -1,7 +1,7 @@
-// PortfolioDetail.jsx - WITH AUTO-SLIDESHOW
+// PortfolioDetail.jsx - WITH AUTO-SLIDESHOW & SCROLL TO TOP
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
   Calendar,
@@ -14,6 +14,7 @@ import {
   ChevronRight,
   Play,
   Pause,
+  ArrowUp,
 } from "lucide-react";
 import projects from "../constants/portfolioData";
 
@@ -22,6 +23,7 @@ const PortfolioDetail = () => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const intervalRef = useRef(null);
 
   const project = projects.find((p) => p.id === parseInt(id));
@@ -33,7 +35,7 @@ const PortfolioDetail = () => {
         setCurrentImageIndex((prev) =>
           prev === project.images.length - 1 ? 0 : prev + 1
         );
-      }, 3000); // Change image every 3 seconds
+      }, 3000);
     }
 
     return () => {
@@ -43,12 +45,28 @@ const PortfolioDetail = () => {
     };
   }, [isPlaying, project?.images.length]);
 
-  useEffect(() =>{
+  // Scroll to top functionality
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
     window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    })
-  })
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   if (!project) {
     return (
@@ -106,15 +124,15 @@ const PortfolioDetail = () => {
           Retour au portfolio
         </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-          {/* Image Gallery with Auto-Slideshow */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* LEFT COLUMN - IMAGE GALLERY */}
           <div className="space-y-6">
-            {/* Main Image with Controls */}
+            {/* MAIN LARGE IMAGE WITH AUTO-SLIDESHOW */}
             <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden">
               <img
                 src={project.images[currentImageIndex]}
                 alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                className="w-full h-96 object-cover transition-opacity duration-500"
+                className="w-full h-96 lg:h-[500px] object-cover transition-opacity duration-500"
                 key={currentImageIndex}
               />
 
@@ -173,8 +191,11 @@ const PortfolioDetail = () => {
               </div>
             </div>
 
-            {/* Thumbnail Grid */}
-            {project.images.length > 1 && (
+            {/* THUMBNAIL GRID - ALL IMAGES VISIBLE BELOW */}
+            <div className="bg-white rounded-2xl shadow-lg p-4">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+                Toutes les photos ({project.images.length})
+              </h3>
               <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
                 {project.images.map((img, index) => (
                   <button
@@ -182,22 +203,22 @@ const PortfolioDetail = () => {
                     onClick={() => setCurrentImageIndex(index)}
                     className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${
                       index === currentImageIndex
-                        ? "border-teal-500 scale-105"
-                        : "border-transparent hover:border-gray-300"
+                        ? "border-teal-500 scale-105 shadow-md"
+                        : "border-gray-200 hover:border-teal-300"
                     }`}
                   >
                     <img
                       src={img}
                       alt={`Thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                     />
                   </button>
                 ))}
               </div>
-            )}
+            </div>
           </div>
 
-          {/* Project Details */}
+          {/* RIGHT COLUMN - PROJECT DETAILS */}
           <div className="space-y-8">
             {/* Header */}
             <div className="flex items-start gap-4">
@@ -273,7 +294,7 @@ const PortfolioDetail = () => {
         </div>
 
         {/* CTA - Full Width & Centered */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto mt-12">
           <div className="bg-teal-600 rounded-xl p-8 text-center">
             <h3 className="text-2xl font-semibold text-white mb-3">
               Intéressé par ce service ?
@@ -290,6 +311,22 @@ const PortfolioDetail = () => {
           </div>
         </div>
       </div>
+
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 bg-teal-600 hover:bg-teal-700 text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110"
+            aria-label="Remonter en haut"
+          >
+            <ArrowUp className="w-6 h-6" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
