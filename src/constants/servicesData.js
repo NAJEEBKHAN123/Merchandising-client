@@ -10,6 +10,8 @@ const services = [
       "/images/services/new-store-launches/5.jpeg",
       "/images/services/new-store-launches/6.jpeg",
       "/images/services/new-store-launches/7.jpeg",
+      "/images/services/new-store-launches/8.jpeg",
+
     ],
     description:
       "Notre équipe est spécialisée dans l’aménagement et l’implantation de nouveaux magasins.De la planification de l’espace à la gestion logistique, nous veillons à ce que votre point de vente soit opérationnel rapidement et efficacement. Avec un temps d’arrêt minimal, nous vous aidons à créer des environnements fonctionnels et attrayants qui améliorent l’expérience client et posent les bases d’un succès durable pour votre commerce de détail.",

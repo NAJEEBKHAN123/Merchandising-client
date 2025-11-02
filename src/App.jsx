@@ -10,6 +10,7 @@ import Portfolio from "./components/Portfolio";
 import FAQ from "./components/FAQ";
 import Footer from "./common/Footer";
 import QetQoute from "./components/GetQoute";
+import PortfolioDetail from "./components/PortfolioDetail";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/services/:id" element={<ServicesDetails />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/portfolio/:id" element={<PortfolioDetail />} />
         {/* <Route path="/about" element={<AboutUs />} /> */}
         {/* <Route path="/testimonials" element={<Testimonials />} /> */}
         <Route path="/faq" element={<FAQ />} />
