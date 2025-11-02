@@ -61,8 +61,6 @@ const services = [
       "/images/services/fixture-installations/10.jpeg",
       "/images/services/fixture-installations/11.jpeg",
       "/images/services/fixture-installations/12.jpeg",
-      "/images/services/fixture-installations/13.jpeg",
-      "/images/services/fixture-installations/14.jpeg",
 
     ],
     description:
