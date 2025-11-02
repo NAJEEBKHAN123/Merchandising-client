@@ -35,7 +35,7 @@ const Services = () => {
             Nos Services
           </motion.h1>
           <motion.p
-            className="text-xl md:text-2xl text-`blue-100 mt-6 max-w-4xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-blue-100 mt-6 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.7 }}
