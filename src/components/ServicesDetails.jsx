@@ -10,25 +10,27 @@ const ServiceDetails = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
 
+  // Only run once when component mounts and when service ID changes
   useEffect(() => {
     window.scrollTo(0, 0);
     setCurrentIndex(0);
-    
-    // Set up the interval for automatic image change
+  }, [id]); // Removed autoPlay and service from dependencies
+
+  // Separate useEffect for auto-play functionality
+  useEffect(() => {
     let interval;
     if (autoPlay && service && service.images.length > 1) {
       interval = setInterval(() => {
         setCurrentIndex((prev) =>
           prev === service.images.length - 1 ? 0 : prev + 1
         );
-      }, 3000); // Change image every 3 seconds
+      }, 3000);
     }
     
-    // Clean up the interval on component unmount or when service changes
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [id, autoPlay, service]);
+  }, [autoPlay, service, currentIndex]); // Added currentIndex to dependencies
 
   if (!service) {
     return (
@@ -50,12 +52,10 @@ const ServiceDetails = () => {
     );
   };
 
-  // Pause auto-play when user hovers over the image
   const handleMouseEnter = () => {
     setAutoPlay(false);
   };
 
-  // Resume auto-play when user moves mouse away
   const handleMouseLeave = () => {
     setAutoPlay(true);
   };

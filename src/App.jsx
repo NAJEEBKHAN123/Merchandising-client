@@ -6,7 +6,7 @@ import Services from "./components/Services";
 import ServicesDetails from "./components/ServicesDetails";
 import Portfolio from "./components/Portfolio";
 // import AboutUs from "./components/AboutUs";
-import Testimonials from "./components/Testimonials";
+// import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import Footer from "./common/Footer";
 import QetQoute from "./components/GetQoute";
@@ -21,7 +21,7 @@ function App() {
         <Route path="/services/:id" element={<ServicesDetails />} />
         <Route path="/portfolio" element={<Portfolio />} />
         {/* <Route path="/about" element={<AboutUs />} /> */}
-        <Route path="/testimonials" element={<Testimonials />} />
+        {/* <Route path="/testimonials" element={<Testimonials />} /> */}
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<QetQoute />} />
       </Routes>

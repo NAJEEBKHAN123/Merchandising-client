@@ -61,6 +61,9 @@ const services = [
       "/images/services/fixture-installations/10.jpeg",
       "/images/services/fixture-installations/11.jpeg",
       "/images/services/fixture-installations/12.jpeg",
+      "/images/services/fixture-installations/13.jpeg",
+      "/images/services/fixture-installations/14.jpeg",
+
     ],
     description:
       "Nos services d’installation de mobilier garantissent que vos présentoirs et équipements de vente sont posés en toute sécurité, avec précision et dans les délais prévus. Nous prenons en charge l’installation des étagères, des accessoires personnalisés et de solutions sur mesure pour optimiser l’aménagement de votre magasin. Nos interventions professionnelles renforcent l’impact du merchandising, créent des espaces organisés et facilitent la circulation fluide de la clientèle.",
