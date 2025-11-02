@@ -1,13 +1,73 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- ✅ Character encoding -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/logooo.png" />
+
+    <!-- ✅ Viewport for mobile responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mirage erchandising</title>
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/png" href="/src/assets/logooo.png" />
+
+    <!-- ✅ Basic SEO meta tags -->
+    <title>My Mirage | Official Website</title>
+    <meta
+      name="description"
+      content="Discover My Mirage — a modern creative brand offering unique fashion and merchandising solutions."
+    />
+    <meta
+      name="keywords"
+      content="My Mirage, Mirage France, fashion, design, creative, merchandising, apparel, brand"
+    />
+    <meta name="author" content="My Mirage" />
+
+    <!-- ✅ Canonical URL -->
+    <link rel="canonical" href="https://mymirage.fr/" />
+
+    <!-- ✅ Open Graph tags (for social media sharing) -->
+    <meta property="og:title" content="My Mirage | Modern Fashion & Merchandising" />
+    <meta
+      property="og:description"
+      content="Explore modern creative designs and fashion collections from My Mirage France."
+    />
+    <meta property="og:image" content="https://mymirage.fr/og-image.jpg" />
+    <meta property="og:url" content="https://mymirage.fr/" />
+    <meta property="og:type" content="website" />
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="My Mirage | Modern Fashion & Merchandising" />
+    <meta
+      name="twitter:description"
+      content="Explore modern creative designs and fashion collections from My Mirage France."
+    />
+    <meta name="twitter:image" content="https://mymirage.fr/og-image.jpg" />
+
+    <!-- ✅ Structured data (helps Google understand your brand) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "My Mirage",
+        "url": "https://mymirage.fr",
+        "logo": "https://mymirage.fr/src/assets/logooo.png",
+        "sameAs": [
+          "https://www.instagram.com/mymirage",
+          "https://www.facebook.com/mymirage",
+          "https://www.linkedin.com/company/mymirage"
+        ]
+      }
+    </script>
+
+    <!-- ✅ Optional: preload your main font or CSS for faster load -->
+    <!-- <link rel="preload" href="/fonts/your-font.woff2" as="font" type="font/woff2" crossorigin> -->
   </head>
+
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- ✅ Lazy-load scripts for performance -->
+    <script type="module" src="/src/main.jsx" defer></script>
   </body>
 </html>
