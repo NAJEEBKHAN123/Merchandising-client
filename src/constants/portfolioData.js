@@ -33,7 +33,8 @@ const projects = [
       "/images/portfolio/implantation/21.jpg",
       "/images/portfolio/implantation/22.jpg",
       "/images/portfolio/implantation/23.jpg",
-      "/images/portfolio/implantation/24.jpg"
+      "/images/portfolio/implantation/24.jpg",
+      "/images/portfolio/implantation/25.jpg"
     ],
     
     description: "Implantation complète de produits lors de l'ouverture de nouveaux magasins. Nos équipes assurent la mise en rayon initiale selon le planogramme, le positionnement des univers et la mise en valeur optimale des produits avant ouverture.",

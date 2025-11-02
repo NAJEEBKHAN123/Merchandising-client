@@ -4,7 +4,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
-  Calendar,
   TrendingUp,
   Tag,
   Store,
@@ -245,18 +244,8 @@ const PortfolioDetail = () => {
               </p>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl p-6">
-                <div className="flex items-center mb-4">
-                  <Calendar className="w-6 h-6 text-teal-600 mr-3" />
-                  <h3 className="text-lg font-semibold text-gray-800">
-                    Durée Typique
-                  </h3>
-                </div>
-                <p className="text-gray-700">{project.duration}</p>
-              </div>
-
+            {/* Stats - REMOVED Durée Typique */}
+            <div className="grid grid-cols-1 gap-6">
               <div className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl p-6">
                 <div className="flex items-center mb-4">
                   <TrendingUp className="w-6 h-6 text-teal-600 mr-3" />
@@ -265,6 +254,16 @@ const PortfolioDetail = () => {
                   </h3>
                 </div>
                 <p className="text-teal-600 font-medium">{project.results}</p>
+              </div>
+
+              <div className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl p-6">
+                <div className="flex items-center mb-4">
+                  <Tag className="w-6 h-6 text-teal-600 mr-3" />
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    Type de Service
+                  </h3>
+                </div>
+                <p className="text-gray-700">{project.serviceType}</p>
               </div>
             </div>
 
