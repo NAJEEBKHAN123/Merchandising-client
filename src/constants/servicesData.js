@@ -11,17 +11,17 @@ const services = [
       "/images/services/new-store-launches/6.jpeg",
       "/images/services/new-store-launches/7.jpeg",
       "/images/services/new-store-launches/8.jpeg",
-
     ],
     description:
-      "Notre équipe est spécialisée dans l’aménagement et l’implantation de nouveaux magasins.De la planification de l’espace à la gestion logistique, nous veillons à ce que votre point de vente soit opérationnel rapidement et efficacement. Avec un temps d’arrêt minimal, nous vous aidons à créer des environnements fonctionnels et attrayants qui améliorent l’expérience client et posent les bases d’un succès durable pour votre commerce de détail.",
+      "Notre équipe est spécialisée dans l'aménagement et l'implantation de nouveaux magasins.De la planification de l'espace à la gestion logistique, nous veillons à ce que votre point de vente soit opérationnel rapidement et efficacement. Avec un temps d'arrêt minimal, nous vous aidons à créer des environnements fonctionnels et attrayants qui améliorent l'expérience client et posent les bases d'un succès durable pour votre commerce de détail.",
     features: [
-      "Planification complète de l’espace et conception de l’aménagement",
+      "Planification complète de l'espace et conception de l'aménagement",
       "Gestion optimisée de la logistique et des stocks",
-      "Perturbation minimale de l’activité durant la transition",
+      "Perturbation minimale de l'activité durant la transition",
       "Solutions personnalisées répondant aux besoins spécifiques du commerce de détail",
-      "Gestion de projet experte, du début à la fin.",
+      "Gestion de projet experte, du début à la fin.",
     ],
+    showContactButton: true, // Add this for service 1
   },
   {
     id: 2,
@@ -38,14 +38,15 @@ const services = [
       "/images/services/store-remodels/9.jpeg",
     ],
     description:
-      "Nous proposons des services experts de remodélisation et de réagencement qui redonnent vie à votre espace de vente. Qu’il s’agisse de moderniser les agencements, de rafraîchir les présentoirs ou de repenser les espaces, notre approche vise à maximiser l’efficacité et l’attrait visuel. Notre objectif est de créer des environnements accueillants qui attirent les clients, soutiennent la croissance des ventes et s’alignent sur vos stratégies de marque et de merchandising.",
+      "Nous proposons des services experts de remodélisation et de réagencement qui redonnent vie à votre espace de vente. Qu'il s'agisse de moderniser les agencements, de rafraîchir les présentoirs ou de repenser les espaces, notre approche vise à maximiser l'efficacité et l'attrait visuel. Notre objectif est de créer des environnements accueillants qui attirent les clients, soutiennent la croissance des ventes et s'alignent sur vos stratégies de marque et de merchandising.",
     features: [
       "Optimisation stratégique des agencements pour accroître les ventes",
-      "Mises à jour de merchandising visuel parfaitement alignées sur l’image de marque",
+      "Mises à jour de merchandising visuel parfaitement alignées sur l'image de marque",
       "Mise en œuvre efficace avec perturbation minimale pour la clientèle",
       "Modernisation des équipements et des présentoirs",
-      "Réagencement saisonnier et promotionnel adapté aux besoins spécifiques",
+      "Réagencement saisonnier et promotionnel adapté aux besoins spécifiques",
     ],
+    showContactButton: false, // No contact button for service 2
   },
   {
     id: 3,
@@ -63,17 +64,17 @@ const services = [
       "/images/services/fixture-installations/10.jpeg",
       "/images/services/fixture-installations/11.jpeg",
       "/images/services/fixture-installations/12.jpeg",
-
     ],
     description:
-      "Nos services d’installation de mobilier garantissent que vos présentoirs et équipements de vente sont posés en toute sécurité, avec précision et dans les délais prévus. Nous prenons en charge l’installation des étagères, des accessoires personnalisés et de solutions sur mesure pour optimiser l’aménagement de votre magasin. Nos interventions professionnelles renforcent l’impact du merchandising, créent des espaces organisés et facilitent la circulation fluide de la clientèle.",
+      "Nos services d'installation de mobilier garantissent que vos présentoirs et équipements de vente sont posés en toute sécurité, avec précision et dans les délais prévus. Nous prenons en charge l'installation des étagères, des accessoires personnalisés et de solutions sur mesure pour optimiser l'aménagement de votre magasin. Nos interventions professionnelles renforcent l'impact du merchandising, créent des espaces organisés et facilitent la circulation fluide de la clientèle.",
     features: [
       "Installation précise de tous types de mobilier et de présentoirs",
       "Fabrication et modifications personnalisées selon vos besoins",
       "Respect strict des normes et réglementations de sécurité",
       "Délais de réalisation optimisés, avec perturbation minimale",
-      "Expertise approfondie des systèmes de mobilier pour la vente au détail",
+      "Expertise approfondie des systèmes de mobilier pour la vente au détail",
     ],
+    showContactButton: true, // Add this for service 3
   },
   {
     id: 4,
@@ -90,14 +91,14 @@ const services = [
       "/images/services/merchandising-restocking/9.jpeg",
     ],
     description:
-      "Nous réalisons des installations professionnelles de PLV (publicité sur le lieu de vente) et de supports graphiques destinés à renforcer la présence de votre marque en magasin. Bannières, affiches vitrines ou habillages muraux : notre équipe assure une mise en place impeccable. Des visuels percutants attirent l’attention, renforcent l’image de marque et incitent à l’achat, créant ainsi des expériences mémorables qui engagent vos clients.",
+      "Nous réalisons des installations professionnelles de PLV (publicité sur le lieu de vente) et de supports graphiques destinés à renforcer la présence de votre marque en magasin. Bannières, affiches vitrines ou habillages muraux : notre équipe assure une mise en place impeccable. Des visuels percutants attirent l'attention, renforcent l'image de marque et incitent à l'achat, créant ainsi des expériences mémorables qui engagent vos clients.",
     features: [
       "Application experte de divers supports graphiques",
       "Souci du détail pour une présentation visuelle impeccable",
       "Positionnement stratégique pour un impact client maximal",
       "Mises à jour graphiques saisonnières et promotionnelles",
-      "Matériaux de qualité qui conservent leur apparence dans le temps",
     ],
+    showContactButton: false, // No contact button for service 4
   },
 ];
 

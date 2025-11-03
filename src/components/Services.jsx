@@ -8,6 +8,7 @@ import {
   Award,
   Clock,
   Users,
+  Phone,
 } from "lucide-react";
 import services from "../constants/servicesData";
 
@@ -41,7 +42,7 @@ const Services = () => {
             transition={{ delay: 0.3, duration: 0.7 }}
           >
             Des solutions complètes de merchandising pour booster votre marque,
-            améliorer l’expérience client et générer des résultats mesurables.
+            améliorer l'expérience client et générer des résultats mesurables.
           </motion.p>
 
           {/* Statistiques */}
@@ -52,7 +53,7 @@ const Services = () => {
             transition={{ delay: 0.5, duration: 0.7 }}
           >
             {[
-              { icon: Users, value: "250+", label: "Clients" },
+              { icon: Users, value: "50+", label: "Clients" },
               { icon: Award, value: "98%", label: "Satisfaction" },
               { icon: Star, value: "4.9/5", label: "Évaluation" },
               { icon: Clock, value: "24/7", label: "Support" },
@@ -74,44 +75,63 @@ const Services = () => {
 
       {/* Section Services */}
       <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {services.map((service, index) => (
-              <Link key={index} to={`/services/${service.id}`}>
-                <div className="relative group overflow-hidden shadow-lg rounded-lg">
-                  {/* Image */}
-                  <div className="h-64 lg:h-96 overflow-hidden">
-                    <img
-                      src={service.images[0]}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
+              <div key={index} className="relative group overflow-hidden shadow-lg rounded-lg">
+                {/* Image */}
+                <div className="h-64 lg:h-96 overflow-hidden">
+                  <img
+                    src={service.images[0]}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 className="text-xl text-center font-bold text-white mb-4 px-4">
-                      {service.title}
-                    </h3>
+                {/* Overlay */}
+                <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 bg-gradient-to-t from-black/80 to-transparent">
+                  <h3 className="text-xl text-center font-bold text-white mb-4 px-4">
+                    {service.title}
+                  </h3>
 
-                    {/* Bouton En savoir plus */}
-                    <button
-                      className="bg-transparent border-2 cursor-pointer border-white text-white hover:bg-white/10 font-medium py-2 px-6 sm:px-8 rounded-md transition-all duration-300 transform hover:-translate-y-1"
-                      style={{
-                        boxShadow: "inset 0 0 10px rgba(255,255,255,0.3)",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      En savoir plus
-                    </button>
+                  {/* Buttons Container - FIXED WIDTH */}
+                  <div className="flex flex-col sm:flex-row gap-3 px-4 justify-center items-center">
+                    {/* En savoir plus Button */}
+                    <Link to={`/services/${service.id}`}>
+                      <button
+                        className="bg-transparent border-2 cursor-pointer border-white text-white hover:bg-white/10 font-medium py-2 px-4 rounded-md transition-all duration-300 transform hover:-translate-y-1"
+                        style={{
+                          boxShadow: "inset 0 0 10px rgba(255,255,255,0.3)",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        En savoir plus
+                      </button>
+                    </Link>
+
+                    {/* Contact Button - Show only for services 1 and 3 */}
+                    {(service.id === 1 || service.id === 3) && (
+                      <Link to="/contact">
+                        <button
+                          className="bg-white text-blue-900 border-2 border-white cursor-pointer font-medium py-2 px-4 rounded-md transition-all duration-300 transform hover:-translate-y-1 hover:bg-blue-50 flex items-center gap-2"
+                          style={{
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          <Phone className="w-4 h-4" />
+                          Nous Contacter
+                        </button>
+                      </Link>
+                    )}
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
       </div>
 
+      {/* Rest of your component remains the same */}
       {/* Section Processus */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
         {/* En-tête de section */}
@@ -194,7 +214,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Section Appel à l’action */}
+      {/* Section Appel à l'action */}
       <section className="py-20 bg-gradient-to-r from-blue-900 to-purple-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div>
@@ -202,7 +222,7 @@ const Services = () => {
               Prêt à Transformer Votre Espace de Vente ?
             </h2>
             <p className="text-xl text-blue-100 mb-10 max-w-3xl mx-auto">
-              Collaborons pour créer des expériences d’achat exceptionnelles qui favorisent la croissance et fidélisent vos clients.
+              Collaborons pour créer des expériences d'achat exceptionnelles qui favorisent la croissance et fidélisent vos clients.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
