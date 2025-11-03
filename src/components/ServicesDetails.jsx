@@ -64,7 +64,6 @@ const ServiceDetails = () => {
   };
 
   const handleContactClick = () => {
-    // Navigate to contact page or open contact modal
     navigate("/contact");
   };
 
@@ -116,22 +115,29 @@ const ServiceDetails = () => {
           {/* Key Features */}
           {service.features && service.features.length > 0 && (
             <div className="pt-4">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6">
                 Caractéristiques principales
               </h3>
-              <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
+              <div className="space-y-6 max-h-[500px] overflow-y-auto pr-2">
                 {service.features.map((feature, index) => (
                   <div
                     key={index}
-                    className="flex items-start p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                    className="flex items-start p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300 border-l-4 border-blue-500"
                   >
                     <CheckCircle
-                      size={20}
-                      className="text-green-500 mt-1 mr-3 flex-shrink-0"
+                      size={24}
+                      className="text-green-500 mt-1 mr-4 flex-shrink-0"
                     />
-                    <span className="text-gray-700 text-sm leading-relaxed">
-                      {feature}
-                    </span>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-gray-800 text-lg mb-2">
+                        {typeof feature === 'object' ? feature.title : feature}
+                      </h4>
+                      {typeof feature === 'object' && feature.description && (
+                        <p className="text-gray-600 leading-relaxed text-sm">
+                          {feature.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -195,7 +201,7 @@ const ServiceDetails = () => {
 
       {/* Additional Contact Button at Bottom */}
       <div className="max-w-6xl mx-auto mt-12 text-center">
-        <div className="bg-blue-50 rounded-2xl p-8">
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-100">
           <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             Prêt à démarrer votre projet ?
           </h3>
@@ -205,9 +211,12 @@ const ServiceDetails = () => {
           </p>
           <button
             onClick={handleContactClick}
-            className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+            className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 cursor-pointer text-white font-semibold py-4 px-10 rounded-2xl transition-all duration-500 shadow-2xl hover:shadow-emerald-500/25 hover:scale-105 group overflow-hidden"
           >
-            Demander un Devis
+            <span className="relative z-10 group-hover:scale-110 transition-transform duration-300">
+              Demander un Devis
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
           </button>
         </div>
       </div>

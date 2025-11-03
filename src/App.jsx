@@ -11,6 +11,7 @@ import FAQ from "./components/FAQ";
 import Footer from "./common/Footer";
 import QetQoute from "./components/GetQoute";
 import PortfolioDetail from "./components/PortfolioDetail";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         {/* <Route path="/testimonials" element={<Testimonials />} /> */}
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<QetQoute />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>
