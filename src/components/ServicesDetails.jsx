@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ArrowLeftCircle, CheckCircle } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowLeftCircle,
+  CheckCircle,
+} from "lucide-react";
 import services from "../constants/servicesData";
 
 const ServiceDetails = () => {
@@ -10,13 +15,11 @@ const ServiceDetails = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
 
-  // Only run once when component mounts and when service ID changes
   useEffect(() => {
     window.scrollTo(0, 0);
     setCurrentIndex(0);
-  }, [id]); // Removed autoPlay and service from dependencies
+  }, [id]);
 
-  // Separate useEffect for auto-play functionality
   useEffect(() => {
     let interval;
     if (autoPlay && service && service.images.length > 1) {
@@ -26,11 +29,11 @@ const ServiceDetails = () => {
         );
       }, 3000);
     }
-    
+
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [autoPlay, service, currentIndex]); // Added currentIndex to dependencies
+  }, [autoPlay, service, currentIndex]);
 
   if (!service) {
     return (
@@ -60,6 +63,11 @@ const ServiceDetails = () => {
     setAutoPlay(true);
   };
 
+  const handleContactClick = () => {
+    // Navigate to contact page or open contact modal
+    navigate("/contact");
+  };
+
   return (
     <main className="min-h-screen bg-gray-50 pt-20 pb-16 px-4 md:px-8">
       {/* Back Button */}
@@ -79,18 +87,31 @@ const ServiceDetails = () => {
           {service.title}
         </h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          {service.tagline || "Solution professionnelle adaptée à vos besoins"}
+          Solution professionnelle adaptée à vos besoins
         </p>
+
+        {/* Contact Us Button */}
+        <button
+          onClick={handleContactClick}
+          className="mt-6 relative bg-gradient-to-r from-blue-600 to-purple-600 cursor-pointer text-white font-semibold py-4 px-10 rounded-2xl transition-all duration-500 shadow-2xl hover:shadow-purple-500/25 hover:scale-105 group overflow-hidden"
+        >
+          <span className="relative z-10 group-hover:scale-110 transition-transform duration-300">
+            Contactez-nous
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+        </button>
       </div>
 
       {/* Main Section */}
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 bg-white shadow-lg rounded-2xl p-6 md:p-10">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 bg-white shadow-lg rounded-2xl p-6 md:p-8">
         {/* Left Content */}
-        <div className="md:w-1/2 space-y-6">
+        <div className="lg:w-1/2 space-y-6">
           <h2 className="text-2xl font-semibold text-gray-800">
-           À propos de ce service
+            À propos de ce service
           </h2>
-          <p className="text-gray-600 leading-relaxed">{service.description}</p>
+          <p className="text-gray-600 leading-relaxed text-justify">
+            {service.description}
+          </p>
 
           {/* Key Features */}
           {service.features && service.features.length > 0 && (
@@ -98,14 +119,19 @@ const ServiceDetails = () => {
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Caractéristiques principales
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
                 {service.features.map((feature, index) => (
-                  <div key={index} className="flex items-start">
+                  <div
+                    key={index}
+                    className="flex items-start p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                  >
                     <CheckCircle
                       size={20}
                       className="text-green-500 mt-1 mr-3 flex-shrink-0"
                     />
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-700 text-sm leading-relaxed">
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -114,52 +140,75 @@ const ServiceDetails = () => {
         </div>
 
         {/* Right Image Slider */}
-        <div 
-          className="md:w-1/2 relative"
+        <div
+          className="lg:w-1/2 relative"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <img
-            src={service.images[currentIndex]}
-            alt={service.title}
-            className="rounded-xl shadow-md w-full h-80 object-cover transition-opacity duration-500"
-          />
+          <div className="sticky top-8">
+            <img
+              src={service.images[currentIndex]}
+              alt={service.title}
+              className="rounded-xl shadow-md w-full h-80 object-cover transition-opacity duration-500"
+            />
 
-          {/* Navigation Dots */}
-          {service.images.length > 1 && (
-            <div className="flex justify-center mt-4 space-x-2">
-              {service.images.map((_, index) => (
+            {/* Navigation Dots */}
+            {service.images.length > 1 && (
+              <div className="flex justify-center mt-4 space-x-2">
+                {service.images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      index === currentIndex
+                        ? "bg-blue-600"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Slider Buttons */}
+            {service.images.length > 1 && (
+              <>
                 <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full ${
-                    index === currentIndex ? "bg-blue-600" : "bg-gray-300"
-                  }`}
-                  aria-label={`Go to image ${index + 1}`}
-                />
-              ))}
-            </div>
-          )}
+                  onClick={prevImage}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md transition-all duration-300"
+                  aria-label="Previous image"
+                >
+                  <ArrowLeftCircle size={28} className="text-gray-700" />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md transition-all duration-300"
+                  aria-label="Next image"
+                >
+                  <ArrowRight size={28} className="text-gray-700" />
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
 
-          {/* Slider Buttons */}
-          {service.images.length > 1 && (
-            <>
-              <button
-                onClick={prevImage}
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
-                aria-label="Previous image"
-              >
-                <ArrowLeftCircle size={28} />
-              </button>
-              <button
-                onClick={nextImage}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
-                aria-label="Next image"
-              >
-                <ArrowRight size={28} />
-              </button>
-            </>
-          )}
+      {/* Additional Contact Button at Bottom */}
+      <div className="max-w-6xl mx-auto mt-12 text-center">
+        <div className="bg-blue-50 rounded-2xl p-8">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+            Prêt à démarrer votre projet ?
+          </h3>
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Contactez-nous dès aujourd'hui pour discuter de vos besoins et
+            obtenir un devis personnalisé.
+          </p>
+          <button
+            onClick={handleContactClick}
+            className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+          >
+            Demander un Devis
+          </button>
         </div>
       </div>
     </main>

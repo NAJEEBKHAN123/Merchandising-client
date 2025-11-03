@@ -7,7 +7,6 @@ import {
   Award,
   Clock,
   Users,
-  Phone,
   MessageCircle,
 } from "lucide-react";
 import services from "../constants/servicesData";
@@ -79,61 +78,43 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {services.map((service, index) => (
-              <div key={index} className="relative group overflow-hidden shadow-lg rounded-lg">
-                {/* Image */}
-                <div className="h-64 lg:h-96 overflow-hidden">
-                  <img
-                    src={service.images[0]}
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
+              <Link key={index} to={`/services/${service.id}`}>
+                <div className="relative group overflow-hidden shadow-lg rounded-lg cursor-pointer">
+                  {/* Image */}
+                  <div className="h-64 lg:h-96 overflow-hidden">
+                    <img
+                      src={service.images[0]}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 bg-gradient-to-t from-black/80 to-transparent">
-                  <h3 className="text-xl text-center font-bold text-white mb-4 px-4">
-                    {service.title}
-                  </h3>
+                  {/* Overlay */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 bg-gradient-to-t from-black/80 to-transparent">
+                    <h3 className="text-xl text-center font-bold text-white mb-4 px-4">
+                      {service.title}
+                    </h3>
 
-                  {/* Buttons Container */}
-                  <div className="flex flex-col sm:flex-row gap-3 px-4 justify-center items-center">
-                    {/* En savoir plus Button */}
-                    <Link to={`/services/${service.id}`}>
-                      <button
-                        className="bg-transparent border-2 cursor-pointer border-white text-white hover:bg-white/10 font-medium py-2 px-4 rounded-md transition-all duration-300 transform hover:-translate-y-1"
-                        style={{
-                          boxShadow: "inset 0 0 10px rgba(255,255,255,0.3)",
-                          whiteSpace: "nowrap",
-                        }}
-                      >
-                        En savoir plus
-                      </button>
-                    </Link>
-
-                    {/* Contact Button - Show only for services 1 and 3 */}
-                    {(service.id === 1 || service.id === 3) && (
-                      <Link to="/contact">
-                        <button
-                          className="bg-white text-blue-900 border-2 border-white cursor-pointer font-medium py-2 px-4 rounded-md transition-all duration-300 transform hover:-translate-y-1 hover:bg-blue-50 flex items-center gap-2"
-                          style={{
-                            whiteSpace: "nowrap",
-                          }}
-                        >
-                          <Phone className="w-4 h-4" />
-                          Nous Contacter
-                        </button>
-                      </Link>
-                    )}
+                    {/* Single Button - Only "En savoir plus" */}
+                    <button
+                      className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-2 px-6 rounded-md transition-all duration-300 transform hover:-translate-y-1"
+                      style={{
+                        boxShadow: "inset 0 0 10px rgba(255,255,255,0.3)",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      En savoir plus
+                    </button>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </div>
 
       {/* Professional CTA Button Section */}
-     <section className="py-12 bg-gradient-to-t from-gray-400 to-gray-700">
+      <section className="py-12 bg-gradient-to-t from-gray-400 to-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
