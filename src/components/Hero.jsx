@@ -6,23 +6,26 @@ import {
   Play,
   ArrowRight,
   ChevronLeft,
+  X,
 } from "lucide-react";
 import slide1 from '/images/services/store-remodels/1.jpeg'
 import slide2 from '/images/services/store-remodels/2.jpeg'
 import slide3 from '/images/services/new-store-launches/1.jpeg'
+import heroVideo from '/video/hero-video.mp4'; 
 
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const heroRef = useRef(null);
+  const videoRef = useRef(null);
 
- const content = [
+  const content = [
     {
       title: "Solutions de Merchandising Sur Mesure",
       highlight: "Transformez votre espace de vente.",
       description:
         "Des solutions qui optimisent l'expérience client et dynamisent vos ventes.",
-      // Cool, professional blue tones (swapped from slide 2)
       color: "from-blue-400 to-cyan-500",
       buttonColor: "from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700",
       textColor: "text-blue-100",
@@ -34,7 +37,6 @@ const Hero = () => {
       highlight: "Excellence Opérationnelle Garantie",
       description:
         "Ouverture réussie avec un merchandising optimisé, la formation de votre équipe et une mise en place clé-en-main.",
-      // Warm professional tones (swapped from slide 1)
       color: "from-amber-400 to-orange-500",
       buttonColor: "from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700",
       textColor: "text-amber-100",
@@ -46,7 +48,6 @@ const Hero = () => {
       highlight: "Augmentez Votre Chiffre d'Affaires",
       description:
         "Assistance stratégique, implantation des produits et signalétique pour convertir davantage de visiteurs.",
-      // Success/growth green tones that complement optimization imagery
       color: "from-emerald-400 to-green-500",
       buttonColor: "from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700",
       textColor: "text-emerald-100",
@@ -77,6 +78,19 @@ const Hero = () => {
     setActiveIndex((prev) => (prev - 1 + content.length) % content.length);
     setIsPlaying(false);
     setTimeout(() => setIsPlaying(true), 8000);
+  };
+
+  // Video modal functions
+  const openVideoModal = () => {
+    setIsVideoModalOpen(true);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoModalOpen(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
   };
 
   return (
@@ -169,6 +183,7 @@ const Hero = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={openVideoModal}
                       className="px-8 py-3 bg-white/10 cursor-pointer text-white font-semibold rounded-lg hover:bg-white/20 backdrop-blur-sm transition-all duration-300 flex items-center justify-center sm:justify-start" 
                     >
                       <Play className="mr-2 w-5 h-5" /> Voir la Vidéo
@@ -231,15 +246,57 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Indicateur de défilement */}
-      <motion.div
-        className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.8 }}
-      >
-       
-      </motion.div>
+      {/* Video Modal */}
+      <AnimatePresence>
+        {isVideoModalOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeVideoModal}
+          >
+            <motion.div
+              className="relative bg-gray-900 rounded-xl max-w-4xl w-full overflow-hidden"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={closeVideoModal}
+                className="absolute top-4 right-4 z-10 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-all duration-200"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {/* Video Player */}
+              <video
+                ref={videoRef}
+                className="w-full h-auto max-h-[80vh]"
+                controls
+                autoPlay
+                muted
+                playsInline
+              >
+                <source src={heroVideo} type="video/mp4" />
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+
+              {/* Video Title */}
+              <div className="p-4 bg-gray-900">
+                <h3 className="text-white text-lg font-semibold">
+                  Présentation de nos services
+                </h3>
+                <p className="text-gray-300 text-sm mt-1">
+                  Découvrez comment nous transformons vos espaces de vente
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
