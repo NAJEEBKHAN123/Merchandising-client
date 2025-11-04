@@ -8,9 +8,9 @@ import {
   ChevronLeft,
   X,
 } from "lucide-react";
-import slide1 from '/images/services/store-remodels/1.jpeg'
-import slide2 from '/images/services/store-remodels/2.jpeg'
-import slide3 from '/images/services/new-store-launches/1.jpeg'
+import slide1 from '/images/services/fixture-installations/1.jpg'
+import slide2 from '/images/services/store-remodels/1.jpg'
+import slide3 from '/images/services/new-store-launches/11.jpg'
 import heroVideo from '/video/hero-video.mp4'; 
 
 const Hero = () => {
