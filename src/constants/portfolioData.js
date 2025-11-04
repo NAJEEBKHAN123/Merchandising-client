@@ -136,9 +136,7 @@ const projects = [
       "/images/portfolio/montage/13.jpg",
       "/images/portfolio/montage/14.jpg",
       "/images/portfolio/montage/15.jpg",
-      // "/images/portfolio/montage/16.jpg",
-      // "/images/portfolio/montage/17.jpg",
-      // "/images/portfolio/montage/18.jpg"
+   
     ],
     
     description: "Montage professionnel de mobilier métallique et structures en magasin. Nos techniciens réalisent le montage de rayonnages, gondoles, racks et éléments techniques selon les plans d'implantation et les normes de sécurité.",
