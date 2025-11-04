@@ -34,7 +34,14 @@ const projects = [
       "/images/portfolio/implantation/22.jpg",
       "/images/portfolio/implantation/23.jpg",
       "/images/portfolio/implantation/24.jpg",
-      "/images/portfolio/implantation/25.jpg"
+      "/images/portfolio/implantation/25.jpg",
+      "/images/portfolio/implantation/26.jpg",
+      "/images/portfolio/implantation/27.jpg",
+      "/images/portfolio/implantation/28.jpg",
+      "/images/portfolio/implantation/29.jpg",
+      "/images/portfolio/implantation/30.jpg",
+
+
     ],
     
     description: "Implantation complète de produits lors de l'ouverture de nouveaux magasins. Nos équipes assurent la mise en rayon initiale selon le planogramme, le positionnement des univers et la mise en valeur optimale des produits avant ouverture.",
@@ -81,7 +88,14 @@ const projects = [
       "/images/portfolio/reassort/19.jpg",
       "/images/portfolio/reassort/20.jpg",
       "/images/portfolio/reassort/21.jpg",
-      "/images/portfolio/reassort/22.jpg"
+      "/images/portfolio/reassort/23.jpg",
+      "/images/portfolio/reassort/24.jpg",
+      "/images/portfolio/reassort/25.jpg",
+      "/images/portfolio/reassort/26.jpg",
+      "/images/portfolio/reassort/27.jpg",
+      "/images/portfolio/reassort/28.jpg",
+
+      
     ],
     
     description: "Chargement, déballage et mise en rayon des produits dans les magasins existants. Nous dépalettisons, trions et réimplantons les produits afin de garantir des rayons complets, une visibilité claire et une rotation optimale des stocks.",

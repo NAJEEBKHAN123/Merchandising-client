@@ -130,9 +130,9 @@ const ServiceDetails = () => {
                     />
                     <div className="flex-1">
                       <h4 className="font-semibold text-gray-800 text-lg mb-2">
-                        {typeof feature === 'object' ? feature.title : feature}
+                        {typeof feature === "object" ? feature.title : feature}
                       </h4>
-                      {typeof feature === 'object' && feature.description && (
+                      {typeof feature === "object" && feature.description && (
                         <p className="text-gray-600 leading-relaxed text-sm">
                           {feature.description}
                         </p>
@@ -209,15 +209,15 @@ const ServiceDetails = () => {
             Contactez-nous dès aujourd'hui pour discuter de vos besoins et
             obtenir un devis personnalisé.
           </p>
-          <button
-            onClick={handleContactClick}
-            className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 cursor-pointer text-white font-semibold py-4 px-10 rounded-2xl transition-all duration-500 shadow-2xl hover:shadow-emerald-500/25 hover:scale-105 group overflow-hidden"
-          >
-            <span className="relative z-10 group-hover:scale-110 transition-transform duration-300">
-              Demander un Devis
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-          </button>
+        <button
+  onClick={handleContactClick}
+  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 cursor-pointer text-white font-semibold py-4 px-10 rounded-2xl transition-all duration-500 shadow-2xl hover:shadow-emerald-500/25 hover:scale-105 group overflow-hidden relative"
+>
+  <span className="relative z-10 group-hover:scale-110 transition-transform duration-300">
+    Demander un Devis
+  </span>
+  <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
+</button>
         </div>
       </div>
     </main>
