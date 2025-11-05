@@ -20,7 +20,7 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* En-tête de page */}
-  <section className="relative pt-12 pb-14 overflow-hidden bg-gradient-to-br from-gray-900 to-blue-900">
+  <section className="relative pt-24 pb-14 overflow-hidden bg-gradient-to-br from-gray-900 to-blue-900">
   <div className="absolute inset-0 opacity-20">
     <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
     <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-pulse"></div>

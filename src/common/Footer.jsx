@@ -133,7 +133,7 @@ const Footer = () => {
     { name: "Accueil", path: "/", icon: Home },
     { name: "Services", path: "/services", icon: FileText },
     { name: "Portefeuille", path: "/portfolio", icon: BriefcaseBusiness },
-    { name: "Avis clients", path: "/testimonials", icon: UsersIcon },
+    // { name: "Avis clients", path: "/testimonials", icon: UsersIcon },
     { name: "FAQ", path: "/faq", icon: HelpCircle },
     { name: "Contact", path: "/contact", icon: MessageCircle },
   ];
