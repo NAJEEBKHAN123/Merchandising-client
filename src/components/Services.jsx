@@ -20,59 +20,58 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* En-tête de page */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-gray-900 to-blue-900">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-          <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-pulse"></div>
+  <section className="relative pt-12 pb-14 overflow-hidden bg-gradient-to-br from-gray-900 to-blue-900">
+  <div className="absolute inset-0 opacity-20">
+    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+    <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-pulse"></div>
+  </div>
+
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <motion.h1
+      className="text-4xl md:text-3xl lg:text-5xl font-bold text-white mb-4"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+    >
+      Nos Services
+    </motion.h1>
+    <motion.p
+      className="text-base md:text-lg text-blue-100 mt-3 max-w-2xl mx-auto leading-snug"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.7 }}
+    >
+      Des solutions complètes de merchandising pour booster votre marque,
+      améliorer l'expérience client et générer des résultats mesurables.
+    </motion.p>
+
+    {/* Statistiques */}
+    <motion.div
+      className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6 max-w-xl mx-auto"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 0.7 }}
+    >
+      {[
+        { icon: Users, value: "50+", label: "Clients" },
+        { icon: Award, value: "98%", label: "Satisfaction" },
+        { icon: Star, value: "4.9/5", label: "Évaluation" },
+        { icon: Clock, value: "24/7", label: "Support" },
+      ].map((stat, index) => (
+        <div
+          key={index}
+          className="text-center p-2 bg-white/10 backdrop-blur-sm rounded-lg"
+        >
+          <stat.icon className="w-5 h-5 text-blue-300 mx-auto mb-1" />
+          <div className="text-lg font-bold text-white">
+            {stat.value}
+          </div>
+          <div className="text-blue-200 text-xs">{stat.label}</div>
         </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            Nos Services
-          </motion.h1>
-          <motion.p
-            className="text-xl md:text-2xl text-blue-100 mt-6 max-w-4xl mx-auto leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
-          >
-            Des solutions complètes de merchandising pour booster votre marque,
-            améliorer l'expérience client et générer des résultats mesurables.
-          </motion.p>
-
-          {/* Statistiques */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.7 }}
-          >
-            {[
-              { icon: Users, value: "50+", label: "Clients" },
-              { icon: Award, value: "98%", label: "Satisfaction" },
-              { icon: Star, value: "4.9/5", label: "Évaluation" },
-              { icon: Clock, value: "24/7", label: "Support" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl"
-              >
-                <stat.icon className="w-8 h-8 text-blue-300 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-white">
-                  {stat.value}
-                </div>
-                <div className="text-blue-200 text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
+      ))}
+    </motion.div>
+  </div>
+</section>
       {/* Section Services */}
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
